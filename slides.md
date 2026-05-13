@@ -28,6 +28,9 @@ layout: full
 
 
 ---
+layout: section
+image: https://s3.amazonaws.com/media-p.slid.es/uploads/18162/images/9193490/Picture3.png
+---
 
 # New language features
 
@@ -702,6 +705,9 @@ import module java.base;
 ```
 
 
+---
+layout: section
+image: https://s3.amazonaws.com/media-p.slid.es/uploads/18162/images/9193493/Picture4.png
 ---
 
 # New APIs
@@ -1410,6 +1416,9 @@ System.out.println(slidingWindows);
 
 
 ---
+layout: section
+image: https://media.slid.es/uploads/18162/images/9193429/Picture2.png
+---
 
 # Performance
 
@@ -1515,6 +1524,9 @@ GC
 
 
 ---
+layout: section
+image: https://s3.amazonaws.com/media-p.slid.es/uploads/18162/images/9193520/Picture6.png
+---
 
 # Security
 
@@ -1584,6 +1596,9 @@ General
 **JDK22**
 
 
+---
+layout: section
+image: https://s3.amazonaws.com/media-p.slid.es/uploads/18162/images/9193495/Picture5.png
 ---
 
 # Miscellaneous
@@ -1819,6 +1834,9 @@ Markdown Documentation Comments
 ```
 
 
+---
+layout: section
+image: https://s3.amazonaws.com/media-p.slid.es/uploads/18162/images/9193534/Picture7.png
 ---
 
 # Deprecations &amp; Removals
