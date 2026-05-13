@@ -1,137 +1,103 @@
 <template>
   <div class="jdk-timeline" aria-label="JDK release and EOL timeline">
-    <template v-for="item in currentJdks" :key="item.version">
-      <JdkBadge
-        :label="item.version"
-        :color="item.color"
-        :x="item.x"
-        :y="item.y"
-        size="large"
-      />
-      <JdkBadge
-        :label="item.trackLabel ?? item.version"
-        :color="item.color"
-        :x="item.trackX"
-        :y="item.trackY"
-        size="medium"
-      />
-      <JdkBadge
-        v-if="item.smallX"
-        :label="item.version"
-        :color="item.color"
-        :x="item.smallX"
-        :y="item.smallY"
-        size="small"
-      />
-      <ReleaseDates
-        :release="item.release"
-        :eol="item.eol"
-        :x="item.datesX"
-        :y="item.datesY"
-      />
-    </template>
+    <main class="timeline-grid">
+      <section
+        v-for="column in modernColumns"
+        :key="column.label"
+        class="timeline-column"
+        :class="column.className"
+        :aria-label="column.label"
+      >
+        <article v-for="row in column.rows" :key="row.version" class="version-row">
+          <div class="badge-stack">
+            <JdkBadge :label="row.version" :color="row.color" size="large" />
+            <JdkBadge :label="row.trackLabel ?? row.version" :color="row.color" size="medium" />
+            <JdkBadge v-if="row.small" :label="row.version" :color="row.color" size="small" />
+          </div>
+          <ReleaseDates :release="row.release" :eol="row.eol" />
+        </article>
+      </section>
 
-    <template v-for="item in oldJdks" :key="item.version">
-      <JdkBadge
-        :label="item.version"
-        :color="item.color"
-        :text-color="oldTextColor"
-        :border-color="item.borderColor"
-        :x="item.x"
-        :y="item.y"
-        size="large"
-      />
-      <ReleaseDates
-        :release="item.release"
-        :eol="item.eol"
-        :x="item.datesX"
-        :y="item.datesY"
-        compact
-      />
-    </template>
+      <section class="timeline-column timeline-column--legacy" aria-label="Old JDKs">
+        <article v-for="row in legacyRows" :key="row.version" class="legacy-row">
+          <JdkBadge
+            :label="row.version"
+            :color="row.color"
+            :border-color="row.borderColor"
+            text-color="#0e2a47"
+            size="large"
+          />
+          <ReleaseDates :release="row.release" :eol="row.eol" compact />
+        </article>
 
-    <JdkBadge
-      label="OLD JDK"
-      color="#e3ead1"
-      text-color="#0e2a47"
-      border-color="#a0a88a"
-      x="1006.25"
-      y="247"
-      size="large"
-      old
-    />
+        <JdkBadge
+          label="OLD JDK"
+          color="#e3ead1"
+          border-color="#a0a88a"
+          text-color="#0e2a47"
+          size="large"
+          old
+        />
+      </section>
+    </main>
 
     <p class="legend">🚀 = Release date - ☠️ = EOL free support based on Eclipse Temurin</p>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, defineComponent, h } from 'vue'
+import { defineComponent, h } from 'vue'
+import JdkBadge from './JdkBadge.vue'
 
-type TimelineItem = {
+type VersionRow = {
   version: string
   release: string
   eol: string
   color: string
-  x: number
-  y: number
-  trackX: number
-  trackY: number
-  datesX: number
-  datesY: number
-  smallX?: number
-  smallY?: number
+  small?: boolean
   trackLabel?: string
 }
 
-type OldJdkItem = {
-  version: string
-  release: string
-  eol: string
-  color: string
+type LegacyRow = VersionRow & {
   borderColor: string
-  x: number
-  y: number
-  datesX: number
-  datesY: number
 }
 
-const oldTextColor = '#0e2a47'
+const modernColumns: Array<{ label: string; className?: string; rows: VersionRow[] }> = [
+  {
+    label: 'JDK 9 to 18',
+    className: 'timeline-column--long',
+    rows: [
+      { version: 'JDK9', release: 'Sept 2017', eol: 'March 2018', color: '#007bff', trackLabel: 'JDK10' },
+      { version: 'JDK10', release: 'March 2018', eol: 'Sept 2018', color: '#b60205' },
+      { version: 'JDK11', release: 'Sept 2018', eol: 'Oct 2027', color: '#28a745' },
+      { version: 'JDK12', release: 'March 2019', eol: 'Sept 2019', color: '#b6a842' },
+      { version: 'JDK13', release: 'Sept 2019', eol: 'March 2020', color: '#e200db' },
+      { version: 'JDK14', release: 'March 2020', eol: 'Sept 2020', color: '#ff990f', small: true },
+      { version: 'JDK15', release: 'Sept 2020', eol: 'March 2021', color: '#0a9ca2', small: true },
+      { version: 'JDK16', release: 'March 2021', eol: 'Sept 2021', color: '#6600cc', small: true },
+      { version: 'JDK17', release: 'Sept 2021', eol: 'Oct 2027', color: '#a64d79', small: true },
+      { version: 'JDK18', release: 'March 2022', eol: 'Sept 2022', color: '#454a8e', small: true },
+      { version: 'JDK19', release: 'Sept 2022', eol: 'March 2023', color: '#e43333', small: true },
+    ],
+  },
+  {
+    label: 'JDK 20 to 23',
+    rows: [
+      { version: 'JDK20', release: 'March 2023', eol: 'Sept 2023', color: '#083d1c', small: true },
+      { version: 'JDK21', release: 'Sept 2023', eol: 'Dec 2029', color: '#4acaec', small: true },
+      { version: 'JDK22', release: 'March 2024', eol: 'Sept 2024', color: '#710070', small: true },
+      { version: 'JDK23', release: 'Sept 2024', eol: 'March 2025', color: '#854800', small: true },
+    ],
+  },
+]
 
-const firstColumn: TimelineItem[] = [
-  ['JDK9', 'Sept 2017', 'March 2018', '#007bff', 30, 31, 173.25, 38, 382.25, 25.5, undefined, undefined, 'JDK10'],
-  ['JDK10', 'March 2018', 'Sept 2018', '#b60205', 30, 103, 173.25, 110, 382.25, 97.5],
-  ['JDK11', 'Sept 2018', 'Oct 2027', '#28a745', 30, 175, 173.25, 182, 382.25, 169.5],
-  ['JDK12', 'March 2019', 'Sept 2019', '#b6a842', 30, 247, 173.25, 254, 382.25, 241.5],
-  ['JDK13', 'Sept 2019', 'March 2020', '#e200db', 30, 319, 173.25, 326, 382.25, 313.5],
-  ['JDK14', 'March 2020', 'Sept 2020', '#ff990f', 30, 391, 173.25, 398, 382.25, 385.5, 296.25, 400.5],
-  ['JDK15', 'Sept 2020', 'March 2021', '#0a9ca2', 30, 463, 173.25, 470, 382.25, 457.5, 296.25, 472.5],
-  ['JDK16', 'March 2021', 'Sept 2021', '#6600cc', 30, 535, 173.25, 542, 382.25, 529.5, 296.25, 544.5],
-  ['JDK17', 'Sept 2021', 'Oct 2027', '#a64d79', 30, 607, 173.25, 614, 382.25, 601.5, 296.25, 616.5],
-].map(toTimelineItem)
-
-const secondColumn: TimelineItem[] = [
-  ['JDK18', 'March 2022', 'Sept 2022', '#454a8e', 518.25, 31, 658.25, 38, 861.75, 25.5, 778.25, 40.5],
-  ['JDK19', 'Sept 2022', 'March 2023', '#e43333', 518.25, 103, 658.25, 110, 861.75, 97.5, 778.25, 112.5],
-  ['JDK20', 'March 2023', 'Sept 2023', '#083d1c', 518.25, 175, 658.25, 182, 861.75, 169.5, 778.25, 184.5],
-  ['JDK21', 'Sept 2023', 'Dec 2029', '#4acaec', 518.25, 247, 658.25, 254, 861.75, 241.5, 778.25, 256.5],
-  ['JDK22', 'March 2024', 'Sept 2024', '#710070', 518.25, 319, 658.25, 326, 861.75, 313.5, 778.25, 328.5],
-  ['JDK23', 'Sept 2024', 'March 2025', '#854800', 518.25, 391, 658.25, 398, 861.75, 385.5, 778.25, 400.5],
-].map(toTimelineItem)
-
-const currentJdks = computed(() => [...firstColumn, ...secondColumn])
-
-const oldJdks: OldJdkItem[] = [
+const legacyRows: LegacyRow[] = [
   {
     version: 'JDK6',
     release: 'Dec 2006',
     eol: 'Apr 2013',
     color: '#ead1dc',
     borderColor: '#007bff',
-    x: 1006.25,
-    y: 31,
-    datesX: 1150,
-    datesY: 25.5,
   },
   {
     version: 'JDK7',
@@ -139,10 +105,6 @@ const oldJdks: OldJdkItem[] = [
     eol: 'July 2015',
     color: '#d0e0e3',
     borderColor: '#007bff',
-    x: 1006.25,
-    y: 103,
-    datesX: 1150,
-    datesY: 97.5,
   },
   {
     version: 'JDK8',
@@ -150,106 +112,29 @@ const oldJdks: OldJdkItem[] = [
     eol: 'Nov 2026',
     color: '#d0e0e3',
     borderColor: '#007bff',
-    x: 1006.25,
-    y: 175,
-    datesX: 1150,
-    datesY: 169.5,
   },
 ]
 
-function toTimelineItem(item: unknown[]): TimelineItem {
-  const [
-    version,
-    release,
-    eol,
-    color,
-    x,
-    y,
-    trackX,
-    trackY,
-    datesX,
-    datesY,
-    smallX,
-    smallY,
-    trackLabel,
-  ] = item as [
-    string,
-    string,
-    string,
-    string,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number | undefined,
-    number | undefined,
-    string | undefined,
-  ]
-
-  return { version, release, eol, color, x, y, trackX, trackY, datesX, datesY, smallX, smallY, trackLabel }
-}
-
-const JdkBadge = defineComponent({
-  props: {
-    label: { type: String, required: true },
-    color: { type: String, required: true },
-    textColor: { type: String, default: '#fff' },
-    borderColor: { type: String, default: '' },
-    x: { type: [String, Number], required: true },
-    y: { type: [String, Number], required: true },
-    size: { type: String, default: 'large' },
-    old: { type: Boolean, default: false },
-  },
-  setup(props) {
-    return () =>
-      h(
-        'div',
-        {
-          class: ['jdk-badge', `jdk-badge--${props.size}`, { 'jdk-badge--old': props.old }],
-          style: {
-            '--x': `${props.x}`,
-            '--y': `${props.y}`,
-            '--badge-bg': props.color,
-            '--badge-color': props.textColor,
-            '--badge-border': props.borderColor || props.color,
-          },
-        },
-        props.label,
-      )
-  },
-})
-
 const ReleaseDates = defineComponent({
+
   props: {
     release: { type: String, required: true },
     eol: { type: String, required: true },
-    x: { type: Number, required: true },
-    y: { type: Number, required: true },
     compact: { type: Boolean, default: false },
   },
   setup(props) {
     return () =>
-      h(
-        'div',
-        {
-          class: ['release-dates', { 'release-dates--compact': props.compact }],
-          style: {
-            '--x': `${props.x}`,
-            '--y': `${props.y}`,
-          },
-        },
-        [h('p', `🚀 ${props.release}`), h('p', `☠️ ${props.eol}`)],
-      )
+      h('div', { class: ['release-dates', { 'release-dates--compact': props.compact }] }, [
+        h('p', `🚀 ${props.release}`),
+        h('p', `☠️ ${props.eol}`),
+      ])
   },
 })
 </script>
 
 <style scoped>
 .jdk-timeline {
-  --slide-w: 1280;
-  --slide-h: 720;
+  --px: min(calc(100cqw / 1280), calc(100cqh / 720));
   position: absolute;
   inset: 0;
   container-type: size;
@@ -259,61 +144,61 @@ const ReleaseDates = defineComponent({
   font-family: "Source Sans Pro", "Inter", "Segoe UI", Arial, sans-serif;
 }
 
-.jdk-badge,
-.release-dates {
+.timeline-grid {
   position: absolute;
-  left: calc(var(--x) / var(--slide-w) * 100%);
-  top: calc(var(--y) / var(--slide-h) * 100%);
-}
-
-.jdk-badge {
+  inset: 4.3% 2.35% 8.2%;
   display: grid;
-  place-items: center;
-  height: calc(var(--h) / var(--slide-h) * 100%);
-  width: calc(var(--w) / var(--slide-w) * 100%);
-  border: max(1px, calc(1 / var(--slide-w) * 100cqw)) solid var(--badge-border);
-  border-radius: 5px;
-  background: var(--badge-bg);
-  color: var(--badge-color);
-  font-size: calc(var(--font) / var(--slide-w) * 100cqw);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: 0;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 1.08fr) minmax(0, 0.58fr);
+  gap: calc(18 * var(--px));
+  align-items: start;
 }
 
-.jdk-badge--large {
-  --w: 130;
-  --h: 41;
-  --font: 31;
+.timeline-column {
+  display: grid;
+  grid-auto-rows: min-content;
+  gap: calc(18 * var(--px));
+  min-width: 0;
 }
 
-.jdk-badge--medium {
-  --w: 110;
-  --h: 29;
-  --font: 24;
+.version-row,
+.legacy-row {
+  display: grid;
+  align-items: center;
+  min-width: 0;
 }
 
-.jdk-badge--small {
-  --w: 65;
-  --h: 22;
-  --font: 17;
+.version-row {
+  grid-template-columns: minmax(0, 1fr) calc(154 * var(--px));
+  gap: calc(20 * var(--px));
 }
 
-.jdk-badge--old {
-  --font: 26;
-  white-space: nowrap;
+.timeline-column--long .version-row {
+  grid-template-columns: minmax(0, 1fr) calc(154 * var(--px));
+}
+
+.legacy-row {
+  grid-template-columns: calc(130 * var(--px)) minmax(0, 1fr);
+  gap: calc(16 * var(--px));
+}
+
+.timeline-column--legacy > .jdk-badge {
+  margin-top: calc(10 * var(--px));
+}
+
+.badge-stack {
+  display: grid;
+  grid-template-columns: calc(130 * var(--px)) calc(98 * var(--px)) calc(56 * var(--px));
+  align-items: center;
+  gap: calc(8 * var(--px));
+  min-width: 0;
 }
 
 .release-dates {
-  width: calc(170 / var(--slide-w) * 100%);
-  font-size: calc(19 / var(--slide-w) * 100cqw);
+  font-size: calc(12 * var(--px));
   font-weight: 400;
-  line-height: 1.28;
+  line-height: 1.12;
   text-align: left;
-}
-
-.release-dates--compact {
-  width: calc(160 / var(--slide-w) * 100%);
+  white-space: nowrap;
 }
 
 .release-dates :deep(p),
@@ -321,31 +206,20 @@ const ReleaseDates = defineComponent({
   margin: 0;
 }
 
+.release-dates :deep(p) {
+  line-height: inherit;
+}
+
 .release-dates :deep(p + p) {
-  margin-top: calc(4 / var(--slide-h) * 100cqh);
+  margin-top: calc(2 * var(--px));
 }
 
 .legend {
   position: absolute;
-  left: calc(43.75 / var(--slide-w) * 100%);
-  right: calc(27 / var(--slide-w) * 100%);
-  bottom: calc(18 / var(--slide-h) * 100%);
-  font-size: calc(24 / var(--slide-w) * 100cqw);
+  inset-inline: 2.35%;
+  bottom: 2.5%;
+  font-size: calc(20 * var(--px));
   font-weight: 400;
   text-align: center;
-}
-
-@container (max-aspect-ratio: 16 / 9) {
-  .jdk-badge {
-    font-size: calc(var(--font) / var(--slide-h) * 100cqh);
-  }
-
-  .release-dates {
-    font-size: calc(19 / var(--slide-h) * 100cqh);
-  }
-
-  .legend {
-    font-size: calc(24 / var(--slide-h) * 100cqh);
-  }
 }
 </style>

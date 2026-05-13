@@ -1,0 +1,93 @@
+<script setup lang="ts">
+import { computed } from 'vue'
+
+const props = defineProps({
+  label: { type: String, required: true },
+  color: { type: String, default: '' },
+  textColor: { type: String, default: '#fff' },
+  borderColor: { type: String, default: '' },
+  size: { type: String, default: 'large' },
+  old: { type: Boolean, default: false },
+})
+
+const jdkColors: Record<string, string> = {
+  JDK6: '#ead1dc',
+  JDK7: '#d0e0e3',
+  JDK8: '#d0e0e3',
+  JDK9: '#007bff',
+  JDK10: '#b60205',
+  JDK11: '#28a745',
+  JDK12: '#b6a842',
+  JDK13: '#e200db',
+  JDK14: '#ff990f',
+  JDK15: '#0a9ca2',
+  JDK16: '#6600cc',
+  JDK17: '#a64d79',
+  JDK18: '#454a8e',
+  JDK19: '#e43333',
+  JDK20: '#083d1c',
+  JDK21: '#4acaec',
+  JDK22: '#710070',
+  JDK23: '#854800',
+  'OLD JDK': '#e3ead1'
+}
+
+const resolvedColor = computed(() => props.color || jdkColors[props.label] || '#333')
+
+const styles = computed(() => ({
+  '--badge-bg': resolvedColor.value,
+  '--badge-color': props.textColor,
+  '--badge-border': props.borderColor || resolvedColor.value,
+}))
+</script>
+
+<template>
+  <div
+    class="jdk-badge"
+    :class="[`jdk-badge--${size}`, { 'jdk-badge--old': old }]"
+    :style="styles"
+  >
+    {{ label }}
+  </div>
+</template>
+
+<style scoped>
+.jdk-badge {
+  --px: min(calc(100cqw / 1280), calc(100cqh / 720));
+  display: grid;
+  place-items: center;
+  height: var(--badge-height);
+  width: var(--badge-width);
+  border: 1px solid var(--badge-border);
+  border-radius: 5px;
+  background: var(--badge-bg);
+  color: var(--badge-color);
+  font-size: var(--badge-font);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.jdk-badge--large {
+  --badge-width: calc(130 * var(--px));
+  --badge-height: calc(41 * var(--px));
+  --badge-font: calc(31 * var(--px));
+}
+
+.jdk-badge--medium {
+  --badge-width: calc(98 * var(--px));
+  --badge-height: calc(29 * var(--px));
+  --badge-font: calc(24 * var(--px));
+}
+
+.jdk-badge--small {
+  --badge-width: calc(56 * var(--px));
+  --badge-height: calc(22 * var(--px));
+  --badge-font: calc(17 * var(--px));
+}
+
+.jdk-badge--old {
+  --badge-font: calc(26 * var(--px));
+}
+</style>
