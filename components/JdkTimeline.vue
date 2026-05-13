@@ -11,7 +11,7 @@
         <article v-for="row in column.rows" :key="row.version" class="version-row">
           <div class="badge-stack">
             <JdkBadge :label="row.version" :color="row.color" size="large" />
-            <JdkBadge :label="row.trackLabel ?? row.version" :color="row.color" size="medium" />
+            <JdkBadge :label="row.version" :color="row.color" size="medium" />
             <JdkBadge v-if="row.small" :label="row.version" :color="row.color" size="small" />
           </div>
           <ReleaseDates :release="row.release" :eol="row.eol" />
@@ -55,7 +55,6 @@ type VersionRow = {
   eol: string
   color: string
   small?: boolean
-  trackLabel?: string
 }
 
 type LegacyRow = VersionRow & {
@@ -67,7 +66,7 @@ const modernColumns: Array<{ label: string; className?: string; rows: VersionRow
     label: 'JDK 9 to 18',
     className: 'timeline-column--long',
     rows: [
-      { version: 'JDK9', release: 'Sept 2017', eol: 'March 2018', color: '#007bff', trackLabel: 'JDK10' },
+      { version: 'JDK9', release: 'Sept 2017', eol: 'March 2018', color: '#007bff'},
       { version: 'JDK10', release: 'March 2018', eol: 'Sept 2018', color: '#b60205' },
       { version: 'JDK11', release: 'Sept 2018', eol: 'Oct 2027', color: '#28a745' },
       { version: 'JDK12', release: 'March 2019', eol: 'Sept 2019', color: '#b6a842' },
