@@ -21,44 +21,10 @@ layout: full
 
 
 ---
+layout: full
+---
 
-# TABLE OF CONTENTS
-
-**Performance**
-
-**03**
-
-Performance improvements from Java or JVM
-
-**New language features**
-
-**01**
-
-Anything related to new syntax or new keywords
-
-**New APIs**
-
-**02**
-
-Focus on Java standard library and available APIs
-
-**Miscellaneous**
-
-**05**
-
-Uncategorized improvements
-
-**Security**
-
-**04**
-
-Security improvements from Java or JVM
-
-**Deprecations &amp; removals**
-
-**06**
-
-Any deprecations or removals
+<TableOfContents />
 
 
 ---
