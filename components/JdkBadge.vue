@@ -54,12 +54,11 @@ const styles = computed(() => ({
 <style scoped>
 .jdk-badge {
   --px: min(calc(100cqw / 1280), calc(100cqh / 720));
-  display: grid;
-  place-items: center;
-  height: var(--badge-height);
-  width: var(--badge-width);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid var(--badge-border);
-  border-radius: 5px;
+  border-radius: calc(5 * var(--px));
   background: var(--badge-bg);
   color: var(--badge-color);
   font-size: var(--badge-font);
@@ -67,24 +66,25 @@ const styles = computed(() => ({
   line-height: 1;
   letter-spacing: 0;
   white-space: nowrap;
+  padding: var(--badge-padding);
 }
 
 .jdk-badge--large {
-  --badge-width: calc(130 * var(--px));
-  --badge-height: calc(41 * var(--px));
   --badge-font: calc(31 * var(--px));
+  --badge-padding: calc(5 * var(--px)) calc(16 * var(--px));
+  min-width: calc(130 * var(--px));
 }
 
 .jdk-badge--medium {
-  --badge-width: calc(98 * var(--px));
-  --badge-height: calc(29 * var(--px));
   --badge-font: calc(24 * var(--px));
+  --badge-padding: calc(3 * var(--px)) calc(12 * var(--px));
+  min-width: calc(98 * var(--px));
 }
 
 .jdk-badge--small {
-  --badge-width: calc(56 * var(--px));
-  --badge-height: calc(22 * var(--px));
   --badge-font: calc(17 * var(--px));
+  --badge-padding: calc(2 * var(--px)) calc(8 * var(--px));
+  min-width: calc(56 * var(--px));
 }
 
 .jdk-badge--old {
