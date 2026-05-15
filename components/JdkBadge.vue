@@ -1,43 +1,26 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { getJdkConfig } from './jdk-utils'
 
 const props = defineProps({
   label: { type: String, required: true },
   color: { type: String, default: '' },
-  textColor: { type: String, default: '#fff' },
+  textColor: { type: String, default: '' },
   borderColor: { type: String, default: '' },
   size: { type: String, default: 'large' },
   old: { type: Boolean, default: false },
 })
 
-const jdkColors: Record<string, string> = {
-  JDK6: '#ead1dc',
-  JDK7: '#d0e0e3',
-  JDK8: '#d0e0e3',
-  JDK9: '#007bff',
-  JDK10: '#b60205',
-  JDK11: '#28a745',
-  JDK12: '#b6a842',
-  JDK13: '#e200db',
-  JDK14: '#ff990f',
-  JDK15: '#0a9ca2',
-  JDK16: '#6600cc',
-  JDK17: '#a64d79',
-  JDK18: '#454a8e',
-  JDK19: '#e43333',
-  JDK20: '#083d1c',
-  JDK21: '#4acaec',
-  JDK22: '#710070',
-  JDK23: '#854800',
-  'OLD JDK': '#e3ead1'
-}
+const config = computed(() => getJdkConfig(props.label))
 
-const resolvedColor = computed(() => props.color || jdkColors[props.label] || '#333')
+const resolvedBg = computed(() => props.color || config.value.bg)
+const resolvedText = computed(() => props.textColor || (props.color ? '#fff' : config.value.text))
+const resolvedBorder = computed(() => props.borderColor || (props.color ? resolvedBg.value : config.value.border))
 
 const styles = computed(() => ({
-  '--badge-bg': resolvedColor.value,
-  '--badge-color': props.textColor,
-  '--badge-border': props.borderColor || resolvedColor.value,
+  '--badge-bg': resolvedBg.value,
+  '--badge-color': resolvedText.value,
+  '--badge-border': resolvedBorder.value,
 }))
 </script>
 

@@ -82,7 +82,7 @@ title: Allow effectively-final variables to be used as resources in try-with-res
 </template>
 
 <div class="grid grid-cols-[1fr_100px_1fr] items-center gap-4 mt-1">
-  <JdkCodeBlock label="JDK6" color="#ead1dc" textColor="#0e2a47" borderColor="#007bff" class="text-[11px]" data-id="allow-effectively-final-variab-anchor-1">
+  <JdkCodeBlock label="JDK6" class="text-[11px]" data-id="anchor1">
 
 ```java
 BufferedReader br = new BufferedReader(...);
@@ -98,10 +98,10 @@ try {
   </JdkCodeBlock>
 
   <div class="flex justify-center">
-    <FancyArrow from="[data-id=allow-effectively-final-variab-anchor1]" to="[data-id=allow-effectively-final-variab-anchor2]" static />
+    <FancyArrow from="[data-id=anchor1]" to="[data-id=anchor2]" static />
   </div>
 
-  <JdkCodeBlock label="JDK7" color="#d0e0e3" textColor="#0e2a47" borderColor="#007bff" class="text-[11px]" data-id="allow-effectively-final-variab-anchor-2">
+  <JdkCodeBlock label="JDK7" class="text-[11px]" data-id="anchor2">
 
 ```java
 try (BufferedReader br = new BufferedReader(...)) {
