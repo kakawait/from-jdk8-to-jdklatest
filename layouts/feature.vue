@@ -1,6 +1,6 @@
 <template>
-  <div class="slidev-layout feature h-full px-12 py-6 bg-[#111]">
-    <div class="flex justify-end items-center gap-4 mb-4">
+  <div class="slidev-layout feature h-full px-12 py-6 bg-[#111] flex flex-col">
+    <div class="flex-none flex justify-end items-center gap-4 mb-4">
       <div class="flex items-center">
         <slot name="badge" />
       </div>
@@ -11,7 +11,7 @@
         <div class="w-full h-[1px] bg-[#48FFD5] mt-1"></div>
       </div>
     </div>
-    <div class="feature-content">
+    <div class="feature-content flex-grow flex flex-col justify-center">
       <slot />
     </div>
   </div>
@@ -22,13 +22,11 @@
   font-family: 'Montserrat', sans-serif;
   letter-spacing: -0.02em;
   font-size: 1.25rem;
-  margin-bottom: 0.5rem;
 }
 
 .feature h1 :deep(p) {
   margin: 0;
   display: inline;
   font-size: 1.25rem;
-  margin-bottom: 0.5rem;
 }
 </style>
