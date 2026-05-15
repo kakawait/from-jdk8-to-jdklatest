@@ -6,6 +6,8 @@ highlighter: shiki
 lineNumbers: false
 info: |
   Migrated Presentation
+addons:
+  - fancy-arrow
 ---
 
 # From Java 8 to Java 23
@@ -79,23 +81,10 @@ title: Allow effectively-final variables to be used as resources in try-with-res
   <JdkVersions v="9" />
 </template>
 
-in the Java 7 version, if you already have a variable that you want to handle with this construct, you had to introduce a dummy variable.
-
-To mitigate these criticisms, try-with-resources was enhanced to handle final or effectively final local variables in addition to newly created ones:
-
-```java
-BufferedReader br1 = new BufferedReader(...);
-BufferedReader br2 = new BufferedReader(...);
-try (br1; br2) {
-    System.out.println(br1.readLine() + br2.readLine());
-}
-```
-
-```java
-try (BufferedReader br = new BufferedReader(...)) {
-    return br.readLine();
-}
-```
+<div class="grid grid-cols-[1fr_100px_1fr] items-center gap-4 mt-4">
+  <div class="flex flex-col gap-2">
+    <JdkBadge label="JDK6" size="small" color="#ead1dc" textColor="#0e2a47" borderColor="#007bff" class="w-max" />
+    <div class="text-[12px]" data-id="anchor1">
 
 ```java
 BufferedReader br = new BufferedReader(...);
@@ -107,6 +96,45 @@ try {
     }
 }
 ```
+
+</div>
+</div>
+
+<div class="flex justify-center">
+  <FancyArrow from="[data-id=anchor1]" to="[data-id=anchor2]" />
+</div>
+
+<div class="flex flex-col gap-2">
+  <JdkBadge label="JDK7" size="small" color="#d0e0e3" textColor="#0e2a47" borderColor="#007bff" class="w-max" />
+  <div class="text-[12px]" data-id="anchor2">
+
+```java
+try (BufferedReader br = new BufferedReader(...)) {
+    return br.readLine();
+}
+```
+
+</div>
+</div>
+</div>
+
+<div class="mt-8 text-[14px]">
+  in the Java 7 version, if you already have a variable that you want to handle with this construct, you had to introduce a dummy variable.
+
+  To mitigate these criticisms, try-with-resources was enhanced to handle final or effectively final local variables in addition to newly created ones:
+</div>
+
+<div class="mt-4 flex justify-center text-[12px]">
+
+```java
+BufferedReader br1 = new BufferedReader(...);
+BufferedReader br2 = new BufferedReader(...);
+try (br1; br2) {
+    System.out.println(br1.readLine() + br2.readLine());
+}
+```
+
+</div>
 
 ---
 layout: feature
