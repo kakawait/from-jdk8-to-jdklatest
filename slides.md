@@ -36,10 +36,12 @@ image: https://s3.amazonaws.com/media-p.slid.es/uploads/18162/images/9193490/Pic
 
 
 ---
-
-Improved warnings
-
-**JDK9**
+layout: feature
+title: Improved warnings
+---
+<template #badge>
+  <JdkVersions v="9" />
+</template>
 
 The **@SafeVarargs** annotation was introduced in Java 7. This annotation applies to both **final** **and **static methods** or **constructors** that take varargs parameters. This annotation used to make sure that a method does not perform unsafe operations on its varargs parameters. Since Java 9, **@SafeVarargs** annotation also applies to **private instance methods**.
 
@@ -185,14 +187,12 @@ module com.dassaultsystemes.helloworld {
 
 
 ---
-
-Local-Variable Type Inference
-
-**JDK11**
-
-**JDK10**
-
-(Without lambda support in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )
+layout: feature
+title: Local-Variable Type Inference
+---
+<template #badge>
+  <JdkVersions v="11" preview="10" />
+</template>
 
 Probably the most significant language improvement since Java 8 is the addition of the var keyword. It was initially introduced in [Java 10](https://openjdk.java.net/jeps/286), and was further improved in [Java 11](https://openjdk.java.net/jeps/323).
 
@@ -209,18 +209,14 @@ var map = new HashMap<>();
 
 
 ---
-
-Switch Expressions
-
-**JDK14**
+layout: feature
+title: Switch Expressions
+---
+<template #badge>
+  <JdkVersions v="14" preview="12, 13" />
+</template>
 
 The good old `switch` got a facelift in Java 14. While Java keeps supporting the old [switch statement](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html), it adds the new **switch expression** to the language
-
-**JDK13**
-
-(Preview in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )
-
-**JDK12**
 
 ```java
 int numLetters = switch (day) {
