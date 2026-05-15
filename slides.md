@@ -81,10 +81,10 @@ title: Allow effectively-final variables to be used as resources in try-with-res
   <JdkVersions v="9" />
 </template>
 
-<div class="grid grid-cols-[1fr_100px_1fr] items-center gap-4 mt-4">
+<div class="grid grid-cols-[1fr_100px_1fr] items-center gap-4 mt-2">
   <div class="flex flex-col gap-2">
     <JdkBadge label="JDK6" size="small" color="#ead1dc" textColor="#0e2a47" borderColor="#007bff" class="w-max" />
-    <div class="text-[12px]" data-id="anchor1">
+    <div class="text-[11px]" data-id="anchor1">
 
 ```java
 BufferedReader br = new BufferedReader(...);
@@ -106,7 +106,7 @@ try {
 
 <div class="flex flex-col gap-2">
   <JdkBadge label="JDK7" size="small" color="#d0e0e3" textColor="#0e2a47" borderColor="#007bff" class="w-max" />
-  <div class="text-[12px]" data-id="anchor2">
+  <div class="text-[11px]" data-id="anchor2">
 
 ```java
 try (BufferedReader br = new BufferedReader(...)) {
@@ -118,13 +118,13 @@ try (BufferedReader br = new BufferedReader(...)) {
 </div>
 </div>
 
-<div class="mt-8 text-[14px]">
+<div class="mt-4 text-[13px]">
   in the Java 7 version, if you already have a variable that you want to handle with this construct, you had to introduce a dummy variable.
 
   To mitigate these criticisms, try-with-resources was enhanced to handle final or effectively final local variables in addition to newly created ones:
 </div>
 
-<div class="mt-4 flex justify-center text-[12px]">
+<div class="mt-2 flex justify-center text-[11px]">
 
 ```java
 BufferedReader br1 = new BufferedReader(...);
@@ -133,7 +133,6 @@ try (br1; br2) {
     System.out.println(br1.readLine() + br2.readLine());
 }
 ```
-
 </div>
 
 ---
