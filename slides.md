@@ -52,27 +52,24 @@ private void methodName(...) {
 }
 ```
 
-
 ---
 layout: feature
-title: No deprecation warnings on `import` statement
 ---
-<template #badge>
-  <JdkVersions v="9" />
-</template>
+::badge::
+<JdkVersions size="medium" v="9" />
 
+::title::
+No deprecation warnings on `import` statement
+
+::default::
 While working with Java applications, if you import any deprecated APIs/ use deprecated member , java compiler will throw warnings at the time of compilation. Most of these warnings are uninformative and should not be required.
 
 From Java 9 onwards, compiler suppress deprecated warnings if one of the following case occur.
 
 - The use is within an entity that is itself annotated with the annotation @Deprecated
-
 - The use is within an entity that is annotated to suppress the warning with the annotation @SuppressWarnings("deprecation")
-
 - The use and declaration are both within the same outermost class
-
 - The use is within an import statement
-
 
 ---
 layout: feature
@@ -111,7 +108,6 @@ try {
 }
 ```
 
-
 ---
 layout: feature
 title: Diamond operator for anonymous inner classes
@@ -133,7 +129,6 @@ List<Integer> numbers = new ArrayList<>() {
     // ...
 }
 ```
-
 
 ---
 layout: feature
@@ -169,7 +164,6 @@ public interface CustomInterface {
 }
 ```
 
-
 ---
 layout: feature
 title: Opt-in and backwards-compatible Module System
@@ -184,7 +178,6 @@ module com.dassaultsystemes.helloworld {
     exports com.dassaultsystemes.hello
 }
 ```
-
 
 ---
 layout: feature
@@ -206,7 +199,6 @@ This feature allows us to reduce the ceremony of a local variable declaration by
 var greetingMessage = "Hello, I'm batman!";
 var map = new HashMap<>();
 ```
-
 
 ---
 layout: feature
@@ -230,7 +222,6 @@ int numLetters = switch (day) {
 };
 ```
 
-
 ---
 layout: feature
 title: Helpful NullPointerExceptions describing precisely which variable was null
@@ -243,7 +234,6 @@ title: Helpful NullPointerExceptions describing precisely which variable was nul
 
 ```java
 node.getElementsByTagName("name").item(0).getChildNodes().item(0).getNodeValue();
-
 ---
 Exception in thread "main" java.lang.NullPointerException:
   Cannot invoke "org.w3c.dom.Node.getChildNodes()" because
@@ -293,7 +283,6 @@ html += "</html>\n";
 System.out.println(html);
 ```
 
-
 ---
 layout: feature
 title: Pattern Matching for instanceof
@@ -322,7 +311,6 @@ if (obj instanceof String) {
     // use s
 }
 ```
-
 
 ---
 layout: feature
@@ -356,8 +344,6 @@ public List<Product> findProductsWithMostSaving(List<Product> products) {
     .collect(Collectors.toList());
 }
 ```
-
-
 ---
 layout: feature
 title: Sealed Classes
@@ -383,7 +369,6 @@ double area = switch (shape) {
 };
 ```
 
-
 ---
 layout: feature
 title: Pattern Matching for switch
@@ -403,8 +388,6 @@ String formatted = switch (o) {
     default                  -> "something else";
 };
 ```
-
-
 ---
 layout: feature
 title: Record Patterns
@@ -446,7 +429,6 @@ var length = switch (r) {
 }
 ```
 
-
 ---
 layout: feature
 title: Unnamed Patterns and Variables
@@ -483,7 +465,6 @@ if (r instanceof ColoredPoint(Point(int x, int y), _)) {
 }
 ```
 
-
 ---
 layout: feature
 title: Unnamed Classes and Instance Main Methods
@@ -495,7 +476,6 @@ title: Unnamed Classes and Instance Main Methods
 In old Java versions, one needed write quite some boilerplate code even for the simplest of the applications:
 
 1. A more tolerant launch protocol
-
 2. Unnamed classes
 
 **Instance main methods**&nbsp;makes the Java launch protocol more flexible, by making some aspects of the `main`&nbsp;method optional.
@@ -529,7 +509,6 @@ void main() {
   println("Hello, World!");
 }
 ```
-
 
 ---
 layout: feature
@@ -574,7 +553,6 @@ var name = "Thibaud";
 var info = STR."My name is \{name}";
 ```
 
-
 ---
 layout: feature
 title: Statements before super
@@ -607,7 +585,6 @@ public class PositiveBigInteger extends BigInteger {
 }
 ```
 
-
 ---
 layout: feature
 title: Module Import Declarations
@@ -619,11 +596,8 @@ title: Module Import Declarations
 In Java, it is possible to import:
 
 - All classes of a package with the instruction `import java.util.*;`
-
 - A class with the instruction `import java.util.Map;`
-
 - All static methods and variables of a class with the instruction `import static org.junit.jupiter.api.Assertions.*;`
-
 - A static method or variable with the instruction `import static org.junit.jupiter.api.Assertions.assertTrue;`
 
 However, it was not possible to import all classes of a module in a single instruction.
@@ -631,7 +605,6 @@ However, it was not possible to import all classes of a module in a single instr
 ```java
 import module java.base;
 ```
-
 
 ---
 layout: section-title
