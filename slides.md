@@ -41,7 +41,7 @@ Improved warnings
 
 **JDK9**
 
-The **@SafeVarargs** annotation was introduced in Java 7. This annotation applies to both **final **and **static ****methods **or **constructors **that take varargs parameters. This annotation used to make sure that a method does not perform unsafe operations on its varargs parameters. Since Java 9, **@SafeVarargs** annotation also applies to **private ****instance ****methods**.
+The **@SafeVarargs** annotation was introduced in Java 7. This annotation applies to both **final** **and **static methods** or **constructors** that take varargs parameters. This annotation used to make sure that a method does not perform unsafe operations on its varargs parameters. Since Java 9, **@SafeVarargs** annotation also applies to **private instance methods**.
 
 ```java
 @SafeVarargs
