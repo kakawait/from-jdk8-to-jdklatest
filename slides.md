@@ -58,7 +58,7 @@ private void methodName(...) {
 layout: feature
 ---
 ::badge::
-<JdkVersions size="medium" v="9" />
+<JdkVersions v="9" />
 
 ::title::
 No deprecation warnings on `import` statement
@@ -81,10 +81,8 @@ title: Allow effectively-final variables to be used as resources in try-with-res
   <JdkVersions v="9" />
 </template>
 
-<div class="grid grid-cols-[1fr_100px_1fr] items-center gap-4 mt-2">
-  <div class="flex flex-col gap-2">
-    <JdkBadge label="JDK6" size="small" color="#ead1dc" textColor="#0e2a47" borderColor="#007bff" class="w-max" />
-    <div class="text-[11px]" data-id="anchor1">
+<div class="grid grid-cols-[1fr_100px_1fr] items-center gap-4 mt-1">
+  <JdkCodeBlock label="JDK6" color="#ead1dc" textColor="#0e2a47" borderColor="#007bff" class="text-[11px]" data-id="allow-effectively-final-variab-anchor-1">
 
 ```java
 BufferedReader br = new BufferedReader(...);
@@ -97,16 +95,13 @@ try {
 }
 ```
 
-</div>
-</div>
+  </JdkCodeBlock>
 
-<div class="flex justify-center">
-  <FancyArrow from="[data-id=anchor1]" to="[data-id=anchor2]" />
-</div>
+  <div class="flex justify-center">
+    <FancyArrow from="[data-id=allow-effectively-final-variab-anchor1]" to="[data-id=allow-effectively-final-variab-anchor2]" static />
+  </div>
 
-<div class="flex flex-col gap-2">
-  <JdkBadge label="JDK7" size="small" color="#d0e0e3" textColor="#0e2a47" borderColor="#007bff" class="w-max" />
-  <div class="text-[11px]" data-id="anchor2">
+  <JdkCodeBlock label="JDK7" color="#d0e0e3" textColor="#0e2a47" borderColor="#007bff" class="text-[11px]" data-id="allow-effectively-final-variab-anchor-2">
 
 ```java
 try (BufferedReader br = new BufferedReader(...)) {
@@ -114,17 +109,16 @@ try (BufferedReader br = new BufferedReader(...)) {
 }
 ```
 
-</div>
-</div>
+  </JdkCodeBlock>
 </div>
 
-<div class="mt-4 text-[13px]">
+<div class="mt-3 text-[13px]">
   in the Java 7 version, if you already have a variable that you want to handle with this construct, you had to introduce a dummy variable.
 
   To mitigate these criticisms, try-with-resources was enhanced to handle final or effectively final local variables in addition to newly created ones:
 </div>
 
-<div class="mt-2 flex justify-center text-[11px]">
+<div class="mt-1 flex justify-center text-[11px]">
 
 ```java
 BufferedReader br1 = new BufferedReader(...);
@@ -143,13 +137,20 @@ title: Diamond operator for anonymous inner classes
   <JdkVersions v="9" />
 </template>
 
-However, this feature did not work with anonymous inner classes before.
-
-With Java 9, this small rough edge is removed, making the operator more universally applicable
+<JdkCodeBlock label="JDK8" color="#d0e0e3" textColor="#0e2a47" borderColor="#007bff" class="text-[11px]">
 
 ```java
 List<Integer> numbers = new ArrayList<>();
 ```
+
+</JdkCodeBlock>
+
+
+However, this feature did not work with anonymous inner classes before.
+
+With Java 9, this small rough edge is removed, making the operator more universally applicable
+
+
 
 ```java
 List<Integer> numbers = new ArrayList<>() {
