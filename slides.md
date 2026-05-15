@@ -209,24 +209,40 @@ module com.dassaultsystemes.helloworld {
 
 ---
 layout: feature
-title: Local-Variable Type Inference
 ---
 <template #badge>
-  <JdkVersions v="11" preview="10" />
+  <JdkVersions v="11" preview="10" prefix="(Without lambda support in" suffix=")" />
 </template>
+
+::title::
+Local-Variable Type Inference
+
+::default::
+
+<div class="text-center">
 
 Probably the most significant language improvement since Java 8 is the addition of the var keyword. It was initially introduced in [Java 10](https://openjdk.java.net/jeps/286), and was further improved in [Java 11](https://openjdk.java.net/jeps/323).
 
 This feature allows us to reduce the ceremony of a local variable declaration by omitting the explicit type specification:
 
-### Make sure to read the official style guides
-
-### Official [style guide](https://openjdk.java.net/projects/amber/LVTIstyle.html) and [FAQ](https://openjdk.java.net/projects/amber/LVTIFAQ.html) about `var`
+<div class="flex justify-center my-4">
 
 ```java
 var greetingMessage = "Hello, I'm batman!";
 var map = new HashMap<>();
 ```
+
+</div>
+
+<JdkAlert image="https://s3.amazonaws.com/media-p.slid.es/uploads/18162/images/9193803/Picture9.png">
+
+### Make sure to read the official style guides
+
+### Official [style guide](https://openjdk.java.net/projects/amber/LVTIstyle.html) and [FAQ](https://openjdk.java.net/projects/amber/LVTIFAQ.html) about `var`
+
+</JdkAlert>
+
+</div>
 
 ---
 layout: feature
