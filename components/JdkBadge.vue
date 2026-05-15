@@ -70,24 +70,24 @@ const styles = computed(() => ({
 }
 
 .jdk-badge--large {
-  --badge-font: calc(31 * var(--px));
-  --badge-padding: calc(5 * var(--px)) calc(16 * var(--px));
-  min-width: calc(130 * var(--px));
+  --badge-font: calc(20 * var(--px));
+  --badge-padding: calc(3 * var(--px)) calc(10 * var(--px));
+  min-width: calc(80 * var(--px));
 }
 
 .jdk-badge--medium {
-  --badge-font: calc(24 * var(--px));
-  --badge-padding: calc(3 * var(--px)) calc(12 * var(--px));
-  min-width: calc(98 * var(--px));
+  --badge-font: calc(15 * var(--px));
+  --badge-padding: calc(2 * var(--px)) calc(8 * var(--px));
+  min-width: calc(65 * var(--px));
 }
 
 .jdk-badge--small {
-  --badge-font: calc(17 * var(--px));
-  --badge-padding: calc(2 * var(--px)) calc(8 * var(--px));
-  min-width: calc(56 * var(--px));
+  --badge-font: calc(12 * var(--px));
+  --badge-padding: calc(1 * var(--px)) calc(6 * var(--px));
+  min-width: calc(45 * var(--px));
 }
 
 .jdk-badge--old {
-  --badge-font: calc(26 * var(--px));
+  --badge-font: calc(18 * var(--px));
 }
 </style>

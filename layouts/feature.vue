@@ -4,11 +4,11 @@
       <div class="flex items-center">
         <slot name="badge" />
       </div>
-      <div class="flex flex-col items-end">
-        <h1 class="text-3xl font-bold text-white m-0 leading-none">
+      <div class="flex flex-col items-end max-w-lg">
+        <h1 class="font-bold text-white m-0 leading-tight">
           <slot name="title">{{ $frontmatter.title }}</slot>
         </h1>
-        <div class="w-full h-[1px] bg-[#48FFD5] mt-2"></div>
+        <div class="w-full h-[1px] bg-[#48FFD5] mt-1"></div>
       </div>
     </div>
     <div class="feature-content">
@@ -21,10 +21,14 @@
 .feature h1 {
   font-family: 'Montserrat', sans-serif;
   letter-spacing: -0.02em;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .feature h1 :deep(p) {
   margin: 0;
   display: inline;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 </style>
