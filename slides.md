@@ -54,18 +54,16 @@ private void methodName(...) {
 
 
 ---
-
-No deprecation warnings on `import` statement
-
-**JDK9**
+layout: feature
+title: No deprecation warnings on `import` statement
+---
+<template #badge>
+  <JdkVersions v="9" />
+</template>
 
 While working with Java applications, if you import any deprecated APIs/ use deprecated member , java compiler will throw warnings at the time of compilation. Most of these warnings are uninformative and should not be required.
 
-&nbsp;
-
 From Java 9 onwards, compiler suppress deprecated warnings if one of the following case occur.
-
-&nbsp;
 
 - The use is within an entity that is itself annotated with the annotation @Deprecated
 
@@ -77,18 +75,16 @@ From Java 9 onwards, compiler suppress deprecated warnings if one of the followi
 
 
 ---
-
-Allow effectively-final variables to be used as resources in try-with-resources statements
-
-**JDK9**
+layout: feature
+title: Allow effectively-final variables to be used as resources in try-with-resources statements
+---
+<template #badge>
+  <JdkVersions v="9" />
+</template>
 
 in the Java 7 version, if you already have a variable that you want to handle with this construct, you had to introduce a dummy variable.
 
 To mitigate these criticisms, try-with-resources was enhanced to handle final or effectively final local variables in addition to newly created ones:
-
-**JDK7**
-
-**JDK6**
 
 ```java
 BufferedReader br1 = new BufferedReader(...);
@@ -117,12 +113,12 @@ try {
 
 
 ---
-
-Diamond operator for anonymous inner classes
-
-**JDK9**
-
-**JDK8**
+layout: feature
+title: Diamond operator for anonymous inner classes
+---
+<template #badge>
+  <JdkVersions v="9" />
+</template>
 
 However, this feature did not work with anonymous inner classes before.
 
@@ -140,10 +136,12 @@ List<Integer> numbers = new ArrayList<>() {
 
 
 ---
-
-Allow private methods in interfaces
-
-**JDK9**
+layout: feature
+title: Allow private methods in interfaces
+---
+<template #badge>
+  <JdkVersions v="9" />
+</template>
 
 ```java
 public interface CustomInterface {
@@ -173,10 +171,12 @@ public interface CustomInterface {
 
 
 ---
-
-Opt-in and backwards-compatible Module System
-
-**JDK9**
+layout: feature
+title: Opt-in and backwards-compatible Module System
+---
+<template #badge>
+  <JdkVersions v="9" />
+</template>
 
 ```java
 module com.dassaultsystemes.helloworld {
@@ -232,18 +232,14 @@ int numLetters = switch (day) {
 
 
 ---
-
-Helpful NullPointerExceptions describing precisely which variable was null
-
-**JDK15**
+layout: feature
+title: Helpful NullPointerExceptions describing precisely which variable was null
+---
+<template #badge>
+  <JdkVersions v="15" preview="14" />
+</template>
 
 (Enabled with `-XX:+ShowCodeDetailsInExceptionMessages` in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )
-
-**JDK14**
-
-**JDK13**
-
-**JDK15**
 
 ```java
 node.getElementsByTagName("name").item(0).getChildNodes().item(0).getNodeValue();
@@ -265,22 +261,14 @@ Exception in thread "main" java.lang.NullPointerException
 
 
 ---
-
-Text Blocks
-
-**JDK15**
-
-**JDK13**
-
-(Preview in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )
-
-**JDK14**
+layout: feature
+title: Text Blocks
+---
+<template #badge>
+  <JdkVersions v="15" preview="13, 14" />
+</template>
 
 ### No variables interpolation
-
-**JDK12**
-
-**JDK15**
 
 ```java
 String html = """
@@ -307,22 +295,14 @@ System.out.println(html);
 
 
 ---
-
-Pattern Matching for instanceof
-
-**JDK16**
-
-(Preview in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )
-
-**JDK14**
-
-**JDK15**
+layout: feature
+title: Pattern Matching for instanceof
+---
+<template #badge>
+  <JdkVersions v="16" preview="14, 15" />
+</template>
 
 can be used in the second part of the condition because it’s only evaluated when the first one succeeds and the `instanceof` operator has a match
-
-**JDK13**
-
-**JDK16**
 
 ```java
 if (obj instanceof String s) {
@@ -345,16 +325,12 @@ if (obj instanceof String) {
 
 
 ---
-
-Record classes
-
-**JDK16**
-
-(Preview in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )
-
-**JDK14**
-
-**JDK15**
+layout: feature
+title: Record classes
+---
+<template #badge>
+  <JdkVersions v="16" preview="14, 15" />
+</template>
 
 Record Classes introduce a new type declaration to the language to define immutable data classes. Instead of the usual ceremony with private fields, getters and constructors, it allows us to use a **compact syntax**:
 
@@ -383,18 +359,14 @@ public List<Product> findProductsWithMostSaving(List<Product> products) {
 
 
 ---
-
-Sealed Classes
-
-(Preview in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )
-
-**JDK15**
+layout: feature
+title: Sealed Classes
+---
+<template #badge>
+  <JdkVersions v="17" preview="15, 16" />
+</template>
 
 Sealed classes and interfaces can be used to restrict which other classes or interfaces may extend or implement them. It gives a tool to better design public APIs, and provides an alternative to Enums to model fixed number of alternatives.
-
-**JDK16**
-
-**JDK17**
 
 ```java
 public abstract sealed class Shape
@@ -413,22 +385,14 @@ double area = switch (shape) {
 
 
 ---
-
-Pattern Matching for switch
-
-(Preview in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;) &nbsp; &nbsp; &nbsp;
+layout: feature
+title: Pattern Matching for switch
+---
+<template #badge>
+  <JdkVersions v="21" preview="17, 18, 19, 20" />
+</template>
 
 Pattern Matching for `switch` supporting type patterns and guarded patterns
-
-**JDK17**
-
-**JDK18**
-
-**JDK21**
-
-**JDK19**
-
-**JDK20**
 
 ```java
 String formatted = switch (o) {
@@ -442,22 +406,14 @@ String formatted = switch (o) {
 
 
 ---
-
-Record Patterns
-
-(Preview in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )
+layout: feature
+title: Record Patterns
+---
+<template #badge>
+  <JdkVersions v="21" preview="19, 20" />
+</template>
 
 Record Patterns extends the pattern matching capabilities of Java beyond simple type patterns to **match and deconstruct Record values**. It **supports nesting**&nbsp;to enable declarative, data focused programming.
-
-**JDK21**
-
-**JDK19**
-
-**JDK20**
-
-**JDK16**
-
-**JDK21**
 
 ```java
 interface Point { }
@@ -492,20 +448,16 @@ var length = switch (r) {
 
 
 ---
-
-Unnamed Patterns and Variables
-
-(Preview in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )
+layout: feature
+title: Unnamed Patterns and Variables
+---
+<template #badge>
+  <JdkVersions v="22" preview="21" />
+</template>
 
 now it's possible to use the underscore character wherever a variable name would be used. However, it's not a regular variable name: it means "don't care" as **underscore can be redeclared, and can not be referenced**
 
-**JDK21**
-
 **unnamed patterns**&nbsp;which can be used in pattern matching to ignore subpatterns
-
-**JDK22**
-
-**JDK22**
 
 ```java
 if (r instanceof ColoredPoint(Point(int x, int y), Color c)) {
@@ -533,14 +485,14 @@ if (r instanceof ColoredPoint(Point(int x, int y), _)) {
 
 
 ---
-
-Unnamed Classes and Instance Main Methods
-
-(Preview in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )
+layout: feature
+title: Unnamed Classes and Instance Main Methods
+---
+<template #badge>
+  <JdkVersions v="23" preview="21, 22" />
+</template>
 
 In old Java versions, one needed write quite some boilerplate code even for the simplest of the applications:
-
-**JDK21**
 
 1. A more tolerant launch protocol
 
@@ -549,14 +501,6 @@ In old Java versions, one needed write quite some boilerplate code even for the 
 **Instance main methods**&nbsp;makes the Java launch protocol more flexible, by making some aspects of the `main`&nbsp;method optional.
 
 **Methods to exist outside of an enclosing class**&nbsp;in which case they are automatically wrapped into a synthetic **unnamed class**.
-
-**OLD JDK**
-
-**JDK23**
-
-**JDK22**
-
-**JDK22**
 
 ```java
 public class HelloWorld {
@@ -588,30 +532,20 @@ void main() {
 
 
 ---
-
-String template
+layout: feature
+title: String template
+---
+<template #badge>
+  <JdkVersions v="22" preview="21" />
+</template>
 
 String Templates are an extension to the single-line String literals and Text Blocks, allowing String interpolation and much more.
-
-**OLD JDK**
 
 Built-in processors:
 
 `STR, FMT, RAW`
 
-(Preview in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;)
-
-**JDK21**
-
-**JDK22**
-
-⚠️ Removed from
-
-**JDK23**
-
-**JDK21 Preview**
-
-**JDK21 Preview**
+⚠️ Removed from **JDK23**
 
 ```java
 var name = "Thibaud";
@@ -642,16 +576,14 @@ var info = STR."My name is \{name}";
 
 
 ---
-
-Statements before super
-
-(Preview in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;)
+layout: feature
+title: Statements before super
+---
+<template #badge>
+  <JdkVersions v="23" preview="22" />
+</template>
 
 Allows instructions before the call to the parent constructor (super) as long as they do not access the instance being created
-
-**JDK22**
-
-**JDK23**
 
 ```java
 public class PositiveBigInteger extends BigInteger {
@@ -677,10 +609,12 @@ public class PositiveBigInteger extends BigInteger {
 
 
 ---
-
-Module Import Declarations
-
-(Preview in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )
+layout: feature
+title: Module Import Declarations
+---
+<template #badge>
+  <JdkVersions v="23" />
+</template>
 
 In Java, it is possible to import:
 
@@ -691,8 +625,6 @@ In Java, it is possible to import:
 - All static methods and variables of a class with the instruction `import static org.junit.jupiter.api.Assertions.*;`
 
 - A static method or variable with the instruction `import static org.junit.jupiter.api.Assertions.assertTrue;`
-
-**JDK23**
 
 However, it was not possible to import all classes of a module in a single instruction.
 
@@ -719,10 +651,12 @@ If you are curious about all the API level differences between Java 8 later vers
 
 
 ---
-
-`since` and `forRemoval` for `@Deprecated`
-
-**JDK9**
+layout: feature
+title: "`since` and `forRemoval` for `@Deprecated`"
+---
+<template #badge>
+  <JdkVersions v="9" />
+</template>
 
 The `since` attribute requires a string that lets us define in which version the element was deprecated. The default value is an empty string.
 
@@ -748,10 +682,12 @@ public class Worker {
 
 
 ---
-
-Convenience Factory Methods for Collections
-
-**JDK9**
+layout: feature
+title: Convenience Factory Methods for Collections
+---
+<template #badge>
+  <JdkVersions v="9" />
+</template>
 
 Ease the pain of not having collection literals
 
@@ -763,10 +699,12 @@ Map<String, Integer> myMap = Map.of("one", 1, "two", 2);
 
 
 ---
-
-More Concurrency Updates
-
-**JDK9**
+layout: feature
+title: More Concurrency Updates
+---
+<template #badge>
+  <JdkVersions v="9" />
+</template>
 
 Reactive Streams publish-subscribe framework for asynchronous stream processing with non-blocking backpressure
 
@@ -796,10 +734,12 @@ void cancel()
 
 
 ---
-
-Stack-walking API
-
-**JDK9**
+layout: feature
+title: Stack-walking API
+---
+<template #badge>
+  <JdkVersions v="9" />
+</template>
 
 Allows laziness and stack-frame filtering
 
@@ -816,10 +756,12 @@ private static List<String> walkAndFilterStackframe() {
 
 
 ---
-
-Process API updates
-
-**JDK9**
+layout: feature
+title: Process API updates
+---
+<template #badge>
+  <JdkVersions v="9" />
+</template>
 
 The new interface `ProcessHandle` can provide the operating system specific process id and can return various other useful objects related to the process
 
@@ -848,10 +790,12 @@ processHandle.destroy();
 
 
 ---
-
-Arrays utilities
-
-**JDK9**
+layout: feature
+title: Arrays utilities
+---
+<template #badge>
+  <JdkVersions v="9" />
+</template>
 
 Newly introduced Java 9 Arrays utility class methods for comparing arrays
 
@@ -882,10 +826,12 @@ Arrays.mismatch(i3, 0, 3, i1, 0, 3); // 2
 
 
 ---
-
-Stream &amp; Collectors new APIs
-
-**JDK9**
+layout: feature
+title: Stream &amp; Collectors new APIs
+---
+<template #badge>
+  <JdkVersions v="9" />
+</template>
 
 ```java
 Stream.of(2, 4, 6, 8, 9, 10, 12).takeWhile(n -> n % 2 == 0).forEach(System.out::println);
@@ -906,10 +852,12 @@ Stream.of(List.of(1, 2, 3, 4), List.of(5, 6, 7, 8))
 
 
 ---
-
-Optional new APIs
-
-**JDK9**
+layout: feature
+title: Optional new APIs
+---
+<template #badge>
+  <JdkVersions v="9" />
+</template>
 
 ```java
 // Optional.or - a lazy version of orElse
@@ -933,10 +881,12 @@ List<String> collect = value.stream().map(String::toUpperCase).collect(Collector
 
 
 ---
-
-New APIs
-
-**JDK10**
+layout: feature
+title: New APIs (JDK10)
+---
+<template #badge>
+  <JdkVersions v="10" />
+</template>
 
 ```java
 // copyOf to newly created immutable collections
@@ -959,20 +909,14 @@ Reader.transferTo(Writer);
 
 
 ---
-
-Standard HTTP Client
-
-**JDK11**
+layout: feature
+title: Standard HTTP Client
+---
+<template #badge>
+  <JdkVersions v="11, 21" preview="9" />
+</template>
 
 Standard HTTP Client featuring HTTP/2, WebSocket support and non-blocking API
-
-**JDK9**
-
-(Preview in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )
-
-Since
-
-**JDK21**
 
 `HttpClient`&nbsp;now implements `AutoCloseable`&nbsp;and can therefore be used more easily in a *try-with-resources*&nbsp;block
 
@@ -991,19 +935,23 @@ HttpResponse<String> response =
 
 
 ---
-
-Unicode 10
-
-**JDK11**
+layout: feature
+title: Unicode 10
+---
+<template #badge>
+  <JdkVersions v="11" />
+</template>
 
 Unicode 10.0, adding roughly 27,000 characters, 10 blocks, and more than 30 scripts
 
 
 ---
-
-New String APIs
-
-**JDK11**
+layout: feature
+title: New String APIs
+---
+<template #badge>
+  <JdkVersions v="11" />
+</template>
 
 ```java
 // Repeat strings
@@ -1030,10 +978,12 @@ New String APIs
 
 
 ---
-
-New APIs
-
-**JDK12**
+layout: feature
+title: New APIs (JDK12)
+---
+<template #badge>
+  <JdkVersions v="12" />
+</template>
 
 ```java
 // String indent
@@ -1063,10 +1013,12 @@ Stream.of(1, 2, 3, 4, 5)
 
 
 ---
-
-New Stream APIs
-
-**JDK16**
+layout: feature
+title: New Stream APIs
+---
+<template #badge>
+  <JdkVersions v="16" />
+</template>
 
 ```java
 // Stream.mapMulti to replace each element of this stream 
@@ -1086,19 +1038,23 @@ List<String> result =
 
 
 ---
-
-UTF-8 by default
+layout: feature
+title: UTF-8 by default
+---
+<template #badge>
+  <JdkVersions v="18" />
+</template>
 
 - Java APIs that depend on the default charset will use UTF-8 by default (e.g. InputStreamReader, FileReader, OutputStreamWriter, FileWriter, PrintStream, Formatter, Scanner)
 
-**JDK18**
-
 
 ---
-
-Sequenced Collections
-
-**JDK21**
+layout: feature
+title: Sequenced Collections
+---
+<template #badge>
+  <JdkVersions v="21" />
+</template>
 
 Java collections do not have a type representing an ordered sequence of elements. Java 21 fills this gap by introducing the interfaces `SequencedCollection`, `SequencedSet`, and `SequencedMap`. These interfaces provide methods for adding, modifying, or removing elements at the beginning or end of the collection, as well as iterating over a collection in reverse order.
 
@@ -1117,10 +1073,12 @@ interface SequencedCollection<E>
 
 
 ---
-
-😅 😗 😆 🧐 🤫 😱 🥳 😍 😴 🤓 😃
-
-**JDK21**
+layout: feature
+title: 😅 😗 😆 🧐 🤫 😱 🥳 😍 😴 🤓 😃
+---
+<template #badge>
+  <JdkVersions v="21" />
+</template>
 
 ```java
 String messageWithEmoji = "Hello Java 21! 😄";
@@ -1156,16 +1114,12 @@ assertTrue(isEmojiMatcher.find());
 
 
 ---
-
-Virtual Threads
-
-**JDK21**
-
-(Preview in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;)
-
-**JDK20**
-
-**JDK19**
+layout: feature
+title: Virtual Threads
+---
+<template #badge>
+  <JdkVersions v="21" preview="19, 20" />
+</template>
 
 Virtual threads are lightweight threads that dramatically reduce the effort of writing, maintaining, and observing high-throughput concurrent applications.
 
