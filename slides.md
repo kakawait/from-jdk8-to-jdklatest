@@ -28,7 +28,7 @@ layout: full
 
 
 ---
-layout: section
+layout: section-title
 image: https://s3.amazonaws.com/media-p.slid.es/uploads/18162/images/9193490/Picture3.png
 ---
 
@@ -41,7 +41,7 @@ Improved warnings
 
 **JDK9**
 
-The**&nbsp;@SafeVarargs** annotation was introduced in Java 7. This annotation applies to both **final **and **static ****methods **or **constructors **that take varargs parameters. This annotation used to make sure that a method does not perform unsafe operations on its varargs parameters. Since Java 9, **@SafeVarargs** annotation also applies to **private ****instance ****methods**.
+The **@SafeVarargs** annotation was introduced in Java 7. This annotation applies to both **final **and **static ****methods **or **constructors **that take varargs parameters. This annotation used to make sure that a method does not perform unsafe operations on its varargs parameters. Since Java 9, **@SafeVarargs** annotation also applies to **private ****instance ****methods**.
 
 ```java
 @SafeVarargs
@@ -706,7 +706,7 @@ import module java.base;
 
 
 ---
-layout: section
+layout: section-title
 image: https://s3.amazonaws.com/media-p.slid.es/uploads/18162/images/9193493/Picture4.png
 ---
 
@@ -1416,7 +1416,7 @@ System.out.println(slidingWindows);
 
 
 ---
-layout: section
+layout: section-title
 image: https://media.slid.es/uploads/18162/images/9193429/Picture2.png
 ---
 
@@ -1524,7 +1524,7 @@ GC
 
 
 ---
-layout: section
+layout: section-title
 image: https://s3.amazonaws.com/media-p.slid.es/uploads/18162/images/9193520/Picture6.png
 ---
 
@@ -1597,7 +1597,7 @@ General
 
 
 ---
-layout: section
+layout: section-title
 image: https://s3.amazonaws.com/media-p.slid.es/uploads/18162/images/9193495/Picture5.png
 ---
 
@@ -1835,7 +1835,7 @@ Markdown Documentation Comments
 
 
 ---
-layout: section
+layout: section-title
 image: https://s3.amazonaws.com/media-p.slid.es/uploads/18162/images/9193534/Picture7.png
 ---
 
