@@ -1,0 +1,5 @@
+---
+layout: full
+---
+
+<TableOfContents />
