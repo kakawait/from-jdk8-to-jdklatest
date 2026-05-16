@@ -1163,22 +1163,16 @@ try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
 
 
 ---
-
-Structured concurrency API
-
-**JDK21**
-
-(Preview in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;)
-
-**JDK20**
-
-**JDK19**
+layout: feature
+title: Structured concurrency API
+---
+<template #badge>
+  <JdkVersions v="21" preview="19, 20" />
+</template>
 
 Structured concurrency API to define subtask relations between threads to streamline error handling and cancellation, improve reliability, and enhance observability
 
 **OLD JDK**
-
-**JDK21**
 
 - If an error occurs in the `fetchOrder()`&nbsp;method, we will still wait for the `findUser()`&nbsp;task to complete.
 
@@ -1215,37 +1209,18 @@ Response handle() throws ExecutionException, InterruptedException {
 
 
 ---
+layout: feature
+title: Foreign linker API and Foreign memory access API
+---
+<template #badge>
+  <JdkVersions v="22" preview="14, 15, 16, 17, 18, 19, 20, 21" />
+</template>
 
-Foreign linker API and Foreign memory access API
-
-(Preview in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;)
-
--
-The *foreign linker API* provides a flexible way to access native code on the host machine
-
+- The *foreign linker API* provides a flexible way to access native code on the host machine
 - Can replace JNI/JNA
-
 - The *foreign memory access AP*I provides a supported, safe, and efficient API to access both heap and native memory
 
 Only Foreign memory access
-
-**JDK14**
-
-**JDK15**
-
-**JDK16**
-
-**JDK17**
-
-**JDK18**
-
-**JDK19**
-
-**JDK20**
-
-**JDK21**
-
-**JDK22**
 
 Good blog post for pratical use case
 
@@ -1253,32 +1228,16 @@ Good blog post for pratical use case
 
 
 ---
-
-Vector API
-
-**JDK16**
-
-(Preview in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )
+layout: feature
+title: Vector API
+---
+<template #badge>
+  <JdkVersions preview="15, 16, 17, 18, 19, 20, 21, 22, 23" />
+</template>
 
 The idea of this API is to provide a means of vector computations that will ultimately be able to perform more optimally (on supporting CPU architectures) than the traditional scalar method of computations.
 
 multiply two arrays
-
-**JDK15**
-
-**JDK17**
-
-**JDK18**
-
-**JDK19**
-
-**JDK20**
-
-**JDK21**
-
-**JDK22**
-
-**JDK23**
 
 ```java
 int[] a = {1, 2, 3, 4};
@@ -1303,18 +1262,12 @@ for (int i = 0; i < a.length; i++) {
 
 
 ---
-
-Scoped Values
-
-**JDK21**
-
-(Preview in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;)
-
-**JDK22**
-
-**JDK23**
-
-**JDK20**
+layout: feature
+title: Scoped Values
+---
+<template #badge>
+  <JdkVersions v="21" preview="20, 22, 23" />
+</template>
 
 An alternative to ThreadLocal that allows sharing immutable data with limit visibility.
 
@@ -1330,14 +1283,12 @@ ScopedValue.where(USERNAME, "duke") // bind a value to the scope
 
 
 ---
-
-Class-File API
-
-(Preview in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;)
-
-**JDK22**
-
-**JDK23**
+layout: feature
+title: Class-File API
+---
+<template #badge>
+  <JdkVersions v="23" preview="22" />
+</template>
 
 Standard API for parsing, generating, and transforming Java class files.
 
@@ -1355,14 +1306,12 @@ The Class-File API addresses this problem by providing an API within the JDK for
 
 
 ---
-
-Stream Gatherers
-
-(Preview in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;)
-
-**JDK22**
-
-**JDK23**
+layout: feature
+title: Stream Gatherers
+---
+<template #badge>
+  <JdkVersions v="23" preview="22" />
+</template>
 
 Enhances the Stream API with support for custom intermediate operations.
 
@@ -1391,104 +1340,26 @@ image: https://media.slid.es/uploads/18162/images/9193429/Picture2.png
 
 
 ---
-
-General
-
-**JDK16**
+layout: feature
+title: General
+---
+<template #badge>
+  <JdkVersions v="9, 10, 12, 13, 16, 21" />
+</template>
 
 - Improvements in the conversion between primitives (e.g., from `long`&nbsp;to `int`) through the use of `VarHandle`.
-
-- Elastic metaspace to return unused HotSpot class-metadata memory to the operating system more promptly
-
-- Enable dynamic archiving of classes at the end of Java application execution
-
-- Class-Data Sharing archive of the default class list is enabled by default to improve out-of-the-box startup time
-
-- Application Class-Data Sharing to improve startup time and reduce footprint by sharing class metadata between Java processes
-
-- Space-efficient, Compact Strings that stores Latin-1 only Strings more efficiently
-
-- Code caches of profiled and non-profiled compiled code is separated, resulting in improved performance and memory footprint
-
-- Store Interned Strings in Class-Data Sharing archives to reduce memory consumption
-
-**JDK13**
-
-**JDK12**
-
-**JDK10**
-
-**JDK9**
-
-**JDK9**
-
-**JDK9**
-
-**JDK21**
-
+...
 
 ---
-
-GC
-
-**JDK18**
-
-**JDK18**
-
-**JDK12**
-
-**JDK10**
-
-**JDK9**
-
-**JDK15**
-
-**JDK11**
-
-**JDK12**
-
-**JDK14**
-
-**JDK16**
-
-**JDK20**
-
-**JDK22**
-
-**JDK23**
-
-**JDK21**
+layout: feature
+title: GC
+---
+<template #badge>
+  <JdkVersions v="9, 10, 11, 12, 14, 15, 16, 18, 20, 21, 22, 23" />
+</template>
 
 - Parallel GC has been the replacement of the existing Full GC algorithm with a more traditional parallel Mark-Sweep-Compact algorithm. Reduces heap usage by 1.5%.
-
-- Generational ZGC (using `-XX:+ZGenerational`&nbsp;or by default since &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;).
-
-- SerialGC, ParallelGC and ZGC now supports String Deduplication.
-
-- Z Garbage Collector, offering very low pause times on large heaps.
-
-- Shenandoah Garbage Collector, offering similar benefits as ZGC but based on a different algorithm.
-
-- Epsilon Garbage Collector, which does not implement actual memory reclamation, striving for the lowest overhead possible.
-
-- G1 Garbage Collector is now the default instead of Parallel GC.
-
-- Parallel Full GC to improve worst-case latencies.
-
-- Automatically return heap memory to the operating system when idle.
-
-- Abortable mixed collections to meet user-supplied pause goals.
-
-- NUMA-Aware Memory Allocation.
-
-- Allow G1 Heap Regions up to 512MB.
-
-- Reduces G1 native memory footprint by ~1.5% of Java heap size by removing one of the mark bitmaps spanning the entire Java heap.
-
-- Remove the use of the GCLocker in G1. Improving JNI use cases.
-
-**JDK23**
-
+...
 
 ---
 layout: section-title
@@ -1499,69 +1370,15 @@ image: https://s3.amazonaws.com/media-p.slid.es/uploads/18162/images/9193520/Pic
 
 
 ---
-
-General
-
-**JDK18**
-
-**JDK18**
-
-**JDK17**
+layout: feature
+title: General
+---
+<template #badge>
+  <JdkVersions v="9, 10, 11, 15, 17, 18, 21, 22" />
+</template>
 
 - Use `java -XshowSettings:security`&nbsp;to view the security-related configuration information of the JVM.
-
-- Support for Leighton-Micali Signature (LMS) signature verification and PBES2 cryptographic algorithms.
-
-- Key Encapsulation Mechanism (KEM) API, a cryptographic technique for securing symmetric keys using public-key cryptography.
-
-- The cacerts keystore file is now a passwordless PKCS12 file.
-
-- Calling keyStore.store(outputStream, null) on a PKCS12 KeyStore creates a passwordless PKCS12 file.
-
-- Validate Incoming Serialization Data.
-
-- Edwards-Curve Digital Signature Algorithm (EdDSA).
-
-- TLS 1.3 support.
-
-- Key Agreement with Curve25519 and Curve448.
-
-- ChaCha20 and Poly1305 Cryptographic Algorithms.
-
-- Default set of root Certification Authority (CA) certificates are provided with the JDK, so TLS connections are working out of the box.
-
-- Default keystore type is the standard PKCS12 instead of the proprietary JKS.
-
-- DRBG-Based SecureRandom.
-
-- Disable X.509 certificate chains with SHA-1 based signatures.
-
-- SHA-3 Hash Algorithms.
-
-**JDK11**
-
-**JDK10**
-
-**JDK9**
-
-**JDK9**
-
-**JDK9**
-
-**JDK15**
-
-**JDK11**
-
-**JDK11**
-
-**JDK9**
-
-**JDK21**
-
-**JDK21**
-
-**JDK22**
-
+...
 
 ---
 layout: section-title
@@ -1572,72 +1389,37 @@ image: https://s3.amazonaws.com/media-p.slid.es/uploads/18162/images/9193495/Pic
 
 
 ---
-
-Launching and tools
+layout: feature
+title: Launching and tools
+---
+<template #badge>
+  <JdkVersions v="9, 11, 12, 14, 22" />
+</template>
 
 - Launch Multi-File Source-Code Programs.
-
-- Flight Recorder Event Streaming: profiling data is available via an API, making it suitable for continuous monitoring.
-
-- Microbenchmark Suite based on JMH.
-
-- Flight Recorder is part of OpenJDK.
-
-- Low-Overhead Heap Profiling via JMTI.
-
-- Launch Single-File Source-Code Programs, including support for shebang (#!) line on Unix.
-
-- jshell: the Java REPL.
-
-**JDK14**
-
-**JDK9**
-
-**JDK11**
-
-**JDK11**
-
-**JDK11**
-
-**JDK12**
-
-**JDK22**
-
+...
 
 ---
-
-Packaging
+layout: feature
+title: Packaging
+---
+<template #badge>
+  <JdkVersions v="9, 16, 18" />
+</template>
 
 - javac now assumes that source files are encoded with the new default UTF-8 charset
-
-- Packaging Tool to create self-contained applications, also supporting native package formats: msi, exe, pkg, dmg, deb and rpm
-
-- jlink Java Linker that can build an optimized, slim run-time image for a modular Java application that contains only the required parts of the JDK
-
-- Multi-Release JAR Files to allow multiple, Java-release-specific versions of class in a single archive
-
-**JDK16**
-
-**JDK9**
-
-**JDK9**
-
-**JDK18**
-
+...
 
 ---
-
-Javadoc
+layout: feature
+title: Javadoc
+---
+<template #badge>
+  <JdkVersions v="9, 18" />
+</template>
 
 - The Javadoc tool now emits HTML5 markup instead of a frame-based layout and the documentation contains a search box to ease navigation
-
--
-@snippet tag, a modern alternative for @code that supports multi-line code, supports styling and the inclusion of external snippets
-
-**JDK9**
-
-**JDK18**
-
+...
 ```java
 /**
  * Highlighting based on regex:
@@ -1672,64 +1454,44 @@ public void exampleSnippetCode() {
 
 
 ---
-
-New supported platforms
+layout: feature
+title: New supported platforms
+---
+<template #badge>
+  <JdkVersions v="9, 16, 17, 19" />
+</template>
 
 - Linux/RISC-V
+...
 
-- macOS/AArch64
-
-- Alpine
-
-- Windows/AArch64
-
-- Linux/AArch64
-
-- Linux/s390x
-
-- Unified arm32/arm64
-
-**JDK9**
-
-**JDK16**
-
-**JDK16**
-
-**JDK9**
-
-**JDK9**
-
-**JDK17**
-
-**JDK19**
+---
+layout: feature
+title: New release train
+---
+<template #badge>
+  <JdkVersions v="9" />
+</template>
 
 
 ---
-
-New release train
-
-**JDK9**
-
-
+layout: feature
+title: Simple web server
 ---
-
-Simple web server
+<template #badge>
+  <JdkVersions v="18" />
+</template>
 
 jwebserver command line utility to serve static files
 (similar to Python’s SimpleHTTPServer or PHP's php -S, for development and education purposes)
 
-**JDK18**
-
 
 ---
-
-Markdown Documentation Comments
-
-**JDK23**
-
-**JDK23**
-
-**OLD JDK**
+layout: feature
+title: Markdown Documentation Comments
+---
+<template #badge>
+  <JdkVersions v="23, OLD" />
+</template>
 
 ```java
 /**
@@ -1810,215 +1572,100 @@ image: https://s3.amazonaws.com/media-p.slid.es/uploads/18162/images/9193534/Pic
 
 
 ---
-
-Syntax
+layout: feature
+title: Syntax
+---
+<template #badge>
+  <JdkVersions v="9, 10, 16" />
+</template>
 
 - Deprecate the constructors of primitive wrapper classes
-
-- var is no longer a valid class name
-
-- Underscore is no longer a valid identifier (new keyword)
-
-**JDK9**
-
-**JDK10**
-
-**JDK16**
-
+...
 
 ---
-
-Projects
+layout: feature
+title: Projects
+---
+<template #badge>
+  <JdkVersions v="11, 15, 17" />
+</template>
 
 - Remove [RMI Activation](https://docs.oracle.com/javase/9/docs/specs/rmi/activation.html), affecting the java.rmi.activation package and the rmid tool, does not affect Java RMI in general
-
-- Remove the Nashorn Javascript Engine and the jjs tool
-
-- Remove Java EE
-
-- Remove CORBA
-
-**JDK11**
-
-**JDK11**
-
-**JDK15**
-
-**JDK15**
-
-(deprecated &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; )
-
-**JDK17**
-
+...
 
 ---
+layout: feature
+title: API
+---
+<template #badge>
+  <JdkVersions v="9, 11, 15, 17, 18, 19, 23" />
+</template>
 
-API
-
-**JDK17**
-
-**JDK17**
-
-**JDK18**
-
-**JDK18**
-
-**JDK9**
-
-**JDK15**
-
-**JDK11**
-
--
-`Remove&nbsp;Thread.resume()`, `Thread.suspend()`, `ThreadGroup.resume()`, `ThreadGroup.stop()`&nbsp;and `ThreadGroup.suspend()`.
-
-- Deprecate the Memory-Access Methods in sun.misc.Unsafe for **removal**. In total, more than 79 out of the 87 methods in the `Unsafe`&nbsp;class are affected.
-
-- The constructors of the `Locale`&nbsp;class have been deprecated. Instead use `Locale.of()`.
-
-- Deprecate Thread.stop for **removal**.
-
-- Deprecate Finalization for **removal**.
-
-- Strongly encapsulate internal API’s (sun.*) except for [critical APIs](https://openjdk.java.net/jeps/260#Description)&nbsp;such as sun.misc.Unsafe.
-Remove the option for [relaxed strong encapsulation](https://openjdk.java.net/jeps/261#Relaxed-strong-encapsulation)&nbsp;via the [--illegal-access launcher option](https://openjdk.java.net/jeps/396#Description).
-
-- Deprecate Applet API (java.applet.*, javax.swing.JApplet and java.beans.AppletInitializer) for **removal**.
-
-- Deprecate Unsafe::defineAnonymousClass().
-
--
-**Remove**&nbsp;Thread.destroy() and Thread.stop(Throwable).
-
--
-**Remove**&nbsp;apple.applescript and com.apple packages.
-
-**JDK19**
-
-**JDK23**
-
-**JDK23**
-
+- `Remove&nbsp;Thread.resume()`, `Thread.suspend()`, `ThreadGroup.resume()`, `ThreadGroup.stop()`&nbsp;and `ThreadGroup.suspend()`.
+...
 
 ---
-
-Tools
-
-**JDK10**
-
-**JDK14**
+layout: feature
+title: Tools
+---
+<template #badge>
+  <JdkVersions v="9, 10, 11, 14, 15" />
+</template>
 
 - Remove the jjs tool (linked to Nashorn)
-
-- Remove the Pack200 Tools and API
-
-- Remove the javah tool
-
-- Remove the jhat tool
-
-- Remove the JVM TI hprof Agent
-
-- Remove rt.jar from the JRE
-
-**JDK9**
-
-**JDK9**
-
-**JDK9**
-
-**JDK11**
-
-(deprecated &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; )
-
-**JDK11**
-
-(deprecated &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; )
-
-**JDK15**
-
+...
 
 ---
-
-Security
+layout: feature
+title: Security
+---
+<template #badge>
+  <JdkVersions v="9, 17, 18" />
+</template>
 
 - JARs signed with SHA-1 algorithms are now restricted by default and treated as if they were unsigned
-
-- Deprecate the Security Manager for Removal
-Work ongoing to consider use cases where the Security Manager is useful and provide alternatives (e.g. [JDK-8199704](https://bugs.openjdk.java.net/browse/JDK-8199704))
-
-- Disable X.509 certificate chains with SHA-1 based signatures
-
-**JDK9**
-
-**JDK18**
-
-**JDK17**
-
+...
 
 ---
-
-Platform
+layout: feature
+title: Platform
+---
+<template #badge>
+  <JdkVersions v="15, 21" />
+</template>
 
 - Deprecate the Windows 32-bit x86 Port for **removal**.
-Windows 10, the last Windows operating system to support 32-bit operation, will reach End of Life in October 2025
-
-- Remove the Solaris and SPARC Ports
-
-**JDK15**
-
-**JDK21**
-
+...
 
 ---
-
-GC
-
-**JDK14**
+layout: feature
+title: GC
+---
+<template #badge>
+  <JdkVersions v="9, 14" />
+</template>
 
 - Remove the Concurrent Mark Sweep (CMS) Garbage Collector
-
-- Deprecate the ParallelScavenge + SerialOld GC Combination
-
-- Remove GC Combinations Deprecated in JDK 8
-
-**JDK9**
-
-**JDK9**
-
-(deprecated &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; )
-
-**JDK14**
-
+...
 
 ---
-
-CLI flags
+layout: feature
+title: CLI flags
+---
+<template #badge>
+  <JdkVersions v="9, 15" />
+</template>
 
 - Disable [Biased Locking](https://stackoverflow.com/questions/9439602/biased-locking-in-java) by default, deprecate related command-line flags
-
-- Remove Launch-Time JRE Version Selection directives: JRE-Version manifest entry and -version: cli option
-
-**JDK9**
-
-**JDK15**
-
+...
 
 ---
-
-Misc
-
-**JDK17**
+layout: feature
+title: Misc
+---
+<template #badge>
+  <JdkVersions v="9, 15, 17, 21" />
+</template>
 
 - Prepare to Disallow the Dynamic Loading of Agents to improve the integrity and security of the platform
-
-- Make floating-point operations consistently strict by default, warn when the strictfp modifier is used
-
-- Remove the Experimental [AOT](https://openjdk.java.net/jeps/295)&nbsp;and [JIT](https://openjdk.java.net/jeps/317)&nbsp;compiler due to lack of interest
-
-- Remove the Endorsed Standards Override (lib/endorsed) and Extensions (lib/ext) mechanisms from the JRE
-
-**JDK9**
-
-**JDK15**
-
-**JDK21**
+...
