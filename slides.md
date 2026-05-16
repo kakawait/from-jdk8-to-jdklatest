@@ -31,7 +31,7 @@ layout: full
 
 ---
 layout: section-title
-image: https://s3.amazonaws.com/media-p.slid.es/uploads/18162/images/9193490/Picture3.png
+image: /images/Picture3.png
 ---
 
 # New language features
@@ -229,7 +229,7 @@ var map = new HashMap<>();
 
 </div>
 
-<JdkAlert image="https://s3.amazonaws.com/media-p.slid.es/uploads/18162/images/9193803/Picture9.png">
+<JdkAlert image="/images/Picture9.png">
 
 ### Make sure to read the official style guides
 
@@ -336,7 +336,7 @@ System.out.println(html);
   </template>
 </JdkLinkedCodeBlocks>
 
-<JdkAlert image="https://s3.amazonaws.com/media-p.slid.es/uploads/18162/images/9193803/Picture9.png" class="mt-4">
+<JdkAlert image="/images/Picture9.png" class="mt-4">
 
 ### No variables interpolation
 
@@ -667,7 +667,7 @@ import module java.base;
 
 ---
 layout: section-title
-image: https://s3.amazonaws.com/media-p.slid.es/uploads/18162/images/9193493/Picture4.png
+image: /images/Picture4.png
 ---
 
 # New APIs
@@ -1348,7 +1348,7 @@ System.out.println(slidingWindows);
 
 ---
 layout: section-title
-image: https://media.slid.es/uploads/18162/images/9193429/Picture2.png
+image: /images/Picture2.png
 ---
 
 # Performance
@@ -1378,7 +1378,7 @@ title: GC
 
 ---
 layout: section-title
-image: https://s3.amazonaws.com/media-p.slid.es/uploads/18162/images/9193520/Picture6.png
+image: /images/Picture6.png
 ---
 
 # Security
@@ -1397,7 +1397,7 @@ title: General
 
 ---
 layout: section-title
-image: https://s3.amazonaws.com/media-p.slid.es/uploads/18162/images/9193495/Picture5.png
+image: /images/Picture5.png
 ---
 
 # Miscellaneous
@@ -1580,7 +1580,7 @@ title: Markdown Documentation Comments
 
 ---
 layout: section-title
-image: https://s3.amazonaws.com/media-p.slid.es/uploads/18162/images/9193534/Picture7.png
+image: /images/Picture7.png
 ---
 
 # Deprecations &amp; Removals
