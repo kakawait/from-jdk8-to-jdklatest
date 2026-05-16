@@ -266,10 +266,22 @@ layout: feature
 title: Helpful NullPointerExceptions describing precisely which variable was null
 ---
 <template #badge>
-  <JdkVersions v="15" preview="14" />
+  <JdkVersions v="15" preview="14" prefix="(Enabled with -XX:+ShowCodeDetailsInExceptionMessages in" suffix=")" />
 </template>
 
-(Enabled with `-XX:+ShowCodeDetailsInExceptionMessages` in &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )
+<JdkLinkedCodeBlocks label1="OLD" label2="JDK15" direction="vertical" size="small">
+  <template #code1>
+
+```java
+node.getElementsByTagName("name").item(0).getChildNodes().item(0).getNodeValue();
+
+---
+Exception in thread "main" java.lang.NullPointerException
+        at Unlucky.method(Unlucky.java:83)
+```
+
+  </template>
+  <template #code2>
 
 ```java
 node.getElementsByTagName("name").item(0).getChildNodes().item(0).getNodeValue();
@@ -280,13 +292,8 @@ Exception in thread "main" java.lang.NullPointerException:
         at Unlucky.method(Unlucky.java:83)
 ```
 
-```java
-node.getElementsByTagName("name").item(0).getChildNodes().item(0).getNodeValue();
-
----
-Exception in thread "main" java.lang.NullPointerException
-        at Unlucky.method(Unlucky.java:83)
-```
+  </template>
+</JdkLinkedCodeBlocks>
 
 
 ---
