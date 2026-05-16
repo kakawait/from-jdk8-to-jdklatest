@@ -304,7 +304,22 @@ title: Text Blocks
   <JdkVersions v="15" preview="13, 14" />
 </template>
 
-### No variables interpolation
+<JdkLinkedCodeBlocks label1="JDK12" label2="JDK15" size="small">
+  <template #code1>
+
+```java
+String html = "";
+html += "<html>\n";
+html += "  <body>\n";
+html += "    <p>Hello, world</p>\n";
+html += "  </body>\n";
+html += "</html>\n";
+
+System.out.println(html);
+```
+
+  </template>
+  <template #code2>
 
 ```java
 String html = """
@@ -318,16 +333,14 @@ String html = """
 System.out.println(html);
 ```
 
-```java
-String html = "";
-html += "<html>\n";
-html += "  <body>\n";
-html += "    <p>Hello, world</p>\n";
-html += "  </body>\n";
-html += "</html>\n";
+  </template>
+</JdkLinkedCodeBlocks>
 
-System.out.println(html);
-```
+<JdkAlert image="https://s3.amazonaws.com/media-p.slid.es/uploads/18162/images/9193803/Picture9.png" class="mt-4">
+
+### No variables interpolation
+
+</JdkAlert>
 
 ---
 layout: feature
