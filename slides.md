@@ -81,8 +81,8 @@ title: Allow effectively-final variables to be used as resources in try-with-res
   <JdkVersions v="9" />
 </template>
 
-<div class="grid grid-cols-[1fr_100px_1fr] items-center gap-4 mt-1">
-  <JdkCodeBlock label="JDK6" class="text-[11px]" data-id="anchor1">
+<JdkLinkedCodeBlocks label1="JDK6" label2="JDK7" codeClass="text-[11px]">
+  <template #code1>
 
 ```java
 BufferedReader br = new BufferedReader(...);
@@ -95,13 +95,8 @@ try {
 }
 ```
 
-  </JdkCodeBlock>
-
-  <div class="flex justify-center">
-    <FancyArrow from="[data-id=anchor1]" to="[data-id=anchor2]" static />
-  </div>
-
-  <JdkCodeBlock label="JDK7" class="text-[11px]" data-id="anchor2">
+  </template>
+  <template #code2>
 
 ```java
 try (BufferedReader br = new BufferedReader(...)) {
@@ -109,8 +104,8 @@ try (BufferedReader br = new BufferedReader(...)) {
 }
 ```
 
-  </JdkCodeBlock>
-</div>
+  </template>
+</JdkLinkedCodeBlocks>
 
 <div class="mt-3 text-[13px]">
   in the Java 7 version, if you already have a variable that you want to handle with this construct, you had to introduce a dummy variable.
