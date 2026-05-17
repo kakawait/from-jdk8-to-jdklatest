@@ -538,12 +538,7 @@ title: Unnamed Classes and Instance Main Methods
 
 In old Java versions, one needed write quite some boilerplate code even for the simplest of the applications:
 
-1. A more tolerant launch protocol
-2. Unnamed classes
-
-**Instance main methods** makes the Java launch protocol more flexible, by making some aspects of the `main` method optional.
-
-**Methods to exist outside of an enclosing class** in which case they are automatically wrapped into a synthetic **unnamed class**.
+<JdkCodeBlock label="OLD JDK" color="#e3ead1" textColor="#0e2a47" borderColor="#a0a88a" size="small" contentClass="text-[12px]">
 
 ```java
 public class HelloWorld {
@@ -553,6 +548,16 @@ public class HelloWorld {
 }
 ```
 
+</JdkCodeBlock>
+
+<div class="grid grid-cols-2 gap-8 mt-2">
+<div>
+<h3 class="text-[15px] font-bold mb-1">1. A more tolerant launch protocol</h3>
+<p class="text-[12px] leading-tight mb-2 opacity-90">
+Instance main methods makes the Java launch protocol more flexible, by making some aspects of the main method optional.
+</p>
+<JdkCodeBlock size="small" contentClass="text-[11px]">
+
 ```java
 class HelloWorld {
   void main() {
@@ -561,17 +566,36 @@ class HelloWorld {
 }
 ```
 
+</JdkCodeBlock>
+</div>
+
+<div>
+<h3 class="text-[15px] font-bold mb-1 text-right">2. Unnamed classes</h3>
+<p class="text-[12px] leading-tight mb-2 opacity-90 text-right">
+Methods to exist outside of an enclosing class in which case they are automatically wrapped into a synthetic unnamed class.
+</p>
+<div class="flex gap-2">
+<JdkCodeBlock label="JDK22" color="#710070" size="small" contentClass="text-[11px]" class="flex-1">
+
 ```java
 void main() {
   System.out.println("Hello, World!");
 }
 ```
 
+</JdkCodeBlock>
+<JdkCodeBlock label="JDK23" color="#854800" size="small" contentClass="text-[11px]" class="flex-1">
+
 ```java
 void main() {
   println("Hello, World!");
 }
 ```
+
+</JdkCodeBlock>
+</div>
+</div>
+</div>
 
 ---
 layout: feature
