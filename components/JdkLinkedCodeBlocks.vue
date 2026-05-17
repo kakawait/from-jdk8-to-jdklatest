@@ -7,8 +7,10 @@ withDefaults(defineProps<{
   size?: 'small' | 'medium' | 'large'
   codeClass?: string
   direction?: 'horizontal' | 'vertical'
+  arrowHeight?: string
 }>(), {
-  direction: 'horizontal'
+  direction: 'horizontal',
+  arrowHeight: 'h-10'
 })
 
 const id1 = 'anchor-' + Math.random().toString(36).substring(2, 9)
@@ -16,7 +18,7 @@ const id2 = 'anchor-' + Math.random().toString(36).substring(2, 9)
 </script>
 
 <template>
-  <div 
+  <div
     class="jdk-linked-code-blocks grid items-center gap-2 mt-1"
     :class="direction === 'horizontal' ? 'grid-cols-[1fr_50px_1fr]' : 'grid-cols-1'"
   >
@@ -24,7 +26,7 @@ const id2 = 'anchor-' + Math.random().toString(36).substring(2, 9)
       <slot name="code1" />
     </JdkCodeBlock>
 
-    <div class="flex justify-center" :class="direction === 'vertical' ? 'h-10' : ''">
+    <div class="flex justify-center" :class="direction === 'vertical' ? arrowHeight : ''">
       <FancyArrow :from="`[data-id=${id1}]`" :to="`[data-id=${id2}]`" static />
     </div>
 

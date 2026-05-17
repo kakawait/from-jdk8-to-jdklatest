@@ -369,7 +369,7 @@ point.y(); // returns 2
 
 Java 16 improves on this, as now it’s also possible to define **Local Records** in a method body:
 
-<JdkCodeWithText class="mt-4">
+<JdkCodeWithText class="mt-4" codeClass="text-[11px]">
   <template #code>
 
 ```java
@@ -452,7 +452,7 @@ record ColoredPoint(Point p, Color c) { }
 Object r = new ColoredPoint(new Point2D(3, 4), Color.GREEN);
 ```
 
-<JdkLinkedCodeBlocks label1="JDK16" label2="JDK21" size="small">
+<JdkLinkedCodeBlocks label1="JDK16" label2="JDK21" size="small" codeClass="text-[11px]">
   <template #code1>
 
 ```java
@@ -507,7 +507,7 @@ list.stream()
 
 **unnamed patterns** which can be used in pattern matching to ignore subpatterns
 
-<JdkLinkedCodeBlocks label1="JDK21" label2="JDK22" size="small" codeClass="text-[11px]">
+<JdkLinkedCodeBlocks label1="JDK20" label2="JDK22" size="small" codeClass="text-[11px]">
   <template #code1>
 
 ```java
@@ -533,7 +533,7 @@ layout: feature
 title: Unnamed Classes and Instance Main Methods
 ---
 <template #badge>
-  <JdkVersions v="23" preview="21, 22" />
+  <JdkVersions preview="21, 22, 23" />
 </template>
 
 In old Java versions, one needed write quite some boilerplate code even for the simplest of the applications:
@@ -603,11 +603,11 @@ title: String template
 ---
 <template #badge>
 <div class="flex items-center gap-1 text-[12px] font-bold">
-<span class="opacity-60">(Preview in</span>
+<span class="opacity-80 text-[10px] font-bold tracking-wider mr-0 text-gray-400"">(PREVIEW IN</span>
 <JdkBadge label="JDK21" color="#4acaec" size="small" />
-<span class="opacity-60">)</span>
 <JdkBadge label="JDK22" color="#710070" size="small" />
-<span class="opacity-60">⚠️ Removed from</span>
+<span class="opacity-80 text-[10px] font-bold tracking-wider ml-0 text-gray-400"">)</span>
+<span class="opacity-80 text-[10px] font-bold tracking-wider text-gray-400"">⚠️ Removed from</span>
 <JdkBadge label="JDK23" color="#854800" size="small" />
 </div>
 </template>
@@ -711,6 +711,9 @@ title: Statements before super
 
 Allows instructions before the call to the parent constructor (super) as long as they do not access the instance being created
 
+<JdkLinkedCodeBlocks direction="vertical" size="small" codeClass="text-[12px]" arrowHeight="h-8">
+  <template #code1>
+
 ```java
 public class PositiveBigInteger extends BigInteger {
     public PositiveBigInteger(long value) {
@@ -721,6 +724,9 @@ public class PositiveBigInteger extends BigInteger {
     }
 }
 ```
+
+  </template>
+  <template #code2>
 
 ```java
 public class PositiveBigInteger extends BigInteger {
@@ -733,12 +739,15 @@ public class PositiveBigInteger extends BigInteger {
 }
 ```
 
+  </template>
+</JdkLinkedCodeBlocks>
+
 ---
 layout: feature
 title: Module Import Declarations
 ---
 <template #badge>
-  <JdkVersions v="23" />
+  <JdkVersions preview="23" />
 </template>
 
 In Java, it is possible to import:

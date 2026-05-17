@@ -7,6 +7,7 @@ defineProps<{
   textColor?: string
   borderColor?: string
   size?: 'small' | 'medium' | 'large'
+  codeClass?: string
   reverse?: boolean
 }>()
 </script>
@@ -14,12 +15,13 @@ defineProps<{
 <template>
   <div class="jdk-code-with-text flex gap-8 items-start" :class="reverse ? 'flex-row-reverse' : 'flex-row'">
     <div class="flex-[3] min-w-0">
-      <JdkCodeBlock 
-        :label="label" 
-        :color="color" 
-        :textColor="textColor" 
-        :borderColor="borderColor" 
+      <JdkCodeBlock
+        :label="label"
+        :color="color"
+        :textColor="textColor"
+        :borderColor="borderColor"
         :size="size || 'small'"
+        :contentClass="codeClass"
       >
         <slot name="code" />
       </JdkCodeBlock>
