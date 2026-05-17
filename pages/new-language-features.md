@@ -604,11 +604,11 @@ title: String template
 <template #badge>
 <div class="flex items-center gap-1 text-[12px] font-bold">
 <span class="opacity-80 text-[10px] font-bold tracking-wider mr-0 text-gray-400"">(PREVIEW IN</span>
-<JdkBadge label="JDK21" color="#4acaec" size="small" />
-<JdkBadge label="JDK22" color="#710070" size="small" />
+<JdkBadge label="JDK21" size="small" />
+<JdkBadge label="JDK22" size="small" />
 <span class="opacity-80 text-[10px] font-bold tracking-wider ml-0 text-gray-400"">)</span>
 <span class="opacity-80 text-[10px] font-bold tracking-wider text-gray-400"">⚠️ Removed from</span>
-<JdkBadge label="JDK23" color="#854800" size="small" />
+<JdkBadge label="JDK23" size="small" />
 </div>
 </template>
 

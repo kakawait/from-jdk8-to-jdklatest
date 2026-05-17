@@ -10,19 +10,24 @@ image: /images/Picture4.png
 
 # Disclaimer
 
+<JdkAlert>
+
 I'll focus only on (personal point of view) new APIs that we can use in day-to-day coding.
 
 If you are curious about all the API level differences between Java 8 later versions, check the [AdoptOpenJDK/jdk-api-diff on GitHub](https://github.com/AdoptOpenJDK/jdk-api-diff) or the [The Java Version Almanac](https://github.com/marchof/java-almanac/).
 
+</JdkAlert>
 
 ---
 layout: feature
-title: "`since` and `forRemoval` for `@Deprecated`"
 ---
-<template #badge>
-  <JdkVersions v="9" />
-</template>
+::badge::
+<JdkVersions v="9" />
 
+::title::
+`since` and `forRemoval` for `@Deprecated`
+
+::default::
 The `since` attribute requires a string that lets us define in which version the element was deprecated. The default value is an empty string.
 
 And `forRemoval` is a boolean that allows us to specify if the element will be removed in the next release. Its default value is `false`
@@ -75,15 +80,11 @@ Reactive Streams publish-subscribe framework for asynchronous stream processing 
 
 - Publisher: A producer of data items that are received by subscribers
 
-- Subscriber: A receiver of data items.
-
-- Subscription: Linkage between a Publisher and a Subscriber.
-
-- Processor: A combination of Publisher and Subscriber for specifying a data-transformation function.
-
 ```java
 void subscribe(Flow.Subscriber<? super T> subscriber)
 ```
+
+- Subscriber: A receiver of data items.
 
 ```java
 void onSubscribe(Flow.Subscription subscription)
@@ -92,11 +93,14 @@ void onError(Throwable throwable)
 void onNext(T item)
 ```
 
+- Subscription: Linkage between a Publisher and a Subscriber.
+
 ```java
 void request(long n)
 void cancel()
 ```
 
+- Processor: A combination of Publisher and Subscriber for specifying a data-transformation function.
 
 ---
 layout: feature
@@ -164,6 +168,8 @@ title: Arrays utilities
 
 Newly introduced Java 9 Arrays utility class methods for comparing arrays
 
+<jdkCodeBlock contentClass="text-[11px] [&_pre]:!leading-[1rem]">
+
 ```java
 int[] i1 = {2, 4, 6, 8, 10};
 int[] i2 = {2, 4, 6, 8, 11};
@@ -189,15 +195,19 @@ Arrays.mismatch(i1, 0, 3, i3, 0, 3); // 2
 Arrays.mismatch(i3, 0, 3, i1, 0, 3); // 2
 ```
 
+</jdkCodeBlock>
 
 ---
 layout: feature
-title: Stream &amp; Collectors new APIs
----
-<template #badge>
-  <JdkVersions v="9" />
-</template>
 
+---
+::badge::
+<JdkVersions v="9" />
+
+::title::
+Stream &amp; Collectors new APIs
+
+::default::
 ```java
 Stream.of(2, 4, 6, 8, 9, 10, 12).takeWhile(n -> n % 2 == 0).forEach(System.out::println);
 // 2, 4, 6, 8
@@ -283,8 +293,6 @@ title: Standard HTTP Client
 
 Standard HTTP Client featuring HTTP/2, WebSocket support and non-blocking API
 
-`HttpClient`&nbsp;now implements `AutoCloseable`&nbsp;and can therefore be used more easily in a *try-with-resources*&nbsp;block
-
 ```java
 HttpClient httpClient = HttpClient.newBuilder().build();
 
@@ -298,6 +306,7 @@ HttpResponse<String> response =
   httpClient.send(request, BodyHandlers.ofString());
 ```
 
+Since <JdkBadge label="JDK21" size="small" /> `HttpClient` now implements `AutoCloseable` and can therefore be used more easily in a *try-with-resources block.
 
 ---
 layout: feature
@@ -421,7 +430,13 @@ title: Sequenced Collections
   <JdkVersions v="21" />
 </template>
 
-Java collections do not have a type representing an ordered sequence of elements. Java 21 fills this gap by introducing the interfaces `SequencedCollection`, `SequencedSet`, and `SequencedMap`. These interfaces provide methods for adding, modifying, or removing elements at the beginning or end of the collection, as well as iterating over a collection in reverse order.
+<div class="text-[13px] leading-tight mb-2 opacity-90">
+Java collections do not have a type representing an ordered sequence of elements. Java 21 fills this gap by introducing the interfaces <code>SequencedCollection</code>, <code>SequencedSet</code>, and <code>SequencedMap</code>. These interfaces provide methods for adding, modifying, or removing elements at the beginning or end of the collection, as well as iterating over a collection in reverse order.
+</div>
+
+<div class="grid grid-cols-[1fr_2.2fr] gap-2 items-start">
+<div>
+<JdkCodeBlock size="small" contentClass="text-[12px]">
 
 ```java
 interface SequencedCollection<E> 
@@ -435,6 +450,110 @@ interface SequencedCollection<E>
   E removeLast();
 }
 ```
+
+</JdkCodeBlock>
+</div>
+
+<div class="bg-white p-1 rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" class="w-full h-auto font-sans" preserveAspectRatio="xMidYMid meet">
+<defs>
+<linearGradient id="grayGrad" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#dbdbdb"/>
+<stop offset="100%" stop-color="#bebebe"/>
+</linearGradient>
+<linearGradient id="greenGrad" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#80ff80"/>
+<stop offset="100%" stop-color="#4de64d"/>
+</linearGradient>
+<filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+<feDropShadow dx="2" dy="2" stdDeviation="1.5" flood-opacity="0.35"/>
+</filter>
+</defs>
+<g stroke="#000" stroke-width="1.5" fill="none" stroke-linejoin="miter">
+<path d="M 340 75 L 340 100 L 100 100 L 100 125" />
+<path d="M 340 100 L 340 125" />
+<path d="M 340 100 L 590 100 L 590 125" />
+<path d="M 820 75 L 820 125" />
+<path d="M 100 175 L 100 200 L 150 200 L 150 225" />
+<path d="M 340 175 L 340 210 L 210 210 L 210 225" />
+<path d="M 340 210 L 420 210 L 420 405" />
+<path d="M 340 210 L 570 210 L 570 405" />
+<path d="M 590 175 L 590 405" />
+<path d="M 180 275 L 180 295 L 100 295 L 100 315" />
+<path d="M 180 295 L 260 295 L 260 405" />
+<path d="M 100 365 L 100 405" />
+<path d="M 820 175 L 820 280 L 740 280 L 740 315" />
+<path d="M 820 280 L 900 280 L 900 405" />
+<path d="M 740 365 L 740 405" />
+</g>
+<g text-anchor="middle" font-size="13px" fill="#000">
+<g transform="translate(280, 25)">
+<rect width="140" height="50" stroke="#444" stroke-width="0.5" filter="url(#shadow)" fill="url(#grayGrad)" />
+<text x="70" y="30">Collection</text>
+</g>
+<g transform="translate(760, 25)">
+<rect width="140" height="50" stroke="#444" stroke-width="0.5" filter="url(#shadow)" fill="url(#grayGrad)" />
+<text x="70" y="30">Map</text>
+</g>
+<g transform="translate(40, 125)">
+<rect width="140" height="50" stroke="#444" stroke-width="0.5" filter="url(#shadow)" fill="url(#grayGrad)" />
+<text x="70" y="30">Set</text>
+</g>
+<g transform="translate(280, 125)">
+<rect width="140" height="50" stroke="#444" stroke-width="0.5" filter="url(#shadow)" fill="url(#greenGrad)" />
+<text x="70" y="30">SequencedCollection</text>
+</g>
+<g transform="translate(530, 125)">
+<rect width="140" height="50" stroke="#444" stroke-width="0.5" filter="url(#shadow)" fill="url(#grayGrad)" />
+<text x="70" y="30">Queue</text>
+</g>
+<g transform="translate(760, 125)">
+<rect width="140" height="50" stroke="#444" stroke-width="0.5" filter="url(#shadow)" fill="url(#greenGrad)" />
+<text x="70" y="30">SequencedMap</text>
+</g>
+<g transform="translate(120, 225)">
+<rect width="140" height="50" stroke="#444" stroke-width="0.5" filter="url(#shadow)" fill="url(#greenGrad)" />
+<text x="70" y="30">SequencedSet</text>
+</g>
+<g transform="translate(40, 315)">
+<rect width="140" height="50" stroke="#444" stroke-width="0.5" filter="url(#shadow)" fill="url(#grayGrad)" />
+<text x="70" y="30">SortedSet</text>
+</g>
+<g transform="translate(680, 315)">
+<rect width="140" height="50" stroke="#444" stroke-width="0.5" filter="url(#shadow)" fill="url(#grayGrad)" />
+<text x="70" y="30">SortedMap</text>
+</g>
+<g transform="translate(40, 405)">
+<rect width="140" height="50" stroke="#444" stroke-width="0.5" filter="url(#shadow)" fill="url(#grayGrad)" />
+<text x="70" y="30">NavigableSet</text>
+</g>
+<g transform="translate(200, 405)">
+<rect width="140" height="50" stroke="#444" stroke-width="0.5" filter="url(#shadow)" fill="url(#grayGrad)" />
+<text x="70" y="21" font-size="10px">&lt;&lt;implementation&gt;&gt;</text>
+<text x="70" y="37" font-style="italic">LinkedHashSet</text>
+</g>
+<g transform="translate(360, 405)">
+<rect width="140" height="50" stroke="#444" stroke-width="0.5" filter="url(#shadow)" fill="url(#grayGrad)" />
+<text x="70" y="30">List</text>
+</g>
+<g transform="translate(510, 405)">
+<rect width="140" height="50" stroke="#444" stroke-width="0.5" filter="url(#shadow)" fill="url(#grayGrad)" />
+<text x="70" y="30">Deque</text>
+</g>
+<g transform="translate(680, 405)">
+<rect width="140" height="50" stroke="#444" stroke-width="0.5" filter="url(#shadow)" fill="url(#grayGrad)" />
+<text x="70" y="30">NavigableMap</text>
+</g>
+<g transform="translate(840, 405)">
+<rect width="140" height="50" stroke="#444" stroke-width="0.5" filter="url(#shadow)" fill="url(#grayGrad)" />
+<text x="70" y="21" font-size="10px">&lt;&lt;implementation&gt;&gt;</text>
+<text x="70" y="37" font-style="italic">LinkedHashMap</text>
+</g>
+</g>
+</svg>
+</div>
+</div>
+
 
 
 ---
@@ -490,7 +609,7 @@ Virtual threads are lightweight threads that dramatically reduce the effort of w
 
 There are limitations in the current implementation of virtual threads. In some cases, a virtual thread will pin the carrier thread, which will not be able to handle other virtual threads:
 
-- The use of the `synchronized`&nbsp;keyword
+- The use of the `synchronized` keyword
 
 - The use of native methods or the Foreign Function API from JEP 424
 
@@ -522,11 +641,11 @@ Structured concurrency API to define subtask relations between threads to stream
 
 **OLD JDK**
 
-- If an error occurs in the `fetchOrder()`&nbsp;method, we will still wait for the `findUser()`&nbsp;task to complete.
+- If an error occurs in the `fetchOrder()` method, we will still wait for the `findUser()` task to complete.
 
-- If an error occurs in the `findUser()`&nbsp;method, then the `handle()`&nbsp;method will terminate, but the thread executing `fetchOrder()`&nbsp;will continue to run, resulting in a thread leak.
+- If an error occurs in the `findUser()` method, then the `handle()` method will terminate, but the thread executing `fetchOrder()` will continue to run, resulting in a thread leak.
 
-- If the `handle()`&nbsp;method is interrupted, this interruption is not propagated to the subtasks, and their threads will continue to run, resulting in a thread leak.
+- If the `handle()` method is interrupted, this interruption is not propagated to the subtasks, and their threads will continue to run, resulting in a thread leak.
 
 ```java
 ExecutorService ex = Executors.newFixedThreadPool(nbCores);
@@ -640,15 +759,9 @@ title: Class-File API
 
 Standard API for parsing, generating, and transforming Java class files.
 
-&nbsp;
-
 The Java ecosystem has many libraries that allow for parsing and generating Java class files: ASM, BCEL, Javassist, etc. Most frameworks that generate bytecode use them.
 
-&nbsp;
-
 The format of Java class files evolves every 6 months with each new Java release, so generation frameworks must evolve at the same time to avoid not supporting the latest language developments.
-
-&nbsp;
 
 The Class-File API addresses this problem by providing an API within the JDK for parsing, generating, and transforming class files.
 
@@ -661,11 +774,9 @@ title: Stream Gatherers
   <JdkVersions v="23" preview="22" />
 </template>
 
-Enhances the Stream API with support for custom intermediate operations.
+Enhances the Stream API with support for custom intermediate operations. 
 
-&nbsp;
-
-The Stream API provides a fixed set of intermediate and terminal operations. It allows extending terminal operations via the `Stream::collect(Collector)`&nbsp;method, but does not allow extending intermediate operations.
+The Stream API provides a fixed set of intermediate and terminal operations. It allows extending terminal operations via the `Stream::collect(Collector)` method, but does not allow extending intermediate operations.
 
 ```java
 var numbers = List.of(1, 2, 3, 4, 5);
