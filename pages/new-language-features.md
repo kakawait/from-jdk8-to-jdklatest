@@ -319,7 +319,8 @@ title: Pattern Matching for instanceof
   <JdkVersions v="16" preview="14, 15" />
 </template>
 
-can be used in the second part of the condition because it’s only evaluated when the first one succeeds and the `instanceof` operator has a match
+<JdkLinkedCodeBlocks label1="JDK13" label2="JDK16" size="small">
+  <template #code1>
 
 ```java
 if (obj instanceof String s) {
@@ -327,11 +328,19 @@ if (obj instanceof String s) {
 }
 ```
 
+  </template>
+  <template #code2>
+
 ```java
 if (obj instanceof String s && s.length() > 5) {
   // use s
 }
 ```
+
+  </template>
+</JdkLinkedCodeBlocks>
+
+can be used in the second part of the condition because it’s only evaluated when the first one succeeds and the `instanceof` operator has a match
 
 ```java
 if (obj instanceof String) {
