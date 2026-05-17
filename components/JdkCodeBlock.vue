@@ -7,6 +7,7 @@ defineProps<{
   textColor?: string
   borderColor?: string
   size?: 'small' | 'medium' | 'large'
+  contentClass?: string
 }>()
 </script>
 
@@ -21,7 +22,7 @@ defineProps<{
       :size="size || 'small'" 
       class="w-max" 
     />
-    <div class="jdk-code-content">
+    <div class="jdk-code-content" :class="contentClass">
       <slot />
     </div>
   </div>
@@ -32,7 +33,8 @@ defineProps<{
   margin-top: 0 !important;
 }
 
-.jdk-code-block :deep(pre) {
+.jdk-code-block :deep(pre), .jdk-code-block :deep(code) {
   margin: 0 !important;
+  font-size: inherit !important;
 }
 </style>

@@ -441,7 +441,7 @@ title: Record Patterns
   <JdkVersions v="21" preview="19, 20" />
 </template>
 
-Record Patterns extends the pattern matching capabilities of Java beyond simple type patterns to **match and deconstruct Record values**. It **supports nesting**&nbsp;to enable declarative, data focused programming.
+Record Patterns extends the pattern matching capabilities of Java beyond simple type patterns to **match and deconstruct Record values**. It **supports nesting** to enable declarative, data focused programming.
 
 ```java
 interface Point { }
@@ -451,6 +451,9 @@ record ColoredPoint(Point p, Color c) { }
 
 Object r = new ColoredPoint(new Point2D(3, 4), Color.GREEN);
 ```
+
+<JdkLinkedCodeBlocks label1="JDK16" label2="JDK21" size="small">
+  <template #code1>
 
 ```java
 if (r instanceof ColoredPoint cp 
@@ -463,6 +466,9 @@ if (r instanceof ColoredPoint cp
 }
 ```
 
+  </template>
+  <template #code2>
+
 ```java
 if (r instanceof ColoredPoint(Point2D(int x, int y), Color c)) {
   // work with x, y, and c
@@ -474,6 +480,9 @@ var length = switch (r) {
 }
 ```
 
+  </template>
+</JdkLinkedCodeBlocks>
+
 ---
 layout: feature
 title: Unnamed Patterns and Variables
@@ -483,14 +492,6 @@ title: Unnamed Patterns and Variables
 </template>
 
 now it's possible to use the underscore character wherever a variable name would be used. However, it's not a regular variable name: it means "don't care" as **underscore can be redeclared, and can not be referenced**
-
-**unnamed patterns**&nbsp;which can be used in pattern matching to ignore subpatterns
-
-```java
-if (r instanceof ColoredPoint(Point(int x, int y), Color c)) {
-  // do something with x and y, but c is not needed
-}
-```
 
 ```java
 var _ = mySet.add(x); // ignore the return value
@@ -504,11 +505,28 @@ list.stream()
   .toList();
 ```
 
+**unnamed patterns** which can be used in pattern matching to ignore subpatterns
+
+<JdkLinkedCodeBlocks label1="JDK21" label2="JDK22" size="small" codeClass="text-[11px]">
+  <template #code1>
+
+```java
+if (r instanceof ColoredPoint(Point(int x, int y), Color c)) {
+  // do something with x and y, but c is not needed
+}
+```
+
+  </template>
+  <template #code2>
+
 ```java
 if (r instanceof ColoredPoint(Point(int x, int y), _)) {
   // ... x ... y ...
 }
 ```
+
+  </template>
+</JdkLinkedCodeBlocks>
 
 ---
 layout: feature
@@ -523,9 +541,9 @@ In old Java versions, one needed write quite some boilerplate code even for the 
 1. A more tolerant launch protocol
 2. Unnamed classes
 
-**Instance main methods**&nbsp;makes the Java launch protocol more flexible, by making some aspects of the `main`&nbsp;method optional.
+**Instance main methods** makes the Java launch protocol more flexible, by making some aspects of the `main` method optional.
 
-**Methods to exist outside of an enclosing class**&nbsp;in which case they are automatically wrapped into a synthetic **unnamed class**.
+**Methods to exist outside of an enclosing class** in which case they are automatically wrapped into a synthetic **unnamed class**.
 
 ```java
 public class HelloWorld {

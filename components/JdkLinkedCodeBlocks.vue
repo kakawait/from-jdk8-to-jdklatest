@@ -2,8 +2,8 @@
 import JdkCodeBlock from './JdkCodeBlock.vue'
 
 withDefaults(defineProps<{
-  label1: string
-  label2: string
+  label1?: string
+  label2?: string
   size?: 'small' | 'medium' | 'large'
   codeClass?: string
   direction?: 'horizontal' | 'vertical'
@@ -17,10 +17,10 @@ const id2 = 'anchor-' + Math.random().toString(36).substring(2, 9)
 
 <template>
   <div 
-    class="jdk-linked-code-blocks grid items-center gap-4 mt-1"
-    :class="direction === 'horizontal' ? 'grid-cols-[1fr_100px_1fr]' : 'grid-cols-1'"
+    class="jdk-linked-code-blocks grid items-center gap-2 mt-1"
+    :class="direction === 'horizontal' ? 'grid-cols-[1fr_50px_1fr]' : 'grid-cols-1'"
   >
-    <JdkCodeBlock :label="label1" :size="size || 'small'" :data-id="id1" :class="codeClass">
+    <JdkCodeBlock :label="label1" :size="size || 'small'" :data-id="id1" :contentClass="codeClass">
       <slot name="code1" />
     </JdkCodeBlock>
 
@@ -28,7 +28,7 @@ const id2 = 'anchor-' + Math.random().toString(36).substring(2, 9)
       <FancyArrow :from="`[data-id=${id1}]`" :to="`[data-id=${id2}]`" static />
     </div>
 
-    <JdkCodeBlock :label="label2" :size="size || 'small'" :data-id="id2" :class="codeClass">
+    <JdkCodeBlock :label="label2" :size="size || 'small'" :data-id="id2" :contentClass="codeClass">
       <slot name="code2" />
     </JdkCodeBlock>
   </div>
