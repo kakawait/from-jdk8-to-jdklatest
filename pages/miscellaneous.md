@@ -1,6 +1,6 @@
 ---
 layout: section-title
-image: /images/Picture5.png
+image: /images/miscellaneous.png
 ---
 
 # Miscellaneous

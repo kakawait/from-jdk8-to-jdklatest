@@ -1,6 +1,6 @@
 ---
 layout: section-title
-image: /images/Picture6.png
+image: /images/security.png
 ---
 
 # Security

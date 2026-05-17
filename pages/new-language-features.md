@@ -1,6 +1,6 @@
 ---
 layout: section-title
-image: /images/Picture3.png
+image: /images/new-language-features.png
 ---
 
 # New language features
@@ -198,7 +198,7 @@ var map = new HashMap<>();
 
 </div>
 
-<JdkAlert image="/images/Picture9.png">
+<JdkAlert image="/images/alert-warning.png">
 
 ### Make sure to read the official style guides
 
@@ -305,7 +305,7 @@ System.out.println(html);
   </template>
 </JdkLinkedCodeBlocks>
 
-<JdkAlert image="/images/Picture9.png" class="mt-4">
+<JdkAlert image="/images/alert-warning.png" class="mt-4">
 
 ### No variables interpolation
 
@@ -737,3 +737,4 @@ However, it was not possible to import all classes of a module in a single instr
 ```java
 import module java.base;
 ```
+``

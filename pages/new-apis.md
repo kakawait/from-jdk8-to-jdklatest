@@ -1,6 +1,6 @@
 ---
 layout: section-title
-image: /images/Picture4.png
+image: /images/new-apis.png
 ---
 
 # New APIs

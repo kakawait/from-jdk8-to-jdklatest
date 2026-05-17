@@ -1,6 +1,6 @@
 ---
 layout: section-title
-image: /images/Picture7.png
+image: /images/deprecations-removals.png
 ---
 
 # Deprecations &amp; Removals

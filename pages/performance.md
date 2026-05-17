@@ -1,6 +1,6 @@
 ---
 layout: section-title
-image: /images/Picture2.png
+image: /images/performance.png
 ---
 
 # Performance
