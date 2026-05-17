@@ -602,16 +602,22 @@ layout: feature
 title: String template
 ---
 <template #badge>
-  <JdkVersions v="22" preview="21" />
+<div class="flex items-center gap-1 text-[12px] font-bold">
+<span class="opacity-60">(Preview in</span>
+<JdkBadge label="JDK21" color="#4acaec" size="small" />
+<span class="opacity-60">)</span>
+<JdkBadge label="JDK22" color="#710070" size="small" />
+<span class="opacity-60">⚠️ Removed from</span>
+<JdkBadge label="JDK23" color="#854800" size="small" />
+</div>
 </template>
 
-String Templates are an extension to the single-line String literals and Text Blocks, allowing String interpolation and much more.
+<div class="text-center text-[14px] mb-4 leading-relaxed">
+String Templates are an extension to the single-line String literals and Text Blocks,<br>
+allowing String interpolation and much more.
+</div>
 
-Built-in processors:
-
-`STR, FMT, RAW`
-
-⚠️ Removed from **JDK23**
+<JdkCodeBlock label="OLD JDK" color="#e3ead1" textColor="#0e2a47" borderColor="#a0a88a" size="small" contentClass="text-[12px]" class="mb-4">
 
 ```java
 var name = "Thibaud";
@@ -620,6 +626,62 @@ info = new StringBuilder().append("My name is ").append(name);
 // java 15
 info = "My name is %s".formatter(name);
 ```
+
+</JdkCodeBlock>
+
+<div class="grid grid-cols-[1fr_1.3fr] gap-4">
+<div>
+<JdkCodeBlock label="JDK22" size="small" contentClass="text-[11px]" class="mb-4">
+
+```java
+var name = "Thibaud";
+var info = STR."My name is \{name}";
+```
+
+</JdkCodeBlock>
+
+<div class="flex items-center justify-center w-full bg-white p-2 rounded-xl shadow-sm border border-gray-200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" class="w-full h-auto" preserveAspectRatio="xMidYMid meet" style="font-family: 'Courier New', Courier, ui-monospace, monospace;">
+<g font-weight="600" font-size="42px">
+<text y="80">
+<tspan x="30" fill="#1d3c9d">var</tspan>
+<tspan x="130" fill="#1d3c9d">info</tspan>
+<tspan x="255" fill="#000000">=</tspan>
+<tspan x="305" fill="#000000">STR</tspan>
+<tspan x="380" fill="#000000">.</tspan>
+<tspan x="405" fill="#7f2b23">"My name is </tspan>
+<tspan x="705" fill="#c82823">\{name}</tspan>
+<tspan x="880" fill="#000000">";</tspan>
+</text>
+</g>
+
+<!-- Annotation style -->
+<g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="26px" fill="#000">
+<g stroke="#000" stroke-width="2.5" fill="none">
+<line x1="305" y1="95" x2="380" y2="95" />
+<line x1="342" y1="95" x2="180" y2="140" />
+<line x1="405" y1="95" x2="880" y2="95" />
+<line x1="642" y1="95" x2="642" y2="140" />
+<line x1="392" y1="85" x2="280" y2="230" />
+<line x1="705" y1="110" x2="880" y2="110" />
+<line x1="840" y1="110" x2="760" y2="230" />
+</g>
+
+<text x="180" y="175" text-anchor="middle">Template processor</text>
+<text x="642" y="175" text-anchor="middle">Template</text>
+<text x="280" y="265" text-anchor="middle">Dot character (U+002E)</text>
+<text x="760" y="265" text-anchor="middle">Embedded expression</text>
+</g>
+</svg>
+</div>
+
+<div class="text-[13px] font-bold mt-2">
+Built-in processors: <span class="bg-gray-800 px-1 rounded">STR</span>, <span class="bg-gray-800 px-1 rounded">FMT</span>, <span class="bg-gray-800 px-1 rounded">RAW</span>
+</div>
+</div>
+
+<div>
+<JdkCodeBlock label="JDK22" size="small" contentClass="text-[11px]">
 
 ```java
 var JSON = StringTemplate.Processor.of(
@@ -635,10 +697,9 @@ JSONObject doc = JSON."""
 """;
 ```
 
-```java
-var name = "Thibaud";
-var info = STR."My name is \{name}";
-```
+</JdkCodeBlock>
+</div>
+</div>
 
 ---
 layout: feature
