@@ -359,8 +359,6 @@ title: Record classes
 
 Record Classes introduce a new type declaration to the language to define immutable data classes. Instead of the usual ceremony with private fields, getters and constructors, it allows us to use a **compact syntax**:
 
-Java 16 improves on this, as **now it’s also possible to define Local Records** in a method body:
-
 ```java
 public record Point(int x, int y) { }
 
@@ -368,6 +366,11 @@ var point = new Point(1, 2);
 point.x(); // returns 1
 point.y(); // returns 2
 ```
+
+Java 16 improves on this, as now it’s also possible to define **Local Records** in a method body:
+
+<JdkCodeWithText class="mt-4">
+  <template #code>
 
 ```java
 public List<Product> findProductsWithMostSaving(List<Product> products) {
@@ -381,6 +384,11 @@ public List<Product> findProductsWithMostSaving(List<Product> products) {
     .collect(Collectors.toList());
 }
 ```
+
+  </template>
+
+  This feature is useful to perform intermediate calculations on data, without having to declare a class that would only be used in this method.
+</JdkCodeWithText>
 ---
 layout: feature
 title: Sealed Classes

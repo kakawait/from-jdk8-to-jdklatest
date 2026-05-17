@@ -2,7 +2,7 @@
 import JdkBadge from './JdkBadge.vue'
 
 defineProps<{
-  label: string
+  label?: string
   color?: string
   textColor?: string
   borderColor?: string
@@ -13,6 +13,7 @@ defineProps<{
 <template>
   <div class="jdk-code-block flex flex-col gap-1">
     <JdkBadge 
+      v-if="label"
       :label="label" 
       :color="color" 
       :textColor="textColor" 
