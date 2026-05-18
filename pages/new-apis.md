@@ -476,37 +476,58 @@ title: 😅 😗 😆 🧐 🤫 😱 🥳 😍 😴 🤓 😃
   <JdkVersions v="21" />
 </template>
 
+<div class="grid grid-cols-2 gap-4 mt-2 items-start">
+<div>
+<JdkCodeBlock size="small" contentClass="text-[10px]">
+
 ```java
 String messageWithEmoji = "Hello Java 21! 😄";
 String messageWithoutEmoji = "Hello Java!";
 
-assertTrue(messageWithEmoji.codePoints().anyMatch(Character::isEmoji));
-assertFalse(messageWithoutEmoji.codePoints().anyMatch(Character::isEmoji));
+assertTrue(messageWithEmoji.codePoints()
+  .anyMatch(Character::isEmoji));
+assertFalse(messageWithoutEmoji.codePoints()
+  .anyMatch(Character::isEmoji));
 
 String emojiPresentationMessage = "Hello Java 21! 🔥😄";
 String nonEmojiPresentationMessage = "Hello Java 21!";
 
-assertTrue(emojiPresentationMessage.codePoints().anyMatch(Character::isEmojiPresentation));
-assertFalse(nonEmojiPresentationMessage.codePoints().anyMatch(Character::isEmojiPresentation));
+assertTrue(emojiPresentationMessage.codePoints()
+  .anyMatch(Character::isEmojiPresentation));
+assertFalse(nonEmojiPresentationMessage.codePoints()
+  .anyMatch(Character::isEmojiPresentation));
+```
 
+</JdkCodeBlock>
+</div>
+
+<div>
+<JdkCodeBlock size="small" contentClass="text-[10px]">
+
+```java
 assertTrue(Character.isEmojiModifier(0x1F3FB)); // light skin tone
 assertTrue(Character.isEmojiModifier(0x1F3FD)); // medium skin tone
 assertTrue(Character.isEmojiModifier(0x1F3FF)); // dark skin tone
 
-assertTrue(Character.isEmojiModifierBase(Character.codePointAt("👍", 0)));
-assertTrue(Character.isEmojiModifierBase(Character.codePointAt("👶", 0)));
-assertFalse(Character.isEmojiModifierBase(Character.codePointAt("🍕", 0)));
+assertTrue(Character.isEmojiModifierBase(
+  Character.codePointAt("👍", 0)));
+assertTrue(Character.isEmojiModifierBase(
+  Character.codePointAt("👶", 0)));
 
-assertTrue(Character.isEmojiComponent(0x200D)); // Zero width joiner
+assertTrue(Character.isEmojiComponent(0x200D)); // ZWJ
 assertTrue(Character.isEmojiComponent(0x1F3FD)); // medium skin tone
 
-assertTrue(Character.isExtendedPictographic(Character.codePointAt("✔️", 0)));  // Checkmark,
+assertTrue(Character.isExtendedPictographic(
+  Character.codePointAt("✔️", 0)));
 
-String messageWithEmoji = "Hello Java 21! 😄";
-Matcher isEmojiMatcher = Pattern.compile("\\p{IsEmoji}").matcher(messageWithEmoji);
-    
-assertTrue(isEmojiMatcher.find());
+String msg = "Hello Java 21! 😄";
+Matcher m = Pattern.compile("\\p{IsEmoji}").matcher(msg);
+assertTrue(m.find());
 ```
+
+</JdkCodeBlock>
+</div>
+</div>
 
 
 ---
@@ -518,14 +539,6 @@ title: Virtual Threads
 </template>
 
 Virtual threads are lightweight threads that dramatically reduce the effort of writing, maintaining, and observing high-throughput concurrent applications.
-
-There are limitations in the current implementation of virtual threads. In some cases, a virtual thread will pin the carrier thread, which will not be able to handle other virtual threads:
-
-- The use of the `synchronized` keyword
-
-- The use of native methods or the Foreign Function API from JEP 424
-
-Due to these limitations, virtual threads are not necessarily the solution to all concurrency problems.
 
 ```java
 // With OS threads, this would be very problematic
@@ -539,6 +552,14 @@ try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
     });
 }
 ```
+
+There are limitations in the current implementation of virtual threads.
+
+- ~~The use of the `synchronized` keyword~~ (fixed in <JdkBadge label="JDK24" size="small" />)
+- The use of native methods or the Foreign Function API from JEP 424
+
+Due to these limitations, virtual threads are not necessarily the solution to all concurrency problems.
+
 
 
 ---
