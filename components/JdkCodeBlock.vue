@@ -36,5 +36,6 @@ defineProps<{
 .jdk-code-block :deep(pre), .jdk-code-block :deep(code) {
   margin: 0 !important;
   font-size: inherit !important;
+  line-height: inherit !important;
 }
 </style>

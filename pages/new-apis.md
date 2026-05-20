@@ -570,20 +570,25 @@ title: Structured concurrency API
   <JdkVersions v="21" preview="19, 20" />
 </template>
 
+<div class="text-[13px] leading-tight mb-3 opacity-90">
 Structured concurrency API to define subtask relations between threads to streamline error handling and cancellation, improve reliability, and enhance observability
+</div>
 
-**OLD JDK**
+<div class="grid grid-cols-[1.3fr_1fr] gap-x-8 items-start mt-2">
 
-- If an error occurs in the `fetchOrder()` method, we will still wait for the `findUser()` task to complete.
-
-- If an error occurs in the `findUser()` method, then the `handle()` method will terminate, but the thread executing `fetchOrder()` will continue to run, resulting in a thread leak.
-
-- If the `handle()` method is interrupted, this interruption is not propagated to the subtasks, and their threads will continue to run, resulting in a thread leak.
+<JdkLinkedCodeBlocks 
+  label1="OLD JDK" 
+  label2="JDK21" 
+  direction="vertical" 
+  size="small"
+  codeClass="text-[10px] leading-tight"
+  arrowHeight="h-6"
+>
+  <template #code1>
 
 ```java
 ExecutorService ex = Executors.newFixedThreadPool(nbCores);
-Response handle() 
-  throws ExecutionException, InterruptedException {
+Response handle() throws ExecutionException, InterruptedException {
     Future<String>  user  = es.submit(() -> findUser());
     Future<Integer> order = es.submit(() -> fetchOrder());
     String theUser  = user.get();   // Join findUser 
@@ -591,6 +596,9 @@ Response handle()
     return new Response(theUser, theOrder);
 }
 ```
+
+  </template>
+  <template #code2>
 
 ```java
 Response handle() throws ExecutionException, InterruptedException {
@@ -607,6 +615,19 @@ Response handle() throws ExecutionException, InterruptedException {
 }
 ```
 
+  </template>
+</JdkLinkedCodeBlocks>
+
+<div class="text-[11.5px] leading-snug space-y-4 pt-1 opacity-90 text-white/90">
+
+- If an error occurs in the `fetchOrder()` method, we will still wait for the `findUser()` task to complete.
+- If an error occurs in the `findUser()` method, then the `handle()` method will terminate, but the thread executing `fetchOrder()` will continue to run, resulting in a thread leak.
+- If the `handle()` method is interrupted, this interruption is not propagated to the subtasks, and their threads will continue to run, resulting in a thread leak.
+
+</div>
+
+</div>
+
 
 ---
 layout: feature
@@ -617,7 +638,7 @@ title: Foreign linker API and Foreign memory access API
 </template>
 
 - The *foreign linker API* provides a flexible way to access native code on the host machine
-- Can replace JNI/JNA
+  - Can replace JNI/JNA
 - The *foreign memory access AP*I provides a supported, safe, and efficient API to access both heap and native memory
 
 Only Foreign memory access
