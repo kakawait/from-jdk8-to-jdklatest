@@ -2,11 +2,23 @@
   <div class="jdk-versions flex items-center gap-3">
     <div v-if="previews.length" class="flex items-center gap-1.5 opacity-80">
       <span v-if="prefix" class="text-[10px] font-bold tracking-wider mr-0 text-gray-400">{{ prefix }}</span>
-      <JdkBadge v-for="v in previews" :key="v" :label="formatLabel(v)" :size="previewSize" />
+      <JdkBadge
+        v-for="v in previews"
+        :key="v"
+        :label="formatLabel(v)"
+        :size="previewSize"
+        :data-jdk-label="formatLabel(v)"
+      />
       <span v-if="suffix" class="text-[10px] font-bold tracking-wider ml-0 text-gray-400">{{ suffix }}</span>
     </div>
     <div v-if="releases.length" class="flex items-center gap-1.5">
-      <JdkBadge v-for="v in releases" :key="v" :label="formatLabel(v)" :size="size" />
+      <JdkBadge
+        v-for="v in releases"
+        :key="v"
+        :label="formatLabel(v)"
+        :size="size"
+        :data-jdk-label="formatLabel(v)"
+      />
     </div>
   </div>
 </template>

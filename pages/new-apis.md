@@ -634,18 +634,52 @@ layout: feature
 title: Foreign linker API and Foreign memory access API
 ---
 <template #badge>
-  <JdkVersions v="22" preview="14, 15, 16, 17, 18, 19, 20, 21" />
+  <div class="foreign-memory-badge">
+    <JdkVersions v="22" preview="14, 15, 16, 17, 18, 19, 20, 21" />
+    <FancyArrow
+      from="[data-jdk-label='JDK14']@(85%,390%)"
+      to="[data-jdk-label='JDK14']@bottom"
+      color="white"
+      static
+    />
+    <FancyArrow
+      from="[data-jdk-label='JDK15']@(15%,390%)"
+      to="[data-jdk-label='JDK15']@bottom"
+      color="white"
+      static
+    />
+    <div class="foreign-memory-note">Only Foreign memory access</div>
+  </div>
 </template>
 
 - The *foreign linker API* provides a flexible way to access native code on the host machine
   - Can replace JNI/JNA
 - The *foreign memory access AP*I provides a supported, safe, and efficient API to access both heap and native memory
 
-Only Foreign memory access
-
 Good blog post for pratical use case
 
 [https://blog.arkey.fr/2021/02/20/a-practical-look-at-jep-389-in-jdk16-with-libsodium/](https://blog.arkey.fr/2021/02/20/a-practical-look-at-jep-389-in-jdk16-with-libsodium/)
+
+<style>
+.foreign-memory-badge {
+  --px: min(calc(100cqw / 1280), calc(100cqh / 720));
+  position: relative;
+  padding-bottom: calc(62 * var(--px));
+}
+
+.foreign-memory-note {
+  position: absolute;
+  left: calc(49 * var(--px));
+  top: calc(72 * var(--px));
+  width: calc(285 * var(--px));
+  color: #fff;
+  font-size: calc(16 * var(--px));
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+</style>
 
 
 ---
