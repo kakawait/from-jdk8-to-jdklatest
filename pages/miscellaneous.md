@@ -10,23 +10,32 @@ image: /images/miscellaneous.png
 layout: feature
 title: Launching and tools
 ---
-<template #badge>
-  <JdkVersions v="9, 11, 12, 14, 22" />
-</template>
 
-- Launch Multi-File Source-Code Programs.
-...
+<JdkLabeledList
+  :items="[
+    { jdk: 'JDK22', text: 'Launch Multi-File Source-Code Programs.' },
+    { jdk: 'JDK14', text: 'Flight Recorder Event Streaming: profiling data is available via an API, making it suitable for continuous monitoring.' },
+    { jdk: 'JDK12', text: 'Microbenchmark Suite based on JMH.' },
+    { jdk: 'JDK11', text: 'Flight Recorder is part of OpenJDK.' },
+    { jdk: 'JDK11', text: 'Low-Overhead Heap Profiling via JMTI.' },
+    { jdk: 'JDK11', text: 'Launch Single-File Source-Code Programs, including support for shebang (#!) line on Unix.' },
+    { jdk: 'JDK9', text: 'jshell: the Java REPL.' },
+  ]"
+/>
 
 ---
 layout: feature
 title: Packaging
 ---
-<template #badge>
-  <JdkVersions v="9, 16, 18" />
-</template>
 
-- javac now assumes that source files are encoded with the new default UTF-8 charset
-...
+<JdkLabeledList
+  :items="[
+    { jdk: 'JDK18', text: 'javac now assumes that source files are encoded with the new default UTF-8 charset.' },
+    { jdk: 'JDK16', text: 'Packaging Tool to create self-contained applications, also supporting native package formats: msi, exe, pkg, dmg, deb and rpm.' },
+    { jdk: 'JDK9', text: 'jlink Java Linker that can build an optimized, slim run-time image for a modular Java application that contains only the required parts of the JDK.' },
+    { jdk: 'JDK9', text: 'Multi-Release JAR Files to allow multiple, Java-release-specific versions of class in a single archive.' },
+  ]"
+/>
 
 ---
 layout: feature
@@ -75,12 +84,18 @@ public void exampleSnippetCode() {
 layout: feature
 title: New supported platforms
 ---
-<template #badge>
-  <JdkVersions v="9, 16, 17, 19" />
-</template>
 
-- Linux/RISC-V
-...
+<JdkLabeledList
+  :items="[
+    { jdk: 'JDK19', text: 'Linux/RISC-V.' },
+    { jdk: 'JDK17', text: 'macOS/AArch64.' },
+    { jdk: 'JDK16', text: 'Alpine.' },
+    { jdk: 'JDK16', text: 'Windows/AArch64.' },
+    { jdk: 'JDK9', text: 'Linux/AArch64.' },
+    { jdk: 'JDK9', text: 'Linux/s390x.' },
+    { jdk: 'JDK9', text: 'Unified arm32/arm64.' },
+  ]"
+/>
 
 ---
 layout: feature
@@ -89,7 +104,6 @@ title: New release train
 <template #badge>
   <JdkVersions v="9" />
 </template>
-
 
 ---
 layout: feature
@@ -108,8 +122,11 @@ layout: feature
 title: Markdown Documentation Comments
 ---
 <template #badge>
-  <JdkVersions v="23, OLD" />
+  <JdkVersions v="23" />
 </template>
+
+<JdkLinkedCodeBlocks label2="JDK23" size="small" codeClass="text-[8px]" arrowHeight="h-8">
+  <template #code1>
 
 ```java
 /**
@@ -147,6 +164,9 @@ title: Markdown Documentation Comments
  */
 ```
 
+  </template>
+  <template #code2>
+
 ```java
 /// Returns a hash code value for the object. This method is
 /// supported for the benefit of hash tables such as those provided by
@@ -179,3 +199,6 @@ title: Markdown Documentation Comments
 /// @see     java.lang.Object#equals(java.lang.Object)
 /// @see     java.lang.System#identityHashCode
 ```
+
+  </template>
+</JdkLinkedCodeBlocks>
