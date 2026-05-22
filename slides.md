@@ -1,7 +1,7 @@
 ---
 theme: default
-background: https://source.unsplash.com/collection/94734566/1920x1080
-class: text-center
+background: /images/background.png
+class: text-white text-left
 highlighter: shiki
 lineNumbers: false
 info: |
@@ -10,9 +10,17 @@ addons:
   - fancy-arrow
 ---
 
-# From Java 8 to Java 23
-
-Thibaud Lepretre
+<div class="absolute top-[3.5rem]">
+  <h1 class="!text-7xl !leading-tight font-bold">
+    From <span class="bg-gradient-to-r from-[#00d4ff] to-[#00ffcc] bg-clip-text text-transparent">JDK9</span> to <span class="bg-gradient-to-r from-[#a855f7] to-[#d8b4fe] bg-clip-text text-transparent">JDK23</span>
+  </h1>
+  <div class="mt-4">
+    <p class="text-4xl font-semibold text-[#60a5fa] opacity-90">The journey of innovation</p>
+  </div>
+  <p class="mt-10 text-sm font-light opacity-70 uppercase tracking-[0.3em]">
+    Thibaud LEPRETRE
+  </p>
+</div>
 
 
 ---
