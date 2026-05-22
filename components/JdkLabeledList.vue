@@ -31,28 +31,26 @@ function asParts(text: JdkLabeledListItem['text']): JdkLabeledListTextPart[] {
         </span>
         <JdkBadge :label="item.jdk" size="medium" class="jdk-labeled-list__badge" />
       </div>
-      <span class="jdk-labeled-list__text">
-        <span class="jdk-labeled-list__bullet" aria-hidden="true">•</span>
-        <span class="jdk-labeled-list__copy">
-          <template v-for="(part, partIndex) in asParts(item.text)" :key="partIndex">
-            <JdkBadge
-              v-if="typeof part !== 'string'"
-              :label="part.badge"
-              :size="part.size || 'small'"
-              class="jdk-labeled-list__inline-badge"
-            />
-            <span v-else v-html="part" />
-          </template>
-        </span>
-      </span>
+      <div class="jdk-labeled-list__text">
+        <template v-for="(part, partIndex) in asParts(item.text)" :key="partIndex">
+          <JdkBadge
+            v-if="typeof part !== 'string'"
+            :label="part.badge"
+            :size="part.size || 'small'"
+            class="jdk-labeled-list__inline-badge"
+          />
+          <span v-else v-html="part" />
+        </template>
+      </div>
     </li>
   </ul>
 </template>
 
 <style scoped>
 .jdk-labeled-list {
-  display: grid;
-  gap: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   width: 100%;
   margin: 0 !important;
   padding: 0 !important;
@@ -60,35 +58,37 @@ function asParts(text: JdkLabeledListItem['text']): JdkLabeledListTextPart[] {
 }
 
 .jdk-labeled-list--dense {
-  gap: 0;
+  gap: 0.2rem;
 }
 
 .jdk-labeled-list__item {
   display: grid;
   grid-template-columns: 210px minmax(0, 1fr);
-  column-gap: 12px;
+  column-gap: 16px;
   align-items: start;
   margin: 0 !important;
   padding: 0 !important;
-  list-style: none !important;
 }
 
 .jdk-labeled-list__item--dense {
   grid-template-columns: 180px minmax(0, 1fr);
-  column-gap: 8px;
+  column-gap: 12px;
 }
 
 .jdk-labeled-list__badge-wrapper {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 100%;
-  margin-top: 7px;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  height: 1.4em;
   gap: 8px;
 }
 
 .jdk-labeled-list__item--dense .jdk-labeled-list__badge-wrapper {
-  margin-top: 4px;
+  font-size: 1.05rem;
+  line-height: 1.3;
+  height: 1.3em;
 }
 
 .jdk-labeled-list__badge {
@@ -117,28 +117,17 @@ function asParts(text: JdkLabeledListItem['text']): JdkLabeledListTextPart[] {
 }
 
 .jdk-labeled-list__text {
-  display: grid;
-  grid-template-columns: 22px minmax(0, 1fr);
   min-width: 0;
   margin: 0 !important;
   padding: 0 !important;
   color: #fff;
   font-size: 1.2rem;
+  line-height: 1.4;
 }
 
 .jdk-labeled-list--dense .jdk-labeled-list__text {
   font-size: 1.05rem;
   line-height: 1.3;
-}
-
-.jdk-labeled-list__bullet {
-  font-size: 0.85em;
-  line-height: inherit;
-  color: currentColor;
-}
-
-.jdk-labeled-list__copy {
-  min-width: 0;
 }
 
 .jdk-labeled-list__inline-badge {
