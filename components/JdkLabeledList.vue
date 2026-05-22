@@ -8,11 +8,13 @@ type JdkLabeledListTextPart = string | {
 
 type JdkLabeledListItem = {
   jdk: string
+  deprecatedJdk?: string
   text: string | JdkLabeledListTextPart[]
 }
 
 defineProps<{
   items: JdkLabeledListItem[]
+  dense?: boolean
 }>()
 
 function asParts(text: JdkLabeledListItem['text']): JdkLabeledListTextPart[] {
@@ -21,9 +23,14 @@ function asParts(text: JdkLabeledListItem['text']): JdkLabeledListTextPart[] {
 </script>
 
 <template>
-  <ul class="jdk-labeled-list">
-    <li v-for="(item, index) in items" :key="`${item.jdk}-${index}`" class="jdk-labeled-list__item">
-      <JdkBadge :label="item.jdk" size="medium" class="jdk-labeled-list__badge" />
+  <ul class="jdk-labeled-list" :class="{ 'jdk-labeled-list--dense': dense }">
+    <li v-for="(item, index) in items" :key="`${item.jdk}-${index}`" class="jdk-labeled-list__item" :class="{ 'jdk-labeled-list__item--dense': dense }">
+      <div class="jdk-labeled-list__badge-wrapper">
+        <span v-if="item.deprecatedJdk" class="jdk-labeled-list__deprecated">
+          (deprecated <JdkBadge :label="item.deprecatedJdk" size="small" />)
+        </span>
+        <JdkBadge :label="item.jdk" size="medium" class="jdk-labeled-list__badge" />
+      </div>
       <span class="jdk-labeled-list__text">
         <span class="jdk-labeled-list__bullet" aria-hidden="true">•</span>
         <span class="jdk-labeled-list__copy">
@@ -52,9 +59,13 @@ function asParts(text: JdkLabeledListItem['text']): JdkLabeledListTextPart[] {
   list-style: none !important;
 }
 
+.jdk-labeled-list--dense {
+  gap: 0;
+}
+
 .jdk-labeled-list__item {
   display: grid;
-  grid-template-columns: 106px minmax(0, 1fr);
+  grid-template-columns: 210px minmax(0, 1fr);
   column-gap: 12px;
   align-items: start;
   margin: 0 !important;
@@ -62,11 +73,47 @@ function asParts(text: JdkLabeledListItem['text']): JdkLabeledListTextPart[] {
   list-style: none !important;
 }
 
+.jdk-labeled-list__item--dense {
+  grid-template-columns: 180px minmax(0, 1fr);
+  column-gap: 8px;
+}
+
+.jdk-labeled-list__badge-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin-top: 7px;
+  gap: 8px;
+}
+
+.jdk-labeled-list__item--dense .jdk-labeled-list__badge-wrapper {
+  margin-top: 4px;
+}
+
 .jdk-labeled-list__badge {
   width: 100px;
   min-width: 100px;
-  margin-top: 7px;
-  justify-self: start;
+}
+
+.jdk-labeled-list__item--dense .jdk-labeled-list__badge {
+  width: 80px;
+  min-width: 80px;
+  transform: scale(0.9);
+  transform-origin: right center;
+}
+
+.jdk-labeled-list__deprecated {
+  white-space: nowrap;
+  font-size: 0.7rem;
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.jdk-labeled-list__item--dense .jdk-labeled-list__deprecated {
+  font-size: 0.6rem;
 }
 
 .jdk-labeled-list__text {
@@ -77,6 +124,11 @@ function asParts(text: JdkLabeledListItem['text']): JdkLabeledListTextPart[] {
   padding: 0 !important;
   color: #fff;
   font-size: 1.2rem;
+}
+
+.jdk-labeled-list--dense .jdk-labeled-list__text {
+  font-size: 1.05rem;
+  line-height: 1.3;
 }
 
 .jdk-labeled-list__bullet {
