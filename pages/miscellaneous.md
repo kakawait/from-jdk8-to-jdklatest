@@ -45,8 +45,17 @@ title: Javadoc
   <JdkVersions v="9, 18" />
 </template>
 
-- The Javadoc tool now emits HTML5 markup instead of a frame-based layout and the documentation contains a search box to ease navigation
-...
+<JdkLabeledList
+  :items="[
+    { jdk: 'JDK9', text: 'The Javadoc tool now emits HTML5 markup instead of a frame-based layout and the documentation contains a search box to ease navigation.' },
+    { jdk: 'JDK18', text: '<code>@snippet</code> tag, a modern alternative for <code>@code</code> that supports multi-line code, supports styling and the inclusion of external snippets.' },
+  ]"
+/>
+
+<div class="grid grid-cols-2 gap-4 mt-2">
+
+<JdkCodeBlock label="JDK18" size="small" contentClass="text-[9px] leading-tight">
+
 ```java
 /**
  * Highlighting based on regex:
@@ -60,6 +69,10 @@ public void myMethod() {
   // ...
 }
 ```
+
+</JdkCodeBlock>
+
+<JdkCodeBlock label="JDK18" size="small" contentClass="text-[9px] leading-tight">
 
 ```java
 /**
@@ -78,6 +91,10 @@ public void exampleSnippetCode() {
     // @end region=optional
 }
 ```
+
+</JdkCodeBlock>
+
+</div>
 
 
 ---
