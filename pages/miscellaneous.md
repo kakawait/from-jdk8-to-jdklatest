@@ -105,6 +105,11 @@ title: New release train
   <JdkVersions v="9" />
 </template>
 
+<img
+  :src="'/images/new-release-train-white.png'"
+  class="mx-auto max-h-[470px] max-w-full object-contain"
+/>
+  
 ---
 layout: feature
 title: Simple web server
