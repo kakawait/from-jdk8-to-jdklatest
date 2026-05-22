@@ -1,14 +1,23 @@
 <script setup lang="ts">
 import JdkBadge from './JdkBadge.vue'
 
+type JdkLabeledListTextPart = string | {
+  badge: string
+  size?: 'small' | 'medium' | 'large'
+}
+
 type JdkLabeledListItem = {
   jdk: string
-  text: string
+  text: string | JdkLabeledListTextPart[]
 }
 
 defineProps<{
   items: JdkLabeledListItem[]
 }>()
+
+function asParts(text: JdkLabeledListItem['text']): JdkLabeledListTextPart[] {
+  return Array.isArray(text) ? text : [text]
+}
 </script>
 
 <template>
@@ -17,7 +26,17 @@ defineProps<{
       <JdkBadge :label="item.jdk" size="medium" class="jdk-labeled-list__badge" />
       <span class="jdk-labeled-list__text">
         <span class="jdk-labeled-list__bullet" aria-hidden="true">•</span>
-        <span class="jdk-labeled-list__copy" v-html="item.text" />
+        <span class="jdk-labeled-list__copy">
+          <template v-for="(part, partIndex) in asParts(item.text)" :key="partIndex">
+            <JdkBadge
+              v-if="typeof part !== 'string'"
+              :label="part.badge"
+              :size="part.size || 'small'"
+              class="jdk-labeled-list__inline-badge"
+            />
+            <span v-else v-html="part" />
+          </template>
+        </span>
       </span>
     </li>
   </ul>
@@ -57,8 +76,7 @@ defineProps<{
   margin: 0 !important;
   padding: 0 !important;
   color: #fff;
-  font-size: 23px;
-  line-height: 1.18;
+  font-size: 1.2rem;
 }
 
 .jdk-labeled-list__bullet {
@@ -69,6 +87,12 @@ defineProps<{
 
 .jdk-labeled-list__copy {
   min-width: 0;
+}
+
+.jdk-labeled-list__inline-badge {
+  display: inline-flex;
+  vertical-align: 0.08em;
+  margin: 0 0.18em;
 }
 
 .jdk-labeled-list__text :deep(code) {
