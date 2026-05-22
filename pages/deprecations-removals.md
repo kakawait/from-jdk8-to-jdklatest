@@ -58,64 +58,78 @@ title: API
 layout: feature
 title: Tools
 ---
-<template #badge>
-  <JdkVersions v="9, 10, 11, 14, 15" />
-</template>
 
-- Remove the jjs tool (linked to Nashorn)
-...
+<JdkLabeledList
+  :items="[
+    { jdk: 'JDK15', deprecatedJdk: 'JDK11', text: 'Remove the jjs tool (linked to Nashorn).' },
+    { jdk: 'JDK14', deprecatedJdk: 'JDK11', text: 'Remove the Pack200 Tools and API.' },
+    { jdk: 'JDK10', text: 'Remove the javah tool.' },
+    { jdk: 'JDK9', text: 'Remove the jhat tool.' },
+    { jdk: 'JDK9', text: 'Remove the JVM TI hprof Agent.' },
+    { jdk: 'JDK9', text: 'Remove rt.jar from the JRE.' },
+  ]"
+/>
 
 ---
 layout: feature
 title: Security
 ---
-<template #badge>
-  <JdkVersions v="9, 17, 18" />
-</template>
 
-- JARs signed with SHA-1 algorithms are now restricted by default and treated as if they were unsigned
-...
+<JdkLabeledList
+  :items="[
+    { jdk: 'JDK18', text: 'JARs signed with SHA-1 algorithms are now restricted by default and treated as if they were unsigned.' },
+    { jdk: 'JDK17', text: 'Deprecate the Security Manager for Removal Work ongoing to consider use cases where the Security Manager is useful and provide alternatives (e.g. <a href=\'https://bugs.openjdk.org/browse/JDK-8199704\' target=\'_blank\'>JDK-8199704</a>).' },
+    { jdk: 'JDK9', text: 'Disable X.509 certificate chains with SHA-1 based signatures.' },
+  ]"
+/>
 
 ---
 layout: feature
 title: Platform
 ---
-<template #badge>
-  <JdkVersions v="15, 21" />
-</template>
 
-- Deprecate the Windows 32-bit x86 Port for **removal**.
-...
+<JdkLabeledList
+  :items="[
+    { jdk: 'JDK21', text: 'Deprecate the Windows 32-bit x86 Port for removal. Windows 10, the last Windows operating system to support 32-bit operation, will reach End of Life in October 2025.' },
+    { jdk: 'JDK15', text: 'Remove the Solaris and SPARC Ports.' },
+  ]"
+/>
 
 ---
 layout: feature
 title: GC
 ---
-<template #badge>
-  <JdkVersions v="9, 14" />
-</template>
 
-- Remove the Concurrent Mark Sweep (CMS) Garbage Collector
-...
+<JdkLabeledList
+  :items="[
+    { jdk: 'JDK14', deprecatedJdk: 'JDK9', text: 'Remove the Concurrent Mark Sweep (CMS) Garbage Collector.' },
+    { jdk: 'JDK14', text: 'Deprecate the ParallelScavenge + SerialOld GC Combination.' },
+    { jdk: 'JDK9', text: 'Remove GC Combinations Deprecated in JDK 8.' },
+  ]"
+/>
 
 ---
 layout: feature
 title: CLI flags
 ---
-<template #badge>
-  <JdkVersions v="9, 15" />
-</template>
 
-- Disable [Biased Locking](https://stackoverflow.com/questions/9439602/biased-locking-in-java) by default, deprecate related command-line flags
-...
+<JdkLabeledList
+  :items="[
+    { jdk: 'JDK15', text: 'Disable <a href=\'https://stackoverflow.com/questions/9439602/biased-locking-in-java\' target=\'_blank\'>Biased Locking</a>) by default, deprecate related command-line flags.' },
+    { jdk: 'JDK9', text: 'Remove Launch-Time JRE Version Selection directives: JRE-Version manifest entry and -version: cli option.' },
+  ]"
+/>
 
 ---
 layout: feature
 title: Misc
 ---
-<template #badge>
-  <JdkVersions v="9, 15, 17, 21" />
-</template>
 
-- Prepare to Disallow the Dynamic Loading of Agents to improve the integrity and security of the platform
-...
+<JdkLabeledList
+  :items="[
+    { jdk: 'JDK21', text: 'Prepare to Disallow the Dynamic Loading of Agents to improve the integrity and security of the platform.' },
+    { jdk: 'JDK17', text: 'Make floating-point operations consistently strict by default, warn when the strictfp modifier is used.' },
+    { jdk: 'JDK15', text: 'Remove the Experimental <a href=\'https://openjdk.org/jeps/295\' target=\'_blank\'>AOP</a> and <a href=\'https://openjdk.org/jeps/317\' target=\'_blank\'>JIT</a> compiler due to lack of interest.' },
+    { jdk: 'JDK9', text: 'Remove the Endorsed Standards Override (lib/endorsed) and Extensions (lib/ext) mechanisms from the JRE.' },
+  ]"
+/>
