@@ -45,3 +45,15 @@ title: GC
 layout: feature
 title: GC - G1 Specific
 ---
+
+<JdkLabeledList
+  :items="[
+    { jdk: 'JDK22', text: 'Remove the use of the GCLocker in G1. Improving JNI use cases.' },
+    { jdk: 'JDK20', text: 'Reduces G1 native memory footprint by ~1.5% of Java heap size by removing one of the mark bitmaps spanning the entire Java heap.' },
+    { jdk: 'JDK18', text: 'Allow G1 Heap Regions up to 512MB.' },
+    { jdk: 'JDK14', text: 'NUMA-Aware Memory Allocation.' },
+    { jdk: 'JDK12', text: 'Abortable mixed collections to meet user-supplied pause goals.' },
+    { jdk: 'JDK12', text: 'Automatically return heap memory to the operating system when idle.' },
+    { jdk: 'JDK10', text: 'Parallel Full GC to improve worst-case latencies.' },
+  ]"
+/>
