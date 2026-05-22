@@ -1,28 +1,95 @@
-# Slidev Migration Guidelines
+# Slidev JDK Evolution Agent Instructions
 
-This document provides context and instructions for agents assisting in the migration of the Java presentation from Reveal.js to Slidev.
+You are an expert at creating and maintaining the "From JDK 9 to JDK Latest" Slidev project. This project tracks Java language features, APIs, and changes from JDK 9 onwards.
 
-## 1. Project Overview
-- **Source**: Original slides were created using [slides.com](https://slides.com), a WYSIWYG editor for Reveal.js.
-- **Source Location**: Original files are in the `../revealjs/` directory (if available) or hosted on `:3031`.
-- **Target**: A modern, maintainable Slidev project using Vue components and idiomatic CSS.
+## Project Context
+- **Tech Stack:** [Slidev](https://sli.dev/), Vue 3, TypeScript, Tailwind CSS.
+- **Goal:** Provide a comprehensive, visually consistent overview of JDK evolution.
+- **Current Status:** Updated up to JDK 23. Tasked with adding JDK 24, 25, and 26.
 
-## 2. Core Mandates for Conversion
-- **Do Not Literal-Convert**: The original HTML/CSS from slides.com is "crap"—it uses absolute positioning, nested `<div>` soup, and inline styles. 
-- **Be Idiomatic**: 
-    - Use **CSS Grid** and **Flexbox** for layouts.
-    - Extract repeating elements into reusable **Vue Components** (e.g., `JdkBadge`, `JdkTimeline`).
-    - Use **Slidev Layouts** (in `layouts/`) for consistent slide structures.
-- **Visual Fidelity**: Maintain the "same visual aspect" (colors, typography, general feel) but without the technical debt of the original source.
+## Slide Structure
+The project uses multiple Markdown files imported into `slides.md`:
+- `pages/new-language-features.md`: Syntax and language changes.
+- `pages/new-apis.md`: Library and standard API additions.
+- `pages/performance.md`: GC improvements, JIT changes, etc.
+- `pages/security.md`: Security-related changes.
+- `pages/miscellaneous.md`: Tools (jlink, jpackage), etc.
+- `pages/deprecations-removals.md`: Features marked for removal or removed.
 
-## 3. Tooling & Comparison
-- **Visual Validation**: `playwright-cli` is installed system-wide. Use it to compare the two versions.
-- **Ports**:
-    - **Slidev (New)**: `http://localhost:3030` (Start with `pnpm run dev`).
-    - **Reveal.js (Old)**: `http://localhost:3031` (Start with `python3 -m http.server 3031` in the original project folder).
-- **Comparison Strategy**:
-    - Use `playwright-cli eval` to inspect the old HTML structures and styles.
-    - Use `playwright-cli screenshot` to take visual snapshots of both versions for comparison when raw HTML inspection isn't enough to verify alignment or spacing.
+## Core Components & Usage
 
-## 4. Specific Components
-- **JdkBadge**: Use this component for all JDK version indicators. It automatically handles colors based on the version label.
+### 1. `JdkVersions`
+Used to display version badges at the top of a feature slide.
+```vue
+<template #badge>
+  <JdkVersions v="23" preview="22" />
+</template>
+```
+- `v`: The version(s) where the feature is stable (comma-separated).
+- `preview`: The version(s) where it was in preview/incubation.
+
+### 2. `JdkLinkedCodeBlocks`
+Used for side-by-side or vertical comparisons between versions.
+```vue
+<JdkLinkedCodeBlocks label1="JDK8" label2="JDK16" size="small">
+  <template #code1>
+    ```java
+    // Old way
+    ```
+  </template>
+  <template #code2>
+    ```java
+    // New way
+    ```
+  </template>
+</JdkLinkedCodeBlocks>
+```
+
+### 3. `JdkCodeBlock`
+A styled code block with a version label.
+```vue
+<JdkCodeBlock label="JDK21" color="#4acaec">
+  ```java
+  // code
+  ```
+</JdkCodeBlock>
+```
+
+### 4. `JdkAlert`
+For warnings or important notes.
+```vue
+<JdkAlert image="/images/alert-warning.png">
+  ### Warning title
+  Warning content.
+</JdkAlert>
+```
+
+## Adding New JDK Versions (24, 25, 26)
+
+### Step 1: Update Configuration
+1.  **`components/jdk-utils.ts`**: Add unique colors for the new versions to `jdkColors`.
+2.  **`components/JdkTimeline.vue`**: Add the new versions to the `modernColumns` array with their release and EOL dates.
+
+### Step 2: Research & Implementation
+1.  **Research:** Use Google Search or official OpenJDK JEPs to find features for JDK 24, 25, and 26.
+2.  **Categorize:** Assign features to the correct `pages/*.md` file.
+3.  **Draft Slides:** Use the `feature` layout and appropriate components.
+    - Always include `<template #badge><JdkVersions ... /></template>`.
+    - Use code snippets to demonstrate the feature.
+    - Add presenter notes if useful.
+
+### Step 3: Visual Consistency
+- Ensure code snippets are concise.
+- Use `JdkLinkedCodeBlocks` for "Before vs. After" scenarios.
+- Keep descriptions brief and focused on the value of the feature.
+
+## Skill Integration
+Utilize the `slidev` skill for:
+- Exporting to PDF (`slidev export`).
+- Starting the dev server (`slidev dev`).
+- Understanding base Slidev features (animations, layouts).
+
+## Standard Layouts
+- `section-title`: Used for category headers.
+- `feature`: Used for individual feature slides.
+- `section`: Used for sub-sections.

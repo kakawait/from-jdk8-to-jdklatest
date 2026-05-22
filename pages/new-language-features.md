@@ -238,7 +238,7 @@ title: Helpful NullPointerExceptions describing precisely which variable was nul
   <JdkVersions v="15" preview="14" prefix="(Enabled with -XX:+ShowCodeDetailsInExceptionMessages in" suffix=")" />
 </template>
 
-<JdkLinkedCodeBlocks label1="OLD" label2="JDK15" direction="vertical" size="small">
+<JdkLinkedCodeBlocks label1="OLD" label2="JDK15" direction="vertical" size="small" codeClass="text-[10px]">
   <template #code1>
 
 ```java
@@ -530,10 +530,89 @@ if (r instanceof ColoredPoint(Point(int x, int y), _)) {
 
 ---
 layout: feature
+title: String template
+---
+<template #badge>
+<div class="flex items-center gap-1 text-[12px] font-bold">
+<span class="opacity-80 text-[10px] font-bold tracking-wider mr-0 text-gray-400"">(PREVIEW IN</span>
+<JdkBadge label="JDK21" size="small" />
+<JdkBadge label="JDK22" size="small" />
+<span class="opacity-80 text-[10px] font-bold tracking-wider ml-0 text-gray-400"">)</span>
+<span class="opacity-80 text-[10px] font-bold tracking-wider text-gray-400"">⚠️ Removed from</span>
+<JdkBadge label="JDK23" size="small" />
+</div>
+</template>
+
+<div class="text-center text-[14px] mb-4 leading-relaxed">
+String Templates are an extension to the single-line String literals and Text Blocks,<br>
+allowing String interpolation and much more.
+</div>
+
+<JdkCodeBlock label="OLD JDK" color="#e3ead1" textColor="#0e2a47" borderColor="#a0a88a" size="small" contentClass="text-[10px]" class="mb-4">
+
+```java
+var name = "Thibaud";
+var info = "My name is " + name;
+info = new StringBuilder().append("My name is ").append(name);
+// java 15
+info = "My name is %s".formatter(name);
+```
+
+</JdkCodeBlock>
+
+<div class="grid grid-cols-[1fr_1.3fr] gap-4">
+<div>
+<JdkCodeBlock label="JDK22" size="small" contentClass="text-[11px]" class="mb-4">
+
+```java
+var name = "Thibaud";
+var info = STR."My name is \{name}";
+```
+
+</JdkCodeBlock>
+
+<div class="flex items-center justify-center w-full bg-white p-2 rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+
+<script setup>
+import stringTemplateSvg from '../assets/images/string-template-syntax.svg'
+</script>
+
+<img :src="stringTemplateSvg" class="w-full h-auto" />
+
+</div>
+
+<div class="text-[13px] font-bold mt-2">
+Built-in processors: <span class="bg-gray-800 px-1 rounded">STR</span>, <span class="bg-gray-800 px-1 rounded">FMT</span>, <span class="bg-gray-800 px-1 rounded">RAW</span>
+</div>
+</div>
+
+<div>
+<JdkCodeBlock label="JDK22" size="small" contentClass="text-[11px]">
+
+```java
+var JSON = StringTemplate.Processor.of(
+  (StringTemplate st) -> new JSONObject(st.interpolate())
+);
+
+JSONObject doc = JSON."""
+{
+   "name":   "\{name}",
+   "phone":  "\{phone}",
+   "adress": "\{address}"
+};
+""";
+```
+
+</JdkCodeBlock>
+</div>
+</div>
+
+---
+layout: feature
 title: Unnamed Classes and Instance Main Methods
 ---
 <template #badge>
-  <JdkVersions preview="21, 22, 23" />
+  <JdkVersions preview="21, 22, 23, 24" />
 </template>
 
 In old Java versions, one needed write quite some boilerplate code even for the simplest of the applications:
@@ -599,92 +678,51 @@ void main() {
 
 ---
 layout: feature
-title: String template
+title: Primitive Types in Patterns, instanceof, and switch
 ---
 <template #badge>
-<div class="flex items-center gap-1 text-[12px] font-bold">
-<span class="opacity-80 text-[10px] font-bold tracking-wider mr-0 text-gray-400"">(PREVIEW IN</span>
-<JdkBadge label="JDK21" size="small" />
-<JdkBadge label="JDK22" size="small" />
-<span class="opacity-80 text-[10px] font-bold tracking-wider ml-0 text-gray-400"">)</span>
-<span class="opacity-80 text-[10px] font-bold tracking-wider text-gray-400"">⚠️ Removed from</span>
-<JdkBadge label="JDK23" size="small" />
-</div>
+  <JdkVersions preview="23, 24, 25" />
 </template>
 
-<div class="text-center text-[14px] mb-4 leading-relaxed">
-String Templates are an extension to the single-line String literals and Text Blocks,<br>
-allowing String interpolation and much more.
-</div>
+Allows primitive types to be used in pattern matching, `instanceof`, and `switch`. It also enables **primitive type patterns** to be used in record patterns.
 
-<JdkCodeBlock label="OLD JDK" color="#e3ead1" textColor="#0e2a47" borderColor="#a0a88a" size="small" contentClass="text-[12px]" class="mb-4">
+<JdkLinkedCodeBlocks label1="OLD" label2="JDK24" size="small" codeClass="text-[10px]">
+  <template #code1>
 
 ```java
-var name = "Thibaud";
-var info = "My name is " + name;
-info = new StringBuilder().append("My name is ").append(name);
-// java 15
-info = "My name is %s".formatter(name);
+if (obj instanceof Integer) {
+    int i = (Integer) obj;
+    // work with i
+}
 ```
 
-</JdkCodeBlock>
-
-<div class="grid grid-cols-[1fr_1.3fr] gap-4">
-<div>
-<JdkCodeBlock label="JDK22" size="small" contentClass="text-[11px]" class="mb-4">
+  </template>
+  <template #code2>
 
 ```java
-var name = "Thibaud";
-var info = STR."My name is \{name}";
+if (obj instanceof int i) {
+    // work with i
+}
+
+switch (obj) {
+    case int i -> System.out.println("int: " + i);
+    case double d -> System.out.println("double: " + d);
+    default -> System.out.println("other");
+}
 ```
 
-</JdkCodeBlock>
-
-<div class="flex items-center justify-center w-full bg-white p-2 rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-
-<script setup>
-import stringTemplateSvg from '../assets/images/string-template-syntax.svg'
-</script>
-
-<img :src="stringTemplateSvg" class="w-full h-auto" />
-
-</div>
-
-<div class="text-[13px] font-bold mt-2">
-Built-in processors: <span class="bg-gray-800 px-1 rounded">STR</span>, <span class="bg-gray-800 px-1 rounded">FMT</span>, <span class="bg-gray-800 px-1 rounded">RAW</span>
-</div>
-</div>
-
-<div>
-<JdkCodeBlock label="JDK22" size="small" contentClass="text-[11px]">
-
-```java
-var JSON = StringTemplate.Processor.of(
-  (StringTemplate st) -> new JSONObject(st.interpolate())
-);
-
-JSONObject doc = JSON."""
-{
-   "name":   "\{name}",
-   "phone":  "\{phone}",
-   "adress": "\{address}"
-};
-""";
-```
-
-</JdkCodeBlock>
-</div>
-</div>
+  </template>
+</JdkLinkedCodeBlocks>
 
 ---
 layout: feature
-title: Statements before super
+title: Flexible Constructor Bodies
 ---
 <template #badge>
-  <JdkVersions v="23" preview="22" />
+  <JdkVersions preview="22, 23, 24" />
 </template>
 
-Allows instructions before the call to the parent constructor (super) as long as they do not access the instance being created
+Allows instructions before the call to the parent constructor (super) as long as they do not access the instance being created. JDK 24 now allows **initialized fields** of the class to be accessed before `super()`.
 
 <JdkLinkedCodeBlocks direction="vertical" size="small" codeClass="text-[12px]" arrowHeight="h-8">
   <template #code1>
@@ -722,7 +760,7 @@ layout: feature
 title: Module Import Declarations
 ---
 <template #badge>
-  <JdkVersions preview="23" />
+  <JdkVersions preview="23, 24" />
 </template>
 
 In Java, it is possible to import:
@@ -737,4 +775,3 @@ However, it was not possible to import all classes of a module in a single instr
 ```java
 import module java.base;
 ```
-``

@@ -70,6 +70,12 @@ const styles = computed(() => ({
   min-width: calc(45 * var(--px));
 }
 
+.jdk-badge--xsmall {
+  --badge-font: calc(6 * var(--px));
+  --badge-padding: calc(1 * var(--px)) calc(4 * var(--px));
+  min-width: calc(25 * var(--px));
+}
+
 .jdk-badge--old {
   --badge-font: calc(18 * var(--px));
 }

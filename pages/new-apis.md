@@ -561,13 +561,172 @@ There are limitations in the current implementation of virtual threads.
 Due to these limitations, virtual threads are not necessarily the solution to all concurrency problems.
 
 
+---
+layout: feature
+title: Foreign linker API and Foreign memory access API
+---
+<template #badge>
+  <div class="foreign-memory-badge">
+    <JdkVersions v="22" preview="14, 15, 16, 17, 18, 19, 20, 21" previewThreshold="3" />
+    <FancyArrow
+      from="[data-jdk-label='JDK14']@(85%,350%)"
+      to="[data-jdk-label='JDK14']@bottom"
+      color="white"
+      static
+    />
+    <FancyArrow
+      from="[data-jdk-label='JDK15']@(15%,350%)"
+      to="[data-jdk-label='JDK15']@bottom"
+      color="white"
+      static
+    />
+    <div class="foreign-memory-note">Only Foreign memory access</div>
+  </div>
+</template>
+
+- The *foreign linker API* provides a flexible way to access native code on the host machine
+  - Can replace JNI/JNA
+- The *foreign memory access AP*I provides a supported, safe, and efficient API to access both heap and native memory
+
+Good blog post for pratical use case
+
+[https://blog.arkey.fr/2021/02/20/a-practical-look-at-jep-389-in-jdk16-with-libsodium/](https://blog.arkey.fr/2021/02/20/a-practical-look-at-jep-389-in-jdk16-with-libsodium/)
+
+<style>
+.foreign-memory-badge {
+  --px: min(calc(100cqw / 1280), calc(100cqh / 720));
+  position: relative;
+  padding-bottom: calc(55 * var(--px));
+}
+
+.foreign-memory-note {
+  position: absolute;
+  left: calc(65 * var(--px));
+  top: calc(65 * var(--px));
+  width: calc(220 * var(--px));
+  color: #fff;
+  font-size: calc(14 * var(--px));
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+</style>
+
+---
+layout: feature
+title: Class-File API
+---
+<template #badge>
+  <JdkVersions v="24" preview="22, 23" />
+</template>
+
+Standard API for parsing, generating, and transforming Java class files.
+
+The Java ecosystem has many libraries that allow for parsing and generating Java class files: ASM, BCEL, Javassist, etc. Most frameworks that generate bytecode use them.
+
+The format of Java class files evolves every 6 months with each new Java release, so generation frameworks must evolve at the same time to avoid not supporting the latest language developments.
+
+The Class-File API addresses this problem by providing an API within the JDK for parsing, generating, and transforming class files.
+
+
+---
+layout: feature
+title: Stream Gatherers
+---
+<template #badge>
+  <JdkVersions v="24" preview="22, 23" />
+</template>
+
+Enhances the Stream API with support for custom intermediate operations. 
+
+The Stream API provides a fixed set of intermediate and terminal operations. It allows extending terminal operations via the `Stream::collect(Collector)` method, but does not allow extending intermediate operations.
+
+```java
+var numbers = List.of(1, 2, 3, 4, 5);
+
+var slidingWindows = numbers.stream()
+    .gather(Gatherers.windowSliding(3))
+    .toList();
+
+System.out.println(slidingWindows);
+// [[1, 2, 3], [2, 3, 4], [3, 4, 5]]
+```
+
+---
+layout: feature
+title: Prepare to Restrict the Use of JNI
+---
+<template #badge>
+  <JdkVersions v="24" />
+</template>
+
+Since <JdkBadge label="JDK22" size="small" />, it is possible to invoke native code via the Java Native Interface (JNI) or the Foreign Function & Memory (FFM) API. However, loading native code is restricted in the FFM API, which triggers a runtime warning by default. To ensure consistency between JNI and FFM, calling native code via JNI also generates a warning during runtime.
+
+Using a native function will generate a WARNING at JVM startup unless the JVM `--enable-native-access` option is used to authorize it. It is also possible to use the manifest entry `Enable-Native-Access`.
+
+```
+WARNING: A restricted method in java.lang.System has been called
+WARNING: System::load has been called by com.foo.Server in module com.foo (file:/path/to/com.foo.jar)
+WARNING: Use --enable-native-access=com.foo to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+```
+
+It defaults to warn, and can take the following values:
+
+- `allow`: use is authorized without restriction,
+- `warn`: **the default in Java 24**, a warning will be emitted in the JVM logs,
+- `deny`: use is refused, an IllegalCallerException will be thrown.
+
+
+---
+layout: feature
+title: Vector API
+---
+<template #badge>
+  <JdkVersions preview="15, 16, 17, 18, 19, 20, 21, 22, 23, 24" />
+</template>
+
+The idea of this API is to provide a means of vector computations that will ultimately be able to perform more optimally (on supporting CPU architectures) than the traditional scalar method of computations.
+
+multiply two arrays
+
+<JdkLinkedCodeBlocks label1="JDK15" codeClass="text-[11px]">
+  <template #code1>
+
+```java
+int[] a = {1, 2, 3, 4};
+int[] b = {5, 6, 7, 8};
+
+var vectorA = IntVector.fromArray(IntVector.SPECIES_128, a, 0);
+var vectorB = IntVector.fromArray(IntVector.SPECIES_128, b, 0);
+var vectorC = vectorA.mul(vectorB);
+vectorC.intoArray(c, 0);
+```
+
+  </template>
+  <template #code2>
+
+```java
+int[] a = {1, 2, 3, 4};
+int[] b = {5, 6, 7, 8};
+
+var c = new int[a.length];
+
+for (int i = 0; i < a.length; i++) {
+    c[i] = a[i] * b[i];
+}
+```
+
+  </template>
+</JdkLinkedCodeBlocks>
 
 ---
 layout: feature
 title: Structured concurrency API
 ---
 <template #badge>
-  <JdkVersions v="21" preview="19, 20" />
+  <JdkVersions preview="19, 20, 21, 22, 23, 24" />
 </template>
 
 <div class="text-[13px] leading-tight mb-3 opacity-90">
@@ -581,7 +740,7 @@ Structured concurrency API to define subtask relations between threads to stream
   label2="JDK21" 
   direction="vertical" 
   size="small"
-  codeClass="text-[10px] leading-tight"
+  codeClass="text-[8px] leading-tight"
   arrowHeight="h-6"
 >
   <template #code1>
@@ -628,113 +787,18 @@ Response handle() throws ExecutionException, InterruptedException {
 
 </div>
 
-
----
-layout: feature
-title: Foreign linker API and Foreign memory access API
----
-<template #badge>
-  <div class="foreign-memory-badge">
-    <JdkVersions v="22" preview="14, 15, 16, 17, 18, 19, 20, 21" />
-    <FancyArrow
-      from="[data-jdk-label='JDK14']@(85%,390%)"
-      to="[data-jdk-label='JDK14']@bottom"
-      color="white"
-      static
-    />
-    <FancyArrow
-      from="[data-jdk-label='JDK15']@(15%,390%)"
-      to="[data-jdk-label='JDK15']@bottom"
-      color="white"
-      static
-    />
-    <div class="foreign-memory-note">Only Foreign memory access</div>
-  </div>
-</template>
-
-- The *foreign linker API* provides a flexible way to access native code on the host machine
-  - Can replace JNI/JNA
-- The *foreign memory access AP*I provides a supported, safe, and efficient API to access both heap and native memory
-
-Good blog post for pratical use case
-
-[https://blog.arkey.fr/2021/02/20/a-practical-look-at-jep-389-in-jdk16-with-libsodium/](https://blog.arkey.fr/2021/02/20/a-practical-look-at-jep-389-in-jdk16-with-libsodium/)
-
-<style>
-.foreign-memory-badge {
-  --px: min(calc(100cqw / 1280), calc(100cqh / 720));
-  position: relative;
-  padding-bottom: calc(62 * var(--px));
-}
-
-.foreign-memory-note {
-  position: absolute;
-  left: calc(49 * var(--px));
-  top: calc(72 * var(--px));
-  width: calc(285 * var(--px));
-  color: #fff;
-  font-size: calc(16 * var(--px));
-  font-weight: 700;
-  line-height: 1;
-  text-align: center;
-  white-space: nowrap;
-}
-</style>
-
-
----
-layout: feature
-title: Vector API
----
-<template #badge>
-  <JdkVersions preview="15, 16, 17, 18, 19, 20, 21, 22, 23" />
-</template>
-
-The idea of this API is to provide a means of vector computations that will ultimately be able to perform more optimally (on supporting CPU architectures) than the traditional scalar method of computations.
-
-multiply two arrays
-
-<JdkLinkedCodeBlocks label1="JDK15" codeClass="text-[11px]">
-  <template #code1>
-
-```java
-int[] a = {1, 2, 3, 4};
-int[] b = {5, 6, 7, 8};
-
-var vectorA = IntVector.fromArray(IntVector.SPECIES_128, a, 0);
-var vectorB = IntVector.fromArray(IntVector.SPECIES_128, b, 0);
-var vectorC = vectorA.mul(vectorB);
-vectorC.intoArray(c, 0);
-```
-
-  </template>
-  <template #code2>
-
-```java
-int[] a = {1, 2, 3, 4};
-int[] b = {5, 6, 7, 8};
-
-var c = new int[a.length];
-
-for (int i = 0; i < a.length; i++) {
-    c[i] = a[i] * b[i];
-}
-```
-
-  </template>
-</JdkLinkedCodeBlocks>
-
 ---
 layout: feature
 title: Scoped Values
 ---
 <template #badge>
-  <JdkVersions v="21" preview="20, 22, 23" />
+  <JdkVersions preview="20, 21, 22, 23, 24" />
 </template>
 
-An alternative to ThreadLocal that allows sharing immutable data with limit visibility.
+An alternative to ThreadLocal that allows sharing immutable data with limit visibility. JDK 24 removes `callWhere` and `runWhere` in favor of `call` and `run`.
 
 ThreadLocal are mutable and require a complex data structure whose cost is not in line with virtual threads, which are lightweight and inexpensive to create.
+
 
 ```java
 private static final ScopedValue<String> USERNAME = ScopedValue.newInstance();
@@ -742,45 +806,4 @@ private static final ScopedValue<String> USERNAME = ScopedValue.newInstance();
 ScopedValue.where(USERNAME, "duke") // bind a value to the scope
     // start a thread that could access this value
     .run(() -> System.out.println("User: " + USERNAME.get()));
-```
-
-
----
-layout: feature
-title: Class-File API
----
-<template #badge>
-  <JdkVersions v="23" preview="22" />
-</template>
-
-Standard API for parsing, generating, and transforming Java class files.
-
-The Java ecosystem has many libraries that allow for parsing and generating Java class files: ASM, BCEL, Javassist, etc. Most frameworks that generate bytecode use them.
-
-The format of Java class files evolves every 6 months with each new Java release, so generation frameworks must evolve at the same time to avoid not supporting the latest language developments.
-
-The Class-File API addresses this problem by providing an API within the JDK for parsing, generating, and transforming class files.
-
-
----
-layout: feature
-title: Stream Gatherers
----
-<template #badge>
-  <JdkVersions v="23" preview="22" />
-</template>
-
-Enhances the Stream API with support for custom intermediate operations. 
-
-The Stream API provides a fixed set of intermediate and terminal operations. It allows extending terminal operations via the `Stream::collect(Collector)` method, but does not allow extending intermediate operations.
-
-```java
-var numbers = List.of(1, 2, 3, 4, 5);
-
-var slidingWindows = numbers.stream()
-    .gather(Gatherers.windowSliding(3))
-    .toList();
-
-System.out.println(slidingWindows);
-// [[1, 2, 3], [2, 3, 4], [3, 4, 5]]
 ```

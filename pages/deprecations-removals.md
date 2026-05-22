@@ -41,6 +41,7 @@ title: API
 <JdkLabeledList
   dense
   :items="[
+    { jdk: 'JDK24', text: 'Warn upon Use of Memory-Access Methods in <code>sun.misc.Unsafe</code>.' },
     { jdk: 'JDK23', text: '<strong>Remove</strong> <code>Thread.resume()</code>, <code>Thread.suspend()</code>, <code>ThreadGroup.resume()</code>, <code>ThreadGroup.stop()</code> and <code>ThreadGroup.suspend()</code>.' },
     { jdk: 'JDK23', text: 'Deprecate the Memory-Access Methods in sun.misc.Unsafe for <strong>removal</strong>. In total, more than 79 out of the 87 methods in the <code>Unsafe</code> class are affected.' },
     { jdk: 'JDK19', text: 'The constructors of the <code>Locale</code> class have been deprecated. Instead use <code>Locale.of()</code>.' },
@@ -77,8 +78,9 @@ title: Security
 
 <JdkLabeledList
   :items="[
+    { jdk: 'JDK24', text: '<strong>Remove</strong> the Security Manager.' },
     { jdk: 'JDK18', text: 'JARs signed with SHA-1 algorithms are now restricted by default and treated as if they were unsigned.' },
-    { jdk: 'JDK17', text: 'Deprecate the Security Manager for Removal Work ongoing to consider use cases where the Security Manager is useful and provide alternatives (e.g. <a href=\'https://bugs.openjdk.org/browse/JDK-8199704\' target=\'_blank\'>JDK-8199704</a>).' },
+    { jdk: 'JDK17', text: 'Deprecate the Security Manager for Removal (removed in <JdkBadge label=\'JDK24\' size=\'small\' />).' },
     { jdk: 'JDK9', text: 'Disable X.509 certificate chains with SHA-1 based signatures.' },
   ]"
 />
@@ -90,6 +92,8 @@ title: Platform
 
 <JdkLabeledList
   :items="[
+    { jdk: 'JDK24', text: '<strong>Remove</strong> the Windows 32-bit x86 Port.' },
+    { jdk: 'JDK24', text: 'Deprecate the remaining 32-bit x86 Ports for removal.' },
     { jdk: 'JDK21', text: 'Deprecate the Windows 32-bit x86 Port for removal. Windows 10, the last Windows operating system to support 32-bit operation, will reach End of Life in October 2025.' },
     { jdk: 'JDK15', text: 'Remove the Solaris and SPARC Ports.' },
   ]"
@@ -115,7 +119,7 @@ title: CLI flags
 
 <JdkLabeledList
   :items="[
-    { jdk: 'JDK15', text: 'Disable <a href=\'https://stackoverflow.com/questions/9439602/biased-locking-in-java\' target=\'_blank\'>Biased Locking</a>) by default, deprecate related command-line flags.' },
+    { jdk: 'JDK15', text: 'Disable <a href=\'https://stackoverflow.com/questions/9439602/biased-locking-in-java\' target=\'_blank\'>Biased Locking</a> by default, deprecate related command-line flags.' },
     { jdk: 'JDK9', text: 'Remove Launch-Time JRE Version Selection directives: JRE-Version manifest entry and -version: cli option.' },
   ]"
 />
