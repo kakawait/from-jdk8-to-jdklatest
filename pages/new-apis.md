@@ -694,6 +694,9 @@ The idea of this API is to provide a means of vector computations that will ulti
 
 multiply two arrays
 
+<JdkLinkedCodeBlocks label1="JDK15" codeClass="text-[11px]">
+  <template #code1>
+
 ```java
 int[] a = {1, 2, 3, 4};
 int[] b = {5, 6, 7, 8};
@@ -703,6 +706,9 @@ var vectorB = IntVector.fromArray(IntVector.SPECIES_128, b, 0);
 var vectorC = vectorA.mul(vectorB);
 vectorC.intoArray(c, 0);
 ```
+
+  </template>
+  <template #code2>
 
 ```java
 int[] a = {1, 2, 3, 4};
@@ -715,6 +721,8 @@ for (int i = 0; i < a.length; i++) {
 }
 ```
 
+  </template>
+</JdkLinkedCodeBlocks>
 
 ---
 layout: feature
