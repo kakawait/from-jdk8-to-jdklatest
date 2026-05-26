@@ -13,6 +13,7 @@ title: Launching and tools
 
 <JdkLabeledList
   :items="[
+    { jdk: 'JDK25', text: 'Flight Recorder: Method Timing & Tracing (JEP 520) and more accurate Cooperative Sampling (JEP 518).' },
     { jdk: 'JDK22', text: 'Launch Multi-File Source-Code Programs.' },
     { jdk: 'JDK14', text: 'Flight Recorder Event Streaming: profiling data is available via an API, making it suitable for continuous monitoring.' },
     { jdk: 'JDK12', text: 'Microbenchmark Suite based on JMH.' },

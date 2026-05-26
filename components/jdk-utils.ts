@@ -17,7 +17,8 @@ export const jdkColors: Record<string, string> = {
   JDK21: '#4acaec',
   JDK22: '#710070',
   JDK23: '#854800',
-  JDK24: '#3b82f6',
+  JDK24: '#312e81',
+  JDK25: '#059669',
   'OLD JDK': '#e3ead1'
 }
 

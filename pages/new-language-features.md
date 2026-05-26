@@ -612,7 +612,7 @@ layout: feature
 title: Unnamed Classes and Instance Main Methods
 ---
 <template #badge>
-  <JdkVersions preview="21, 22, 23, 24" />
+  <JdkVersions v="25" preview="21, 22, 23, 24" />
 </template>
 
 In old Java versions, one needed write quite some boilerplate code even for the simplest of the applications:
@@ -719,7 +719,7 @@ layout: feature
 title: Flexible Constructor Bodies
 ---
 <template #badge>
-  <JdkVersions preview="22, 23, 24" />
+  <JdkVersions v="25" preview="22, 23, 24" />
 </template>
 
 Allows instructions before the call to the parent constructor (super) as long as they do not access the instance being created. JDK 24 now allows **initialized fields** of the class to be accessed before `super()`.
@@ -760,7 +760,7 @@ layout: feature
 title: Module Import Declarations
 ---
 <template #badge>
-  <JdkVersions preview="23, 24" />
+  <JdkVersions v="25" preview="23, 24" />
 </template>
 
 In Java, it is possible to import:
@@ -774,4 +774,22 @@ However, it was not possible to import all classes of a module in a single instr
 
 ```java
 import module java.base;
+```
+
+---
+layout: feature
+title: Stable Values
+---
+<template #badge>
+  <JdkVersions preview="25" />
+</template>
+...
+A new API for immutable, lazily initialized variables that offers better performance than traditional lazy-loading patterns. It allows for efficient constant folding by the JIT compiler.
+
+```java
+private static final StableValue<String> CONFIG = StableValue.newInstance();
+
+public String getConfig() {
+    return CONFIG.computeIfAbsent(() -> loadConfig());
+}
 ```

@@ -618,7 +618,7 @@ layout: feature
 title: Class-File API
 ---
 <template #badge>
-  <JdkVersions v="24" preview="22, 23" />
+  <JdkVersions v="25" preview="22, 23, 24" />
 </template>
 
 Standard API for parsing, generating, and transforming Java class files.
@@ -635,7 +635,7 @@ layout: feature
 title: Stream Gatherers
 ---
 <template #badge>
-  <JdkVersions v="24" preview="22, 23" />
+  <JdkVersions v="25" preview="22, 23, 24" />
 </template>
 
 Enhances the Stream API with support for custom intermediate operations. 
@@ -684,7 +684,7 @@ layout: feature
 title: Vector API
 ---
 <template #badge>
-  <JdkVersions preview="15, 16, 17, 18, 19, 20, 21, 22, 23, 24" />
+  <JdkVersions preview="15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25" />
 </template>
 
 The idea of this API is to provide a means of vector computations that will ultimately be able to perform more optimally (on supporting CPU architectures) than the traditional scalar method of computations.
@@ -726,7 +726,7 @@ layout: feature
 title: Structured concurrency API
 ---
 <template #badge>
-  <JdkVersions preview="19, 20, 21, 22, 23, 24" />
+  <JdkVersions preview="19, 20, 21, 22, 23, 24, 25" />
 </template>
 
 <div class="text-[13px] leading-tight mb-3 opacity-90">
@@ -792,7 +792,7 @@ layout: feature
 title: Scoped Values
 ---
 <template #badge>
-  <JdkVersions preview="20, 21, 22, 23, 24" />
+  <JdkVersions v="25" preview="20, 21, 22, 23, 24" />
 </template>
 
 An alternative to ThreadLocal that allows sharing immutable data with limit visibility. JDK 24 removes `callWhere` and `runWhere` in favor of `call` and `run`.

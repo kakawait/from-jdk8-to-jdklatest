@@ -76,17 +76,18 @@ const modernColumns: Array<{ label: string; className?: string; rows: VersionRow
       { version: 'JDK16', release: 'March 2021', eol: 'Sept 2021', color: '#6600cc', small: true },
       { version: 'JDK17', release: 'Sept 2021', eol: 'Oct 2027', color: '#a64d79', small: true },
       { version: 'JDK18', release: 'March 2022', eol: 'Sept 2022', color: '#454a8e', small: true },
-      { version: 'JDK19', release: 'Sept 2022', eol: 'March 2023', color: '#e43333', small: true },
     ],
   },
   {
-    label: 'JDK 20 to 24',
+    label: 'JDK 19 to 25',
     rows: [
+      { version: 'JDK19', release: 'Sept 2022', eol: 'March 2023', color: '#e43333', small: true },
       { version: 'JDK20', release: 'March 2023', eol: 'Sept 2023', color: '#083d1c', small: true },
       { version: 'JDK21', release: 'Sept 2023', eol: 'Dec 2029', color: '#4acaec', small: true },
       { version: 'JDK22', release: 'March 2024', eol: 'Sept 2024', color: '#710070', small: true },
       { version: 'JDK23', release: 'Sept 2024', eol: 'March 2025', color: '#854800', small: true },
-      { version: 'JDK24', release: 'March 2025', eol: 'Sept 2025', color: '#3b82f6', small: true },
+      { version: 'JDK24', release: 'March 2025', eol: 'Sept 2025', color: '#312e81', small: true },
+      { version: 'JDK25', release: 'Sept 2025', eol: 'Dec 2031', color: '#059669', small: true },
     ],
   },
 ]

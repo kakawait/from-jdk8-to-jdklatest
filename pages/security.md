@@ -33,6 +33,9 @@ title: General 2/2
 
 <JdkLabeledList
   :items="[
+    { jdk: 'JDK25', text: 'Key Derivation Function API (KDF) for modern security protocols like HKDF-SHA256.' },
+    { jdk: 'JDK25', text: 'Quantum-Resistant Cryptography (ML-KEM and ML-DSA) to protect against future quantum computing attacks.' },
+    { jdk: 'JDK25', preview: true, text: 'PEM Encodings (native support for reading and writing PEM cryptographic formats).' },
     { jdk: 'JDK24', preview: true, text: 'Key Derivation Function API for modern security protocols like HPKE.' },
     { jdk: 'JDK24', text: 'Remove the Security Manager.' },
     { jdk: 'JDK24', text: 'Quantum-Resistant Cryptography (ML-KEM and ML-DSA) to protect against future quantum computing attacks.' },

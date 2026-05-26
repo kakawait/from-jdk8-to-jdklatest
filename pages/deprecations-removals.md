@@ -41,6 +41,7 @@ title: API
 <JdkLabeledList
   dense
   :items="[
+    { jdk: 'JDK25', text: 'Deprecate the Memory-Access Methods in <code>sun.misc.Unsafe</code> for <strong>removal</strong> in JDK 26.' },
     { jdk: 'JDK24', text: 'Warn upon Use of Memory-Access Methods in <code>sun.misc.Unsafe</code>.' },
     { jdk: 'JDK23', text: '<strong>Remove</strong> <code>Thread.resume()</code>, <code>Thread.suspend()</code>, <code>ThreadGroup.resume()</code>, <code>ThreadGroup.stop()</code> and <code>ThreadGroup.suspend()</code>.' },
     { jdk: 'JDK23', text: 'Deprecate the Memory-Access Methods in sun.misc.Unsafe for <strong>removal</strong>. In total, more than 79 out of the 87 methods in the <code>Unsafe</code> class are affected.' },
@@ -78,6 +79,7 @@ title: Security
 
 <JdkLabeledList
   :items="[
+    { jdk: 'JDK25', text: 'Permanent disabling and removal of the Security Manager.' },
     { jdk: 'JDK24', text: '<strong>Remove</strong> the Security Manager.' },
     { jdk: 'JDK18', text: 'JARs signed with SHA-1 algorithms are now restricted by default and treated as if they were unsigned.' },
     { jdk: 'JDK17', text: 'Deprecate the Security Manager for Removal (removed in <JdkBadge label=\'JDK24\' size=\'small\' />).' },
@@ -92,7 +94,7 @@ title: Platform
 
 <JdkLabeledList
   :items="[
-    { jdk: 'JDK24', text: '<strong>Remove</strong> the Windows 32-bit x86 Port.' },
+    { jdk: 'JDK25', text: '<strong>Remove</strong> the 32-bit x86 Ports (JEP 503).' },
     { jdk: 'JDK24', text: 'Deprecate the remaining 32-bit x86 Ports for removal.' },
     { jdk: 'JDK21', text: 'Deprecate the Windows 32-bit x86 Port for removal. Windows 10, the last Windows operating system to support 32-bit operation, will reach End of Life in October 2025.' },
     { jdk: 'JDK15', text: 'Remove the Solaris and SPARC Ports.' },
@@ -106,6 +108,7 @@ title: GC
 
 <JdkLabeledList
   :items="[
+    { jdk: 'JDK25', text: 'Deprecate the non-generational mode of ZGC.' },
     { jdk: 'JDK14', deprecatedJdk: 'JDK9', text: 'Remove the Concurrent Mark Sweep (CMS) Garbage Collector.' },
     { jdk: 'JDK14', text: 'Deprecate the ParallelScavenge + SerialOld GC Combination.' },
     { jdk: 'JDK9', text: 'Remove GC Combinations Deprecated in JDK 8.' },
