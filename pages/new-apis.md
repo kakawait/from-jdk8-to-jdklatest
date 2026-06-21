@@ -734,13 +734,48 @@ try (Process process = new ProcessBuilder("ls", "-la").start()) {
 
 ---
 layout: feature
-title: Scoped Values & Structured Concurrency
+title: Scoped Values
 ---
 <template #badge>
-  <JdkVersions v="26" preview="20, 21, 22, 23, 24, 25" />
+  <JdkVersions v="25" preview="20, 21, 22, 23, 24" />
 </template>
 
-Both Scoped Values and Structured Concurrency reach their **final state** in JDK 26, providing stable alternatives to `ThreadLocal` and simplifying multithreaded task management.
+A modern, lightweight, and safer alternative to `ThreadLocal` variables, particularly when using Virtual Threads. Scoped Values allow sharing immutable data within a thread and its child threads with bounded lifetime.
+
+<JdkLinkedCodeBlocks label1="JDK24" label2="JDK25" size="small" codeClass="text-[10px]">
+  <template #code1>
+
+```java
+public static final ThreadLocal<User> USER = new ThreadLocal<>();
+
+// To bind:
+USER.set(user);
+try {
+    serve();
+} finally {
+    USER.remove(); // Must manually cleanup to avoid leaks
+}
+
+// To read:
+User user = USER.get();
+```
+
+  </template>
+  <template #code2>
+
+```java
+public static final ScopedValue<User> USER = ScopedValue.newInstance();
+
+// To bind (automatically scoped and cleaned up):
+ScopedValue.where(USER, user)
+           .run(() -> serve());
+
+// To read:
+User user = USER.get();
+```
+
+  </template>
+</JdkLinkedCodeBlocks>
 
 ---
 layout: feature
