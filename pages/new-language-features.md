@@ -811,9 +811,9 @@ title: Lazy Constants (formerly Stable Values)
 Formerly known as **StableValue**, this API allows for constants that are initialized on demand rather than at startup, improving application startup performance.
 
 ```java
-private static final StableValue<String> CONFIG = StableValue.newInstance();
+private static final LazyConstant<String> CONFIG = LazyConstant.of(() -> loadConfig());
 
 public String getConfig() {
-    return CONFIG.computeIfAbsent(() -> loadConfig());
+    return CONFIG.get();
 }
 ```

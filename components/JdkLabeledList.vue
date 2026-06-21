@@ -10,6 +10,7 @@ type JdkLabeledListItem = {
   jdk: string
   deprecatedJdk?: string
   preview?: boolean
+  jep?: string
   text: string | JdkLabeledListTextPart[]
 }
 

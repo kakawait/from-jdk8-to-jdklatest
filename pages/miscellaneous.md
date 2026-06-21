@@ -13,14 +13,15 @@ title: Launching and tools
 
 <JdkLabeledList
   :items="[
-    { jdk: 'JDK25', text: 'Flight Recorder: Method Timing & Tracing (JEP 520) and more accurate Cooperative Sampling (JEP 518).' },
-    { jdk: 'JDK22', text: 'Launch Multi-File Source-Code Programs.' },
-    { jdk: 'JDK14', text: 'Flight Recorder Event Streaming: profiling data is available via an API, making it suitable for continuous monitoring.' },
-    { jdk: 'JDK12', text: 'Microbenchmark Suite based on JMH.' },
-    { jdk: 'JDK11', text: 'Flight Recorder is part of OpenJDK.' },
-    { jdk: 'JDK11', text: 'Low-Overhead Heap Profiling via JMTI.' },
-    { jdk: 'JDK11', text: 'Launch Single-File Source-Code Programs, including support for shebang (#!) line on Unix.' },
-    { jdk: 'JDK9', text: 'jshell: the Java REPL.' },
+    { jdk: 'JDK25', preview: true, jep: '509', text: 'Flight Recorder: CPU-Time Profiling for more accurate profiling on Linux.' },
+    { jdk: 'JDK25', jep: '520, 518', text: 'Flight Recorder: Method Timing & Tracing and more accurate Cooperative Sampling (JEP 518).' },
+    { jdk: 'JDK22', jep: '458', text: 'Launch Multi-File Source-Code Programs.' },
+    { jdk: 'JDK14', jep: '349', text: 'Flight Recorder Event Streaming: profiling data is available via an API, making it suitable for continuous monitoring.' },
+    { jdk: 'JDK12', jep: '230', text: 'Microbenchmark Suite based on JMH.' },
+    { jdk: 'JDK11', jep: '328', text: 'Flight Recorder is part of OpenJDK.' },
+    { jdk: 'JDK11', jep: '331', text: 'Low-Overhead Heap Profiling via JVMTI.' },
+    { jdk: 'JDK11', jep: '330', text: 'Launch Single-File Source-Code Programs, including support for shebang (#!) line on Unix.' },
+    { jdk: 'JDK9', jep: '222', text: 'jshell: the Java REPL.' },
   ]"
 />
 
@@ -31,10 +32,10 @@ title: Packaging
 
 <JdkLabeledList
   :items="[
-    { jdk: 'JDK18', text: 'javac now assumes that source files are encoded with the new default UTF-8 charset.' },
-    { jdk: 'JDK16', text: 'Packaging Tool to create self-contained applications, also supporting native package formats: msi, exe, pkg, dmg, deb and rpm.' },
-    { jdk: 'JDK9', text: 'jlink Java Linker that can build an optimized, slim run-time image for a modular Java application that contains only the required parts of the JDK.' },
-    { jdk: 'JDK9', text: 'Multi-Release JAR Files to allow multiple, Java-release-specific versions of class in a single archive.' },
+    { jdk: 'JDK18', jep: '400', text: 'javac now assumes that source files are encoded with the new default UTF-8 charset.' },
+    { jdk: 'JDK16', jep: '392', text: 'Packaging Tool to create self-contained applications, also supporting native package formats: msi, exe, pkg, dmg, deb and rpm.' },
+    { jdk: 'JDK9', jep: '282', text: 'jlink Java Linker that can build an optimized, slim run-time image for a modular Java application that contains only the required parts of the JDK.' },
+    { jdk: 'JDK9', jep: '238', text: 'Multi-Release JAR Files to allow multiple, Java-release-specific versions of class in a single archive.' },
   ]"
 />
 
@@ -48,8 +49,8 @@ title: Javadoc
 
 <JdkLabeledList
   :items="[
-    { jdk: 'JDK9', text: 'The Javadoc tool now emits HTML5 markup instead of a frame-based layout and the documentation contains a search box to ease navigation.' },
-    { jdk: 'JDK18', text: '<code>@snippet</code> tag, a modern alternative for <code>@code</code> that supports multi-line code, supports styling and the inclusion of external snippets.' },
+    { jdk: 'JDK9', jep: '224, 225', text: 'The Javadoc tool now emits HTML5 markup instead of a frame-based layout and the documentation contains a search box to ease navigation.' },
+    { jdk: 'JDK18', jep: '413', text: '<code>@snippet</code> tag, a modern alternative for <code>@code</code> that supports multi-line code, supports styling and the inclusion of external snippets.' },
   ]"
 />
 
@@ -105,13 +106,13 @@ title: New supported platforms
 
 <JdkLabeledList
   :items="[
-    { jdk: 'JDK19', text: 'Linux/RISC-V.' },
-    { jdk: 'JDK17', text: 'macOS/AArch64.' },
-    { jdk: 'JDK16', text: 'Alpine.' },
-    { jdk: 'JDK16', text: 'Windows/AArch64.' },
-    { jdk: 'JDK9', text: 'Linux/AArch64.' },
-    { jdk: 'JDK9', text: 'Linux/s390x.' },
-    { jdk: 'JDK9', text: 'Unified arm32/arm64.' },
+    { jdk: 'JDK19', jep: '422', text: 'Linux/RISC-V.' },
+    { jdk: 'JDK17', jep: '391', text: 'macOS/AArch64.' },
+    { jdk: 'JDK16', jep: '386', text: 'Alpine.' },
+    { jdk: 'JDK16', jep: '388', text: 'Windows/AArch64.' },
+    { jdk: 'JDK9', jep: '237', text: 'Linux/AArch64.' },
+    { jdk: 'JDK9', jep: '294', text: 'Linux/s390x.' },
+    { jdk: 'JDK9', jep: '297', text: 'Unified arm32/arm64.' },
   ]"
 />
 
