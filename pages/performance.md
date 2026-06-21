@@ -11,7 +11,7 @@ layout: feature
 title: Compact Object Headers
 ---
 <template #badge>
-  <JdkVersions preview="24, 25" />
+  <JdkVersions v="25" preview="24" />
 </template>
 
 Reduces the size of the object header in the HotSpot JVM from 128 bits to 64 bits on 64-bit architectures.
@@ -49,6 +49,7 @@ title: General
 <JdkLabeledList
   dense
   :items="[
+    { jdk: 'JDK26', text: 'Ahead-of-Time Object Caching (JEP 516) now GC-agnostic, improving application startup across different GC configurations.' },
     { jdk: 'JDK25', text: 'Ahead-of-Time Class Loading & Linking (Project Leyden) to improve application startup time.' },
     { jdk: 'JDK24', text: 'Linking Run-Time Images without JMODs to reduce the size of the JDK and custom runtimes.' },
     { jdk: 'JDK21', text: 'Improvements in the conversion between primitives (e.g., from <code>long</code> to <code>int</code>) through the use of <code>VarHandle</code>.' },
@@ -69,8 +70,9 @@ title: GC
 
 <JdkLabeledList
   :items="[
+    { jdk: 'JDK26', text: 'G1 GC optimization (JEP 522) to reduce synchronization overhead between application and GC threads.' },
+    { jdk: 'JDK26', text: 'ArrayList fast path for <code>addAll()</code> when the source is also an ArrayList.' },
     { jdk: 'JDK25', text: 'Generational Shenandoah to improve efficiency by separating young and old generations.' },
-    { jdk: 'JDK24', preview: true, text: 'Generational Shenandoah to improve efficiency by separating young and old generations.' },
     { jdk: 'JDK24', text: '<strong>Remove</strong> the Non-Generational mode of ZGC. Generational ZGC is now the default and only mode.' },
     { jdk: 'JDK23', text: 'Parallel GC has been the replacement of the existing Full GC algorithm with a more traditional parallel Mark-Sweep-Compact algorithm. Reduces heap usage by 1.5%.' },
     { jdk: 'JDK21', text: ['Generational ZGC (using <code>-XX:+ZGenerational</code> or by default since ', { badge: 'JDK23', size: 'small' }, ').'] },

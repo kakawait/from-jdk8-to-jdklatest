@@ -26,6 +26,7 @@ title: Projects
 
 <JdkLabeledList
   :items="[
+    { jdk: 'JDK26', text: '<strong>Remove</strong> the Applet API (java.applet package and related classes).' },
     { jdk: 'JDK17', deprecatedJdk: 'JDK15', text: 'Remove RMI Activation, affecting the java.rmi.activation package and the rmid tool, does not affect Java RMI in general.' },
     { jdk: 'JDK15', text: 'Remove the Nashorn Javascript Engine and the jjs tool.' },
     { jdk: 'JDK11', text: 'Remove Java EE.' },
@@ -42,6 +43,7 @@ title: API
   dense
   :items="[
     { jdk: 'JDK25', text: 'Deprecate the Memory-Access Methods in <code>sun.misc.Unsafe</code> for <strong>removal</strong> in JDK 26.' },
+    { jdk: 'JDK26', text: 'Warn upon reflective mutation of <code>final</code> fields (JEP 500).' },
     { jdk: 'JDK24', text: 'Warn upon Use of Memory-Access Methods in <code>sun.misc.Unsafe</code>.' },
     { jdk: 'JDK23', text: '<strong>Remove</strong> <code>Thread.resume()</code>, <code>Thread.suspend()</code>, <code>ThreadGroup.resume()</code>, <code>ThreadGroup.stop()</code> and <code>ThreadGroup.suspend()</code>.' },
     { jdk: 'JDK23', text: 'Deprecate the Memory-Access Methods in sun.misc.Unsafe for <strong>removal</strong>. In total, more than 79 out of the 87 methods in the <code>Unsafe</code> class are affected.' },

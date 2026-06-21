@@ -615,6 +615,31 @@ Good blog post for pratical use case
 
 ---
 layout: feature
+title: Prepare to Restrict the Use of JNI
+---
+<template #badge>
+  <JdkVersions v="24" />
+</template>
+
+Since <JdkBadge label="JDK22" size="small" />, it is possible to invoke native code via the Java Native Interface (JNI) or the Foreign Function & Memory (FFM) API. However, loading native code is restricted in the FFM API, which triggers a runtime warning by default. To ensure consistency between JNI and FFM, calling native code via JNI also generates a warning during runtime.
+
+Using a native function will generate a WARNING at JVM startup unless the JVM `--enable-native-access` option is used to authorize it. It is also possible to use the manifest entry `Enable-Native-Access`.
+
+```
+WARNING: A restricted method in java.lang.System has been called
+WARNING: System::load has been called by com.foo.Server in module com.foo (file:/path/to/com.foo.jar)
+WARNING: Use --enable-native-access=com.foo to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+```
+
+It defaults to warn, and can take the following values:
+
+- `allow`: use is authorized without restriction,
+- `warn`: **the default in Java 24**, a warning will be emitted in the JVM logs,
+- `deny`: use is refused, an IllegalCallerException will be thrown.
+
+---
+layout: feature
 title: Class-File API
 ---
 <template #badge>
@@ -655,36 +680,74 @@ System.out.println(slidingWindows);
 
 ---
 layout: feature
-title: Prepare to Restrict the Use of JNI
+title: HTTP/3 for the HTTP Client API
 ---
 <template #badge>
-  <JdkVersions v="24" />
+  <JdkVersions v="26" />
 </template>
 
-Since <JdkBadge label="JDK22" size="small" />, it is possible to invoke native code via the Java Native Interface (JNI) or the Foreign Function & Memory (FFM) API. However, loading native code is restricted in the FFM API, which triggers a runtime warning by default. To ensure consistency between JNI and FFM, calling native code via JNI also generates a warning during runtime.
+Adds support for **HTTP/3 (via QUIC)** to the standard `HttpClient`. It provides lower latency and improved security through default encryption.
 
-Using a native function will generate a WARNING at JVM startup unless the JVM `--enable-native-access` option is used to authorize it. It is also possible to use the manifest entry `Enable-Native-Access`.
+```java
+var client = HttpClient.newBuilder()
+    .version(HttpClient.Version.HTTP_3)
+    .build();
 
+var request = HttpRequest.newBuilder(URI.create("https://thibaud.dev/"))
+    .version(HttpClient.Version.HTTP_3)
+    .GET()
+    .build();
 ```
-WARNING: A restricted method in java.lang.System has been called
-WARNING: System::load has been called by com.foo.Server in module com.foo (file:/path/to/com.foo.jar)
-WARNING: Use --enable-native-access=com.foo to avoid a warning for callers in this module
-WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+---
+layout: feature
+title: UUIDv7 Support
+---
+<template #badge>
+  <JdkVersions v="26" />
+</template>
+
+New `UUID.ofEpochMillis(long)` method to create **time-ordered, sortable UUIDs**, which are ideal for database identifiers and distributed systems.
+
+```java
+// Generates a sortable UUID based on the current system time
+UUID uuid = UUID.ofEpochMillis(System.currentTimeMillis());
+System.out.println("Sortable UUIDv7: " + uuid);
 ```
 
-It defaults to warn, and can take the following values:
+---
+layout: feature
+title: Process now implements AutoCloseable
+---
+<template #badge>
+  <JdkVersions v="26" />
+</template>
 
-- `allow`: use is authorized without restriction,
-- `warn`: **the default in Java 24**, a warning will be emitted in the JVM logs,
-- `deny`: use is refused, an IllegalCallerException will be thrown.
+The `Process` class now implements `AutoCloseable`, allowing it to be used more easily in **try-with-resources** blocks to ensure streams are closed properly.
 
+```java
+try (Process process = new ProcessBuilder("ls", "-la").start()) {
+    int exitCode = process.waitFor();
+    System.out.println("Exited with: " + exitCode);
+} // process.close() is called automatically
+```
+
+---
+layout: feature
+title: Scoped Values & Structured Concurrency
+---
+<template #badge>
+  <JdkVersions v="26" preview="20, 21, 22, 23, 24, 25" />
+</template>
+
+Both Scoped Values and Structured Concurrency reach their **final state** in JDK 26, providing stable alternatives to `ThreadLocal` and simplifying multithreaded task management.
 
 ---
 layout: feature
 title: Vector API
 ---
 <template #badge>
-  <JdkVersions preview="15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25" />
+  <JdkVersions preview="15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26" />
 </template>
 
 The idea of this API is to provide a means of vector computations that will ultimately be able to perform more optimally (on supporting CPU architectures) than the traditional scalar method of computations.
@@ -726,7 +789,7 @@ layout: feature
 title: Structured concurrency API
 ---
 <template #badge>
-  <JdkVersions preview="19, 20, 21, 22, 23, 24, 25" />
+  <JdkVersions preview="19, 20, 21, 22, 23, 24, 25, 26" />
 </template>
 
 <div class="text-[13px] leading-tight mb-3 opacity-90">
@@ -786,24 +849,3 @@ Response handle() throws ExecutionException, InterruptedException {
 </div>
 
 </div>
-
----
-layout: feature
-title: Scoped Values
----
-<template #badge>
-  <JdkVersions v="25" preview="20, 21, 22, 23, 24" />
-</template>
-
-An alternative to ThreadLocal that allows sharing immutable data with limit visibility. JDK 24 removes `callWhere` and `runWhere` in favor of `call` and `run`.
-
-ThreadLocal are mutable and require a complex data structure whose cost is not in line with virtual threads, which are lightweight and inexpensive to create.
-
-
-```java
-private static final ScopedValue<String> USERNAME = ScopedValue.newInstance();
-
-ScopedValue.where(USERNAME, "duke") // bind a value to the scope
-    // start a thread that could access this value
-    .run(() -> System.out.println("User: " + USERNAME.get()));
-```

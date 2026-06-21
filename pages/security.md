@@ -33,6 +33,7 @@ title: General 2/2
 
 <JdkLabeledList
   :items="[
+    { jdk: 'JDK26', text: 'HTTP/3 Support in HttpClient providing default encryption via QUIC protocol.' },
     { jdk: 'JDK25', text: 'Key Derivation Function API (KDF) for modern security protocols like HKDF-SHA256.' },
     { jdk: 'JDK25', text: 'Quantum-Resistant Cryptography (ML-KEM and ML-DSA) to protect against future quantum computing attacks.' },
     { jdk: 'JDK25', preview: true, text: 'PEM Encodings (native support for reading and writing PEM cryptographic formats).' },

@@ -678,44 +678,6 @@ void main() {
 
 ---
 layout: feature
-title: Primitive Types in Patterns, instanceof, and switch
----
-<template #badge>
-  <JdkVersions preview="23, 24, 25" />
-</template>
-
-Allows primitive types to be used in pattern matching, `instanceof`, and `switch`. It also enables **primitive type patterns** to be used in record patterns.
-
-<JdkLinkedCodeBlocks label1="OLD" label2="JDK24" size="small" codeClass="text-[10px]">
-  <template #code1>
-
-```java
-if (obj instanceof Integer) {
-    int i = (Integer) obj;
-    // work with i
-}
-```
-
-  </template>
-  <template #code2>
-
-```java
-if (obj instanceof int i) {
-    // work with i
-}
-
-switch (obj) {
-    case int i -> System.out.println("int: " + i);
-    case double d -> System.out.println("double: " + d);
-    default -> System.out.println("other");
-}
-```
-
-  </template>
-</JdkLinkedCodeBlocks>
-
----
-layout: feature
 title: Flexible Constructor Bodies
 ---
 <template #badge>
@@ -778,13 +740,75 @@ import module java.base;
 
 ---
 layout: feature
-title: Stable Values
+title: Prepare to Make Final Mean Final
 ---
 <template #badge>
-  <JdkVersions preview="25" />
+  <JdkVersions v="26" />
 </template>
-...
-A new API for immutable, lazily initialized variables that offers better performance than traditional lazy-loading patterns. It allows for efficient constant folding by the JIT compiler.
+
+Restricts the ability to modify **final** fields via deep reflection. In Java 26, attempting to use `setAccessible(true)` on a final field will trigger a runtime warning, preparing for a future release where such mutations will be blocked by default.
+
+```java
+// This code will trigger a WARNING in Java 26
+Field f = MyClass.class.getDeclaredField("someFinalField");
+f.setAccessible(true);
+f.set(instance, newValue); 
+
+// Output: WARNING: Final field someFinalField in class MyClass 
+// has been mutated reflectively...
+```
+
+<div class="mt-4 text-[13px] opacity-80">
+Goal: Improve JVM integrity, security, and allow for better JIT optimizations like constant folding.
+</div>
+
+---
+layout: feature
+title: Primitive Types in Patterns, instanceof, and switch
+---
+<template #badge>
+  <JdkVersions preview="23, 24, 25, 26" />
+</template>
+
+Allows primitive types to be used in pattern matching, `instanceof`, and `switch`. It also enables **primitive type patterns** to be used in record patterns.
+
+<JdkLinkedCodeBlocks label1="OLD" label2="JDK24" size="small" codeClass="text-[10px]">
+  <template #code1>
+
+```java
+if (obj instanceof Integer) {
+    int i = (Integer) obj;
+    // work with i
+}
+```
+
+  </template>
+  <template #code2>
+
+```java
+if (obj instanceof int i) {
+    // work with i
+}
+
+switch (obj) {
+    case int i -> System.out.println("int: " + i);
+    case double d -> System.out.println("double: " + d);
+    default -> System.out.println("other");
+}
+```
+
+  </template>
+</JdkLinkedCodeBlocks>
+
+---
+layout: feature
+title: Lazy Constants (formerly Stable Values)
+---
+<template #badge>
+  <JdkVersions preview="25, 26" />
+</template>
+
+Formerly known as **StableValue**, this API allows for constants that are initialized on demand rather than at startup, improving application startup performance.
 
 ```java
 private static final StableValue<String> CONFIG = StableValue.newInstance();
