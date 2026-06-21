@@ -38,7 +38,7 @@ Reduces the size of the object header in the HotSpot JVM from 128 bits to 64 bit
 </div>
 
 <div class="text-center">
-<p class="text-[13px] italic opacity-60">Enable with: <code>-XX:+UnlockExperimentalVMOptions -XX:+UseCompactObjectHeaders</code></p>
+<p class="text-[13px] italic opacity-60">Enable with: <code>-XX:+UseCompactObjectHeaders</code></p>
 </div>
 
 ---

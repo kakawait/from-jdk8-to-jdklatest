@@ -8,7 +8,7 @@ image: /images/security.png
 
 ---
 layout: feature
-title: General 1/2
+title: General 1/3
 ---
 
 <JdkLabeledList
@@ -28,14 +28,13 @@ title: General 1/2
 
 ---
 layout: feature
-title: General 2/2
+title: General 2/3
 ---
 
 <JdkLabeledList
   :items="[
-    { jdk: 'JDK26', jep: '517', text: 'HTTP/3 Support in HttpClient providing default encryption via QUIC protocol.' },
-    { jdk: 'JDK25', jep: '510', text: 'Key Derivation Function API (KDF) for modern security protocols like HKDF-SHA256.' },
     { jdk: 'JDK25', jep: '470', preview: true, text: 'PEM Encodings (native support for reading and writing PEM cryptographic formats).' },
+    { jdk: 'JDK25', jep: '510', text: 'Key Derivation Function API (KDF) for modern security protocols like HKDF-SHA256.' },
     { jdk: 'JDK24', jep: '486', text: 'Remove the Security Manager.' },
     { jdk: 'JDK24', jep: '496, 497', text: 'Quantum-Resistant Cryptography (ML-KEM and ML-DSA) to protect against future quantum computing attacks.' },
     { jdk: 'JDK22', text: 'Use java <code>-XshowSettings:security</code> to view the security-related configuration information of the JVM.' },
@@ -43,5 +42,16 @@ title: General 2/2
     { jdk: 'JDK21', jep: '452', text: 'Key Encapsulation Mechanism (KEM) API, a cryptographic technique for securing symmetric keys using public-key cryptography.' },
     { jdk: 'JDK18', text: 'The cacerts keystore file is now a passwordless PKCS12 file.' },
     { jdk: 'JDK18', text: 'Calling keyStore.store(outputStream, null) on a PKCS12 KeyStore creates a passwordless PKCS12 file.' },
+  ]"
+/>
+
+---
+layout: feature
+title: General 3/3
+---
+
+<JdkLabeledList
+  :items="[
+    { jdk: 'JDK26', jep: '517', text: 'HTTP/3 Support in HttpClient providing default encryption via QUIC protocol.' },
   ]"
 />

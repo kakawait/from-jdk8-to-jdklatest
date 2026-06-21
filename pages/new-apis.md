@@ -308,6 +308,8 @@ HttpResponse<String> response =
 
 Since <JdkBadge label="JDK21" size="small" /> `HttpClient` now implements `AutoCloseable` and can therefore be used more easily in a *try-with-resources block.
 
+Since <JdkBadge label="JDK26" size="small" /> it also supports HTTP/3 (via QUIC).
+
 ---
 layout: feature
 title: Unicode 10
@@ -680,6 +682,51 @@ System.out.println(slidingWindows);
 
 ---
 layout: feature
+title: Scoped Values
+---
+<template #badge>
+  <JdkVersions v="25" preview="20, 21, 22, 23, 24" />
+</template>
+
+A modern, lightweight, and safer alternative to `ThreadLocal` variables, particularly when using Virtual Threads. Scoped Values allow sharing immutable data within a thread and its child threads with bounded lifetime.
+
+<JdkLinkedCodeBlocks label1="JDK24" label2="JDK25" size="small" codeClass="text-[10px]">
+  <template #code1>
+
+```java
+public static final ThreadLocal<User> USER = new ThreadLocal<>();
+
+// To bind:
+USER.set(user);
+try {
+    serve();
+} finally {
+    USER.remove(); // Must manually cleanup to avoid leaks
+}
+
+// To read:
+User user = USER.get();
+```
+
+  </template>
+  <template #code2>
+
+```java
+public static final ScopedValue<User> USER = ScopedValue.newInstance();
+
+// To bind (automatically scoped and cleaned up):
+ScopedValue.where(USER, user)
+           .run(() -> serve());
+
+// To read:
+User user = USER.get();
+```
+
+  </template>
+</JdkLinkedCodeBlocks>
+
+---
+layout: feature
 title: HTTP/3 for the HTTP Client API
 ---
 <template #badge>
@@ -731,51 +778,6 @@ try (Process process = new ProcessBuilder("ls", "-la").start()) {
     System.out.println("Exited with: " + exitCode);
 } // process.close() is called automatically
 ```
-
----
-layout: feature
-title: Scoped Values
----
-<template #badge>
-  <JdkVersions v="25" preview="20, 21, 22, 23, 24" />
-</template>
-
-A modern, lightweight, and safer alternative to `ThreadLocal` variables, particularly when using Virtual Threads. Scoped Values allow sharing immutable data within a thread and its child threads with bounded lifetime.
-
-<JdkLinkedCodeBlocks label1="JDK24" label2="JDK25" size="small" codeClass="text-[10px]">
-  <template #code1>
-
-```java
-public static final ThreadLocal<User> USER = new ThreadLocal<>();
-
-// To bind:
-USER.set(user);
-try {
-    serve();
-} finally {
-    USER.remove(); // Must manually cleanup to avoid leaks
-}
-
-// To read:
-User user = USER.get();
-```
-
-  </template>
-  <template #code2>
-
-```java
-public static final ScopedValue<User> USER = ScopedValue.newInstance();
-
-// To bind (automatically scoped and cleaned up):
-ScopedValue.where(USER, user)
-           .run(() -> serve());
-
-// To read:
-User user = USER.get();
-```
-
-  </template>
-</JdkLinkedCodeBlocks>
 
 ---
 layout: feature

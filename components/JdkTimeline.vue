@@ -79,7 +79,7 @@ const modernColumns: Array<{ label: string; className?: string; rows: VersionRow
     ],
   },
   {
-    label: 'JDK 19 to 25',
+    label: 'JDK 19 to 26',
     rows: [
       { version: 'JDK19', release: 'Sept 2022', eol: 'March 2023', color: '#e43333', small: true },
       { version: 'JDK20', release: 'March 2023', eol: 'Sept 2023', color: '#083d1c', small: true },
@@ -88,6 +88,7 @@ const modernColumns: Array<{ label: string; className?: string; rows: VersionRow
       { version: 'JDK23', release: 'Sept 2024', eol: 'March 2025', color: '#854800', small: true },
       { version: 'JDK24', release: 'March 2025', eol: 'Sept 2025', color: '#312e81', small: true },
       { version: 'JDK25', release: 'Sept 2025', eol: 'Dec 2031', color: '#059669', small: true },
+      { version: 'JDK26', release: 'March 2026', eol: 'Sept 2026', color: '#db2777', small: true },
     ],
   },
 ]
