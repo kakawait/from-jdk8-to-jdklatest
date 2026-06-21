@@ -9,6 +9,7 @@ image: /images/new-language-features.png
 ---
 layout: feature
 title: Improved warnings
+jep: '213'
 ---
 <template #badge>
   <JdkVersions v="9" />
@@ -25,6 +26,7 @@ private void methodName(...) {
 
 ---
 layout: feature
+jep: '213'
 ---
 ::badge::
 <JdkVersions v="9" />
@@ -45,6 +47,7 @@ From Java 9 onwards, compiler suppress deprecated warnings if one of the followi
 ---
 layout: feature
 title: Allow effectively-final variables to be used as resources in try-with-resources statements
+jep: '213'
 ---
 <template #badge>
   <JdkVersions v="9" />
@@ -96,6 +99,7 @@ try (br1; br2) {
 ---
 layout: feature
 title: Diamond operator for anonymous inner classes
+jep: '213'
 ---
 <template #badge>
   <JdkVersions v="9" />
@@ -125,6 +129,7 @@ List<Integer> numbers = new ArrayList<>() {
 ---
 layout: feature
 title: Allow private methods in interfaces
+jep: '213'
 ---
 <template #badge>
   <JdkVersions v="9" />
@@ -159,6 +164,7 @@ public interface CustomInterface {
 ---
 layout: feature
 title: Opt-in and backwards-compatible Module System
+jep: '261'
 ---
 <template #badge>
   <JdkVersions v="9" />
@@ -173,6 +179,7 @@ module com.dassaultsystemes.helloworld {
 
 ---
 layout: feature
+jep: '286, 323'
 ---
 <template #badge>
   <JdkVersions v="11" preview="10" prefix="(Without lambda support in" suffix=")" />
@@ -211,6 +218,7 @@ var map = new HashMap<>();
 ---
 layout: feature
 title: Switch Expressions
+jep: '325, 354, 361'
 ---
 <template #badge>
   <JdkVersions v="14" preview="12, 13" />
@@ -233,6 +241,7 @@ int numLetters = switch (day) {
 ---
 layout: feature
 title: Helpful NullPointerExceptions describing precisely which variable was null
+jep: '358'
 ---
 <template #badge>
   <JdkVersions v="15" preview="14" prefix="(Enabled with -XX:+ShowCodeDetailsInExceptionMessages in" suffix=")" />
@@ -268,6 +277,7 @@ Exception in thread "main" java.lang.NullPointerException:
 ---
 layout: feature
 title: Text Blocks
+jep: '355, 368, 378'
 ---
 <template #badge>
   <JdkVersions v="15" preview="13, 14" />
@@ -314,6 +324,7 @@ System.out.println(html);
 ---
 layout: feature
 title: Pattern Matching for instanceof
+jep: '305, 375, 394'
 ---
 <template #badge>
   <JdkVersions v="16" preview="14, 15" />
@@ -352,6 +363,7 @@ if (obj instanceof String) {
 ---
 layout: feature
 title: Record classes
+jep: '359, 384, 395'
 ---
 <template #badge>
   <JdkVersions v="16" preview="14, 15" />
@@ -389,9 +401,11 @@ public List<Product> findProductsWithMostSaving(List<Product> products) {
 
   This feature is useful to perform intermediate calculations on data, without having to declare a class that would only be used in this method.
 </JdkCodeWithText>
+
 ---
 layout: feature
 title: Sealed Classes
+jep: '360, 409'
 ---
 <template #badge>
   <JdkVersions v="17" preview="15, 16" />
@@ -417,6 +431,7 @@ double area = switch (shape) {
 ---
 layout: feature
 title: Pattern Matching for switch
+jep: '406, 420, 427, 433, 441'
 ---
 <template #badge>
   <JdkVersions v="21" preview="17, 18, 19, 20" />
@@ -436,6 +451,7 @@ String formatted = switch (o) {
 ---
 layout: feature
 title: Record Patterns
+jep: '405, 432, 440'
 ---
 <template #badge>
   <JdkVersions v="21" preview="19, 20" />
@@ -486,6 +502,7 @@ var length = switch (r) {
 ---
 layout: feature
 title: Unnamed Patterns and Variables
+jep: '443, 456'
 ---
 <template #badge>
   <JdkVersions v="22" preview="21" />
@@ -531,6 +548,7 @@ if (r instanceof ColoredPoint(Point(int x, int y), _)) {
 ---
 layout: feature
 title: String template
+jep: '430, 459'
 ---
 <template #badge>
 <div class="flex items-center gap-1 text-[12px] font-bold">
@@ -610,6 +628,7 @@ JSONObject doc = JSON."""
 ---
 layout: feature
 title: Unnamed Classes and Instance Main Methods
+jep: '445, 463, 477, 495, 512'
 ---
 <template #badge>
   <JdkVersions v="25" preview="21, 22, 23, 24" />
@@ -679,6 +698,7 @@ void main() {
 ---
 layout: feature
 title: Flexible Constructor Bodies
+jep: '447, 482, 492, 513'
 ---
 <template #badge>
   <JdkVersions v="25" preview="22, 23, 24" />
@@ -720,6 +740,7 @@ public class PositiveBigInteger extends BigInteger {
 ---
 layout: feature
 title: Module Import Declarations
+jep: '476, 494, 511'
 ---
 <template #badge>
   <JdkVersions v="25" preview="23, 24" />
@@ -741,6 +762,7 @@ import module java.base;
 ---
 layout: feature
 title: Prepare to Make Final Mean Final
+jep: '500'
 ---
 <template #badge>
   <JdkVersions v="26" />
@@ -765,6 +787,7 @@ Goal: Improve JVM integrity, security, and allow for better JIT optimizations li
 ---
 layout: feature
 title: Primitive Types in Patterns, instanceof, and switch
+jep: '455, 488, 496, 503'
 ---
 <template #badge>
   <JdkVersions preview="23, 24, 25, 26" />
@@ -803,6 +826,7 @@ switch (obj) {
 ---
 layout: feature
 title: Lazy Constants (formerly Stable Values)
+jep: '502, 526'
 ---
 <template #badge>
   <JdkVersions preview="25, 26" />

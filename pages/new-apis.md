@@ -20,6 +20,7 @@ If you are curious about all the API level differences between Java 8 later vers
 
 ---
 layout: feature
+jep: '277'
 ---
 ::badge::
 <JdkVersions v="9" />
@@ -54,6 +55,7 @@ public class Worker {
 ---
 layout: feature
 title: Convenience Factory Methods for Collections
+jep: '269'
 ---
 <template #badge>
   <JdkVersions v="9" />
@@ -71,6 +73,7 @@ Map<String, Integer> myMap = Map.of("one", 1, "two", 2);
 ---
 layout: feature
 title: More Concurrency Updates
+jep: '266'
 ---
 <template #badge>
   <JdkVersions v="9" />
@@ -105,6 +108,7 @@ void cancel()
 ---
 layout: feature
 title: Stack-walking API
+jep: '259'
 ---
 <template #badge>
   <JdkVersions v="9" />
@@ -127,6 +131,7 @@ private static List<String> walkAndFilterStackframe() {
 ---
 layout: feature
 title: Process API updates
+jep: '102'
 ---
 <template #badge>
   <JdkVersions v="9" />
@@ -286,6 +291,7 @@ Reader.transferTo(Writer);
 ---
 layout: feature
 title: Standard HTTP Client
+jep: '321'
 ---
 <template #badge>
   <JdkVersions v="11, 21" preview="9" />
@@ -313,6 +319,7 @@ Since <JdkBadge label="JDK26" size="small" /> it also supports HTTP/3 (via QUIC)
 ---
 layout: feature
 title: Unicode 10
+jep: '327'
 ---
 <template #badge>
   <JdkVersions v="11" />
@@ -416,6 +423,7 @@ List<String> result =
 ---
 layout: feature
 title: UTF-8 by default
+jep: '400'
 ---
 <template #badge>
   <JdkVersions v="18" />
@@ -427,6 +435,7 @@ title: UTF-8 by default
 ---
 layout: feature
 title: Sequenced Collections
+jep: '431'
 ---
 <template #badge>
   <JdkVersions v="21" />
@@ -535,6 +544,7 @@ assertTrue(m.find());
 ---
 layout: feature
 title: Virtual Threads
+jep: '425, 444'
 ---
 <template #badge>
   <JdkVersions v="21" preview="19, 20" />
@@ -566,6 +576,7 @@ Due to these limitations, virtual threads are not necessarily the solution to al
 ---
 layout: feature
 title: Foreign linker API and Foreign memory access API
+jep: '424, 434, 442, 454'
 ---
 <template #badge>
   <div class="foreign-memory-badge">
@@ -618,6 +629,7 @@ Good blog post for pratical use case
 ---
 layout: feature
 title: Prepare to Restrict the Use of JNI
+jep: '472'
 ---
 <template #badge>
   <JdkVersions v="24" />
@@ -643,6 +655,7 @@ It defaults to warn, and can take the following values:
 ---
 layout: feature
 title: Class-File API
+jep: '457, 466, 484, 505'
 ---
 <template #badge>
   <JdkVersions v="25" preview="22, 23, 24" />
@@ -660,6 +673,7 @@ The Class-File API addresses this problem by providing an API within the JDK for
 ---
 layout: feature
 title: Stream Gatherers
+jep: '461, 473, 485, 507'
 ---
 <template #badge>
   <JdkVersions v="25" preview="22, 23, 24" />
@@ -683,6 +697,7 @@ System.out.println(slidingWindows);
 ---
 layout: feature
 title: Scoped Values
+jep: '429, 446, 481, 487, 506'
 ---
 <template #badge>
   <JdkVersions v="25" preview="20, 21, 22, 23, 24" />
@@ -728,6 +743,7 @@ User user = USER.get();
 ---
 layout: feature
 title: HTTP/3 for the HTTP Client API
+jep: '517'
 ---
 <template #badge>
   <JdkVersions v="26" />
@@ -782,6 +798,7 @@ try (Process process = new ProcessBuilder("ls", "-la").start()) {
 ---
 layout: feature
 title: Vector API
+jep: '338, 414, 417, 426, 438, 448, 460, 469, 486, 497, 501, 508'
 ---
 <template #badge>
   <JdkVersions preview="15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26" />
@@ -824,6 +841,7 @@ for (int i = 0; i < a.length; i++) {
 ---
 layout: feature
 title: Structured concurrency API
+jep: '428, 453, 480, 533'
 ---
 <template #badge>
   <JdkVersions preview="19, 20, 21, 22, 23, 24, 25, 26" />
