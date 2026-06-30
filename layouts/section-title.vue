@@ -1,7 +1,7 @@
 <template>
   <div class="section-title-layout h-full grid grid-cols-2 items-center px-25 bg-[#111]">
     <div class="flex justify-center items-center">
-      <img :src="image" class="w-60 h-60 object-contain" />
+      <img :src="resolvedImage" class="w-60 h-60 object-contain" />
     </div>
     <div class="flex flex-col items-start text-left pl-10">
       <h1 class="text-white text-5xl font-bold leading-tight mb-2">
@@ -11,13 +11,17 @@
     </div>
   </div>
 </template>
-
 <script setup lang="ts">
-defineProps<{
+import { computed } from 'vue'
+
+const props = defineProps<{
   image: string
 }>()
-</script>
 
+const resolvedImage = computed(() =>
+  import.meta.env.BASE_URL + props.image.replace(/^\//, '')
+)
+</script>
 <style scoped>
 .section-title-layout h1 {
   font-family: 'Montserrat', sans-serif;
