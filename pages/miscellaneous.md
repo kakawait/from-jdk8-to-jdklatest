@@ -120,12 +120,18 @@ title: New supported platforms
 layout: feature
 title: New release train
 ---
+
+<script setup lang="ts">
+// Extract the base URL here, where import.meta is fully supported
+const baseUrl = import.meta.env.BASE_URL
+</script>
+
 <template #badge>
   <JdkVersions v="9" />
 </template>
 
 <img
-  src="/images/new-release-train-white.png"
+  :src="`${baseUrl}images/new-release-train-white.png`"
   class="mx-auto max-h-[470px] max-w-full object-contain"
 />
   
