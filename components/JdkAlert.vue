@@ -1,14 +1,27 @@
 <script setup lang="ts">
-defineProps<{
+import { computed } from 'vue'
+
+const props = defineProps<{
   image?: string
 }>()
+
+// Resolve the dynamic base path, handling the optional prop safely
+const resolvedImage = computed(() => {
+  if (!props.image) return ''
+
+  const base = import.meta.env.BASE_URL
+  const cleanPath = props.image.startsWith('/') ? props.image.slice(1) : props.image
+
+  return `${base}${cleanPath}`
+})
 </script>
 
 <template>
   <div class="jdk-alert bg-[#48FFD5] p-4 flex items-center gap-6 rounded-sm text-[#0e2a47]">
     <div v-if="image || $slots.image" class="flex-none w-24 h-24 flex items-center justify-center">
       <slot name="image">
-        <img :src="image" class="max-w-full max-h-full object-contain" />
+        <!-- Update the src to use resolvedImage -->
+        <img :src="resolvedImage" class="max-w-full max-h-full object-contain" />
       </slot>
     </div>
     <div class="flex-grow text-left">

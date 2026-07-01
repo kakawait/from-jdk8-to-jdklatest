@@ -125,7 +125,7 @@ title: New release train
 </template>
 
 <img
-  :src="'/images/new-release-train-white.png'"
+  src="/images/new-release-train-white.png"
   class="mx-auto max-h-[470px] max-w-full object-contain"
 />
   
