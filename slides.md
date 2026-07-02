@@ -5,7 +5,8 @@ class: text-white text-left
 highlighter: shiki
 lineNumbers: false
 info: |
-  Migrated Presentation
+  From jdk8 to jdklatest
+  Thibaud LEPRETRE
 addons:
   - fancy-arrow
 ---
