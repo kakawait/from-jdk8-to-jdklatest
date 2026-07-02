@@ -1,9 +1,11 @@
 ---
+title: From jdk8 to jdk26
 theme: default
 background: /images/background.png
 class: text-white text-left
 highlighter: shiki
 lineNumbers: false
+favicon: /favicon.ico
 info: |
   From jdk8 to jdklatest
   Thibaud LEPRETRE
