@@ -33,7 +33,6 @@ title: General 2/3
 
 <JdkLabeledList
   :items="[
-    { jdk: 'JDK27', jep: '538', preview: true, text: 'PEM Encodings, third preview: <code>DEREncodable</code> renamed to <code>BinaryEncodable</code>, added <code>EncryptedPrivateKeyInfo.getKeyPair()</code> and <code>CryptoException</code>.' },
     { jdk: 'JDK25', jep: '470', preview: true, text: 'PEM Encodings (native support for reading and writing PEM cryptographic formats).' },
     { jdk: 'JDK25', jep: '510', text: 'Key Derivation Function API (KDF) for modern security protocols like HKDF-SHA256.' },
     { jdk: 'JDK24', jep: '486', text: 'Remove the Security Manager.' },

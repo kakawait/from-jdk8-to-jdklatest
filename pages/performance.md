@@ -16,7 +16,7 @@ title: Compact Object Headers
 
 Reduces the size of the object header in the HotSpot JVM from 128 bits to 64 bits on 64-bit architectures.
 
-<div class="flex justify-center mt- mb-10">
+<div class="flex justify-center mb-6">
   <JdkObjectHeaderDiagram />
 </div>
 
@@ -37,9 +37,8 @@ Reduces the size of the object header in the HotSpot JVM from 128 bits to 64 bit
 </div>
 </div>
 
-<div class="text-center space-y-1">
-<p class="text-[13px] italic opacity-60">Preview in <JdkBadge label="JDK24" size="small" />, final in <JdkBadge label="JDK25" size="small" /> - enable with <code>-XX:+UseCompactObjectHeaders</code>.</p>
-<p class="text-[13px] italic opacity-60"><JdkBadge label="JDK27" size="small" /> enabled by default and no longer experimental - disable with <code>-XX:-UseCompactObjectHeaders</code>.</p>
+<div class="text-center">
+<p class="text-[12.5px] italic opacity-60">Preview in <JdkBadge label="JDK24" size="small" />, final in <JdkBadge label="JDK25" size="small" />, default since <JdkBadge label="JDK27" size="small" /> - toggle with <code>-XX:[+|-]UseCompactObjectHeaders</code>.</p>
 </div>
 
 ---
