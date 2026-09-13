@@ -37,8 +37,41 @@ Reduces the size of the object header in the HotSpot JVM from 128 bits to 64 bit
 </div>
 </div>
 
+<div class="text-center space-y-1">
+<p class="text-[13px] italic opacity-60">Preview in <JdkBadge label="JDK24" size="small" />, final in <JdkBadge label="JDK25" size="small" /> - enable with <code>-XX:+UseCompactObjectHeaders</code>.</p>
+<p class="text-[13px] italic opacity-60"><JdkBadge label="JDK27" size="small" /> enabled by default and no longer experimental - disable with <code>-XX:-UseCompactObjectHeaders</code>.</p>
+</div>
+
+---
+layout: feature
+title: G1 is the Default GC Everywhere
+jep: '523'
+---
+<template #badge>
+  <JdkVersions v="27" />
+</template>
+
+G1 has been the default GC since JDK 9 **except** on machines with one CPU or less than ~1792 MB of heap, where the JVM selected **Serial GC**. Lower synchronization overhead (JEP 522) and a smaller native footprint now make G1 equal to or better than Serial everywhere, so it is used in **all** environments unless another GC is requested explicitly.
+
+<div class="bg-white/5 rounded-xl border border-white/10 p-2 mt-4">
+<div class="grid grid-cols-3 gap-2 text-center">
+  <div>
+    <div class="text-lg font-bold text-[#60a5fa]">All</div>
+    <div class="text-[10px] uppercase tracking-wider opacity-70 leading-tight">Environments now default to G1</div>
+  </div>
+  <div>
+    <div class="text-lg font-bold text-[#4ade80]">&asymp; Serial</div>
+    <div class="text-[10px] uppercase tracking-wider opacity-70 leading-tight">Even with few CPUs / small heaps</div>
+  </div>
+  <div>
+    <div class="text-lg font-bold text-[#f472b6]">Lower</div>
+    <div class="text-[10px] uppercase tracking-wider opacity-70 leading-tight">Native memory footprint</div>
+  </div>
+</div>
+</div>
+
 <div class="text-center">
-<p class="text-[13px] italic opacity-60">Enable with: <code>-XX:+UseCompactObjectHeaders</code></p>
+<p class="text-[13px] italic opacity-60">Opt back in to the old behavior with <code>-XX:+UseSerialGC</code> - and measure before choosing a GC.</p>
 </div>
 
 ---
@@ -68,6 +101,8 @@ title: General 2/2
 <JdkLabeledList
   dense
   :items="[
+    { jdk: 'JDK27', text: '<code>HashMap.putAll()</code> fast path when the source is also a <code>HashMap</code>, for a 66-86% improvement.' },
+    { jdk: 'JDK27', text: 'New <strong>AVX2 intrinsic</strong> for binary search, 1.5x to 2.35x faster above a size threshold (<code>int</code>=256, <code>long</code>=768, <code>short</code>/<code>char</code>=512).' },
     { jdk: 'JDK26', jep: '516', text: 'Ahead-of-Time Object Caching now GC-agnostic, improving application startup across different GC configurations.' },
     { jdk: 'JDK25', jep: '515', text: 'Ahead-of-Time Method Profiling to record method-execution profiles from previous runs and JIT compile immediately at startup.' },
     { jdk: 'JDK25', jep: '514', text: 'Ahead-of-Time Command-Line Ergonomics to simplify AOT cache creation into a single step.' },
@@ -83,6 +118,7 @@ title: GC 1/2
 
 <JdkLabeledList
   :items="[
+    { jdk: 'JDK27', jep: '523', text: 'G1 becomes the default GC in <strong>all</strong> environments, including the single-CPU / small-heap deployments where Serial GC used to be chosen.' },
     { jdk: 'JDK21', jep: '439', text: ['Generational ZGC (using <code>-XX:+ZGenerational</code> or by default since ', { badge: 'JDK23', size: 'small' }, ').'] },
     { jdk: 'JDK18', text: 'SerialGC, ParallelGC and ZGC now supports String Deduplication.' },
     { jdk: 'JDK16', jep: '376', text: 'Z Garbage Collector concurrent thread-stack processing, offering even lower pause times.' },
@@ -99,6 +135,7 @@ title: GC 2/2
 
 <JdkLabeledList
   :items="[
+    { jdk: 'JDK27', text: 'The JFR event <code>jdk.OldObjectSample</code> is disabled when using <strong>generational ZGC</strong>, because of an unacceptable performance overhead.' },
     { jdk: 'JDK26', jep: '522', text: 'G1 GC optimization to reduce synchronization overhead between application and GC threads.' },
     { jdk: 'JDK26', text: 'ArrayList fast path for <code>addAll()</code> when the source is also an ArrayList.' },
     { jdk: 'JDK25', jep: '521', text: 'Generational Shenandoah to improve efficiency by separating young and old generations.' },
@@ -114,6 +151,7 @@ title: GC - G1 Specific
 
 <JdkLabeledList
   :items="[
+    { jdk: 'JDK27', text: 'New defaults for <code>-XX:MinHeapFreeRatio</code> (40/70) and <code>-XX:MaxHeapFreeRatio</code> (0/100), which effectively disables heap resizing by default and avoids resizing after a Full GC.' },
     { jdk: 'JDK24', jep: '475', text: 'Late Barrier Expansion for G1 to optimize GC barriers during JIT compilation.' },
     { jdk: 'JDK22', jep: '423', text: 'Remove the use of the GCLocker in G1. Improving JNI use cases.' },
     { jdk: 'JDK20', text: 'Reduces G1 native memory footprint by ~1.5% of Java heap size by removing one of the mark bitmaps spanning the entire Java heap.' },

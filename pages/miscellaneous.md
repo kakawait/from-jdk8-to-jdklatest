@@ -27,6 +27,26 @@ title: Launching and tools
 
 ---
 layout: feature
+title: JDK 27 - Tools and Diagnostics
+---
+<template #badge>
+  <JdkVersions v="27" />
+</template>
+
+<JdkLabeledList
+  dense
+  :items="[
+    { jdk: 'JDK27', text: 'New JFR event <code>ShenandoahPromotionInformation</code>.' },
+    { jdk: 'JDK27', text: 'A <strong>bash completion</strong> script now ships with <code>jcmd</code>: <code>source $JDK_HOME/conf/bash-completion/jcmd</code>.' },
+    { jdk: 'JDK27', text: 'New <code>jcmd VM.security_properties</code> command prints the active Java security properties of a running JVM, like <code>VM.system_properties</code> does for system properties.' },
+    { jdk: 'JDK27', text: '<code>jcmd VM.info</code> and <code>hs_err_pid</code> fatal error logs now report the current number of open file descriptors of the process.' },
+    { jdk: 'JDK27', text: 'JSON thread dumps (<code>jcmd Thread.dump_to_file</code>, <code>HotSpotDiagnosticMXBean.dumpThreads</code>) now write thread ids, thread counts and the process id as <strong>numbers</strong> instead of strings, and add a <code>formatVersion</code> member (value <code>2</code>) - programs parsing them may need an update.' },
+    { jdk: 'JDK27', text: '<code>RuntimeMXBean.getInputArguments()</code> now adds the <code>-XX:</code> prefix to arguments coming from a settings file (<code>-XX:+UseZGC</code> instead of <code>+UseZGC</code>).' },
+  ]"
+/>
+
+---
+layout: feature
 title: Packaging
 ---
 

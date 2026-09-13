@@ -1,5 +1,5 @@
 ---
-title: From jdk8 to jdk26
+title: From jdk8 to jdk27
 theme: default
 background: /images/background.png
 class: text-white text-left
@@ -15,7 +15,7 @@ addons:
 
 <div class="absolute top-[3.5rem]">
   <h1 class="!text-7xl !leading-tight font-bold">
-    From <span class="bg-gradient-to-r from-[#00d4ff] to-[#00ffcc] bg-clip-text text-transparent">JDK8</span> to <span class="bg-gradient-to-r from-[#a855f7] to-[#d8b4fe] bg-clip-text text-transparent">JDK26</span>
+    From <span class="bg-gradient-to-r from-[#00d4ff] to-[#00ffcc] bg-clip-text text-transparent">JDK8</span> to <span class="bg-gradient-to-r from-[#a855f7] to-[#d8b4fe] bg-clip-text text-transparent">JDK27</span>
   </h1>
   <div class="mt-4">
     <p class="text-4xl font-semibold text-[#60a5fa] opacity-90">The journey of innovation</p>

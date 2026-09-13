@@ -63,6 +63,7 @@ title: Tools
 
 <JdkLabeledList
   :items="[
+    { jdk: 'JDK27', text: '<strong>Remove</strong> the Serviceability Agent <code>printmdo</code> command of <code>clhsdb</code>, which displayed MethodData (JVM compiler internals).' },
     { jdk: 'JDK15', deprecatedJdk: 'JDK11', jep: '372', text: 'Remove the jjs tool (linked to Nashorn).' },
     { jdk: 'JDK14', deprecatedJdk: 'JDK11', jep: '367', text: 'Remove the Pack200 Tools and API.' },
     { jdk: 'JDK10', jep: '313', text: 'Remove the javah tool.' },
@@ -122,6 +123,9 @@ title: CLI flags
 
 <JdkLabeledList
   :items="[
+    { jdk: 'JDK27', text: '<strong>Remove</strong> <code>-noclassgc</code>, <code>-noverify</code>, <code>-verifyremote</code> and <code>-Xverify:none</code>. Replacements: <code>-Xnoclassgc</code> and <code>-Xverify:remote</code> - there is none for the other two.' },
+    { jdk: 'JDK27', text: 'Rename <code>-XX:InitiatingHeapOccupancyPercent</code> to <code>-XX:G1IHOP</code>, as it is only meant to be used with G1. The old name still works but is deprecated.' },
+    { jdk: 'JDK27', deprecatedJdk: 'JDK25', text: '<code>-XX:[+|-]UseCompressedClassPointers</code> is now <strong>obsolete</strong>: compressed class pointers are always used, and passing the option prints a warning.' },
     { jdk: 'JDK15', jep: '374', text: 'Disable <a href=\'https://stackoverflow.com/questions/9439602/biased-locking-in-java\' target=\'_blank\'>Biased Locking</a> by default, deprecate related command-line flags.' },
     { jdk: 'JDK9', jep: '231', text: 'Remove Launch-Time JRE Version Selection directives: JRE-Version manifest entry and -version: cli option.' },
   ]"
@@ -134,6 +138,7 @@ title: Misc
 
 <JdkLabeledList
   :items="[
+    { jdk: 'JDK27', text: '<strong>Remove</strong> the experimental JVM Compiler Interface (JVMCI): modules <code>jdk.internal.vm.ci</code>, <code>jdk.graal.compiler</code> and <code>jdk.graal.compile.management</code>, the JVMCI JIT-compilation policies, all flags containing <code>JVMCI</code> and <code>-XX:+UseGraalJIT</code>. Downstream projects such as GraalVM must now maintain their own copy.' },
     { jdk: 'JDK21', jep: '451', text: 'Prepare to Disallow the Dynamic Loading of Agents to improve the integrity and security of the platform.' },
     { jdk: 'JDK17', jep: '306', text: 'Make floating-point operations consistently strict by default, warn when the strictfp modifier is used.' },
     { jdk: 'JDK15', jep: '383', text: 'Remove the Experimental <a href=\'https://openjdk.org/jeps/295\' target=\'_blank\'>AOT</a> and <a href=\'https://openjdk.org/jeps/317\' target=\'_blank\'>JIT</a> compiler due to lack of interest.' },

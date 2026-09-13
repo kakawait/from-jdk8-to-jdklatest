@@ -797,11 +797,51 @@ try (Process process = new ProcessBuilder("ls", "-la").start()) {
 
 ---
 layout: feature
-title: Vector API
-jep: '338, 414, 417, 426, 438, 448, 460, 469, 486, 497, 501, 508'
+title: New APIs (JDK27)
 ---
 <template #badge>
-  <JdkVersions preview="15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26" />
+  <JdkVersions v="27" />
+</template>
+
+```java
+// Inverse hyperbolic functions
+Math.acosh(1.5);   // 0.9624236501192069
+Math.asinh(1.5);   // 1.1947632172871094
+Math.atanh(0.5);   // 0.5493061443340549
+// StrictMath.acosh/asinh/atanh offer the same, bit-for-bit reproducible versions
+
+// Number of bytes needed to encode this String with a given Charset
+"héllo".encodedLength(StandardCharsets.UTF_8);   // 6
+"héllo".length();                                // 5
+
+// nth root of a BigDecimal, rounded according to a MathContext
+new BigDecimal("27").rootn(3, MathContext.DECIMAL64);   // 3.000000000000000
+```
+
+<JdkLabeledList
+  :items="[
+    { jdk: 'JDK27', text: '<code>DateTimeFormatter</code> now supports <strong>short timezone offsets</strong> (<code>+01</code> instead of <code>+01:00</code>).' },
+  ]"
+/>
+
+---
+layout: feature
+title: PEM Encodings of Cryptographic Objects
+jep: '470, 524, 538'
+---
+<template #badge>
+  <JdkVersions preview="25, 26, 27" />
+</template>
+
+Native support for the **Privacy-Enhanced Mail** (PEM) format - the text encoding used by OpenSSL - to read and write keys, certificates and other cryptographic objects.
+
+---
+layout: feature
+title: Vector API
+jep: '338, 414, 417, 426, 438, 448, 460, 469, 486, 497, 501, 508, 537'
+---
+<template #badge>
+  <JdkVersions preview="15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27" />
 </template>
 
 The idea of this API is to provide a means of vector computations that will ultimately be able to perform more optimally (on supporting CPU architectures) than the traditional scalar method of computations.
@@ -844,7 +884,7 @@ title: Structured concurrency API
 jep: '428, 453, 480, 533'
 ---
 <template #badge>
-  <JdkVersions preview="19, 20, 21, 22, 23, 24, 25, 26" />
+  <JdkVersions preview="19, 20, 21, 22, 23, 24, 25, 26, 27" />
 </template>
 
 <div class="text-[13px] leading-tight mb-3 opacity-90">

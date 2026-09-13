@@ -787,10 +787,10 @@ Goal: Improve JVM integrity, security, and allow for better JIT optimizations li
 ---
 layout: feature
 title: Primitive Types in Patterns, instanceof, and switch
-jep: '455, 488, 496, 503'
+jep: '455, 488, 496, 503, 532'
 ---
 <template #badge>
-  <JdkVersions preview="23, 24, 25, 26" />
+  <JdkVersions preview="23, 24, 25, 26, 27" />
 </template>
 
 Allows primitive types to be used in pattern matching, `instanceof`, and `switch`. It also enables **primitive type patterns** to be used in record patterns.
@@ -826,10 +826,10 @@ switch (obj) {
 ---
 layout: feature
 title: Lazy Constants (formerly Stable Values)
-jep: '502, 526'
+jep: '502, 526, 531'
 ---
 <template #badge>
-  <JdkVersions preview="25, 26" />
+  <JdkVersions preview="25, 26, 27" />
 </template>
 
 Formerly known as **StableValue**, this API allows for constants that are initialized on demand rather than at startup, improving application startup performance.
