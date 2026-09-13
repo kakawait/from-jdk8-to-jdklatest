@@ -117,7 +117,6 @@ title: GC 1/2
 
 <JdkLabeledList
   :items="[
-    { jdk: 'JDK27', jep: '523', text: 'G1 becomes the default GC in <strong>all</strong> environments, including the single-CPU / small-heap deployments where Serial GC used to be chosen.' },
     { jdk: 'JDK21', jep: '439', text: ['Generational ZGC (using <code>-XX:+ZGenerational</code> or by default since ', { badge: 'JDK23', size: 'small' }, ').'] },
     { jdk: 'JDK18', text: 'SerialGC, ParallelGC and ZGC now supports String Deduplication.' },
     { jdk: 'JDK16', jep: '376', text: 'Z Garbage Collector concurrent thread-stack processing, offering even lower pause times.' },
@@ -134,6 +133,7 @@ title: GC 2/2
 
 <JdkLabeledList
   :items="[
+    { jdk: 'JDK27', jep: '523', text: 'G1 becomes the default GC in <strong>all</strong> environments, including the single-CPU / small-heap deployments where Serial GC used to be chosen.' },
     { jdk: 'JDK27', text: 'The JFR event <code>jdk.OldObjectSample</code> is disabled when using <strong>generational ZGC</strong>, because of an unacceptable performance overhead.' },
     { jdk: 'JDK26', jep: '522', text: 'G1 GC optimization to reduce synchronization overhead between application and GC threads.' },
     { jdk: 'JDK26', text: 'ArrayList fast path for <code>addAll()</code> when the source is also an ArrayList.' },

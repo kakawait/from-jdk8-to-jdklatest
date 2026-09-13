@@ -8,15 +8,11 @@ image: /images/miscellaneous.png
 
 ---
 layout: feature
-title: Launching and tools
+title: Launching and tools 1/2
 ---
 
 <JdkLabeledList
   :items="[
-    { jdk: 'JDK27', text: 'JSON thread dumps (from <code>jcmd Thread.dump_to_file</code> or <code>HotSpotDiagnosticMXBean.dumpThreads</code>) now write thread ids, thread counts and the process id as <strong>numbers</strong> instead of strings, and add a <code>formatVersion</code> member (value <code>2</code>) - tools parsing them may need an update.' },
-    { jdk: 'JDK27', text: '<code>RuntimeMXBean.getInputArguments()</code> now prefixes arguments coming from a settings file with <code>-XX:</code> (<code>-XX:+UseZGC</code> instead of <code>+UseZGC</code>).' },
-    { jdk: 'JDK25', preview: true, jep: '509', text: 'Flight Recorder: CPU-Time Profiling for more accurate profiling on Linux.' },
-    { jdk: 'JDK25', jep: '520, 518', text: 'Flight Recorder: Method Timing & Tracing and more accurate Cooperative Sampling (JEP 518).' },
     { jdk: 'JDK22', jep: '458', text: 'Launch Multi-File Source-Code Programs.' },
     { jdk: 'JDK14', jep: '349', text: 'Flight Recorder Event Streaming: profiling data is available via an API, making it suitable for continuous monitoring.' },
     { jdk: 'JDK12', jep: '230', text: 'Microbenchmark Suite based on JMH.' },
@@ -24,6 +20,20 @@ title: Launching and tools
     { jdk: 'JDK11', jep: '331', text: 'Low-Overhead Heap Profiling via JVMTI.' },
     { jdk: 'JDK11', jep: '330', text: 'Launch Single-File Source-Code Programs, including support for shebang (#!) line on Unix.' },
     { jdk: 'JDK9', jep: '222', text: 'jshell: the Java REPL.' },
+  ]"
+/>
+
+---
+layout: feature
+title: Launching and tools 2/2
+---
+
+<JdkLabeledList
+  :items="[
+    { jdk: 'JDK27', text: 'JSON thread dumps now use numeric ids, counts and pid, plus <code>formatVersion</code> - parsers may need an update.' },
+    { jdk: 'JDK27', text: '<code>RuntimeMXBean.getInputArguments()</code> now prefixes arguments coming from a settings file with <code>-XX:</code> (<code>-XX:+UseZGC</code> instead of <code>+UseZGC</code>).' },
+    { jdk: 'JDK25', preview: true, jep: '509', text: 'Flight Recorder: CPU-Time Profiling for more accurate profiling on Linux.' },
+    { jdk: 'JDK25', jep: '520, 518', text: 'Flight Recorder: Method Timing & Tracing and more accurate Cooperative Sampling (JEP 518).' },
   ]"
 />
 
