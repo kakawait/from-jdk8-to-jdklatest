@@ -1,6 +1,7 @@
 ---
 title: From jdk8 to jdk27
 theme: default
+colorSchema: dark
 background: /images/background.png
 class: text-white text-left
 highlighter: shiki
