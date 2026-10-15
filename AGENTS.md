@@ -7,6 +7,12 @@ You are an expert at creating and maintaining the "From JDK 9 to JDK Latest" Sli
 - **Goal:** Provide a comprehensive, visually consistent overview of JDK evolution.
 - **Current Status:** Updated up to JDK 23. Tasked with adding JDK 24, 25, and 26.
 
+## Fonts & Color Schema
+The deck is pinned to the dark color schema and uses self-hosted fonts, so it renders identically on every OS and browser:
+- `colorSchema: dark` in the `slides.md` headmatter. Do not remove it: Slidev's default (`auto`) follows `prefers-color-scheme`, which renders the light theme (white code blocks, black body text on the dark background) for anyone whose OS is in light mode — an unreadable deck on Windows by default.
+- `fonts` in the `slides.md` headmatter pins `Nunito Sans` / `Fira Code` with `provider: none`. The theme default is `Avenir Next,Nunito Sans`, and Avenir Next only exists on macOS, so the deck used to render a different font per OS.
+- `styles/index.css` holds the `@font-face` rules and `public/fonts/` the woff2 files (Nunito Sans and Fira Code, both SIL OFL 1.1). To refresh them after a family or weight change, edit the families in `scripts/fetch-fonts.py` and re-run `python3 scripts/fetch-fonts.py`.
+
 ## Slide Structure
 The project uses multiple Markdown files imported into `slides.md`:
 - `pages/new-language-features.md`: Syntax and language changes.

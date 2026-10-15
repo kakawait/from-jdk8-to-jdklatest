@@ -2,6 +2,13 @@
 title: From jdk8 to jdk27
 theme: default
 colorSchema: dark
+# Pin the fonts: the theme default is "Avenir Next,Nunito Sans", and Avenir Next
+# only exists on macOS, so the deck rendered different fonts per OS. Both fonts
+# are self-hosted from /fonts (see styles/index.css), hence provider: none.
+fonts:
+  sans: Nunito Sans
+  mono: Fira Code
+  provider: none
 background: /images/background.png
 class: text-white text-left
 highlighter: shiki
